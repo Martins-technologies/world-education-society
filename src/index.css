@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  ::selection {
+    background-color: #ec9136;
+    color: #ffffff;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Fraunces', serif;
+  }
+
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible {
+    outline: 2px solid #0d90c4;
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-ocean-600;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-ocean px-6 py-3.5 text-sm font-semibold text-white shadow-soft transition-all duration-300 hover:bg-ocean-600 hover:shadow-card active:scale-[0.98];
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-navy-800 bg-transparent px-6 py-3.5 text-sm font-semibold text-navy-800 transition-all duration-300 hover:bg-navy-800 hover:text-white active:scale-[0.98];
+  }
+
+  .btn-ghost-light {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-white/40 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur transition-all duration-300 hover:bg-white hover:text-navy-800 active:scale-[0.98];
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
