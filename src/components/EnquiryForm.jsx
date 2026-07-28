@@ -42,7 +42,7 @@ export default function EnquiryForm({ tone = 'light' }) {
       </div>
       <div>
         <label className={labelClass} htmlFor="phone">Phone / WhatsApp</label>
-        <input id="phone" name="phone" type="tel" placeholder="+92 300 1234567" className={fieldClass} />
+        <input id="phone" name="phone" type="tel" placeholder="Enter Number" className={fieldClass} />
       </div>
       <div>
         <label className={labelClass} htmlFor="destination">Preferred destination</label>

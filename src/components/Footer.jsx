@@ -89,14 +89,7 @@ export default function Footer() {
             ))}
           </ul>
 
-          <h4 className="mt-6 font-display text-sm font-semibold uppercase tracking-wide text-white">
-            Offices
-          </h4>
-          <ul className="mt-4 space-y-2.5 text-sm">
-            {footerLinks.offices.map((o) => (
-              <li key={o}>{o}</li>
-            ))}
-          </ul>
+        
         </div>
 
         {/* Newsletter */}
