@@ -25,6 +25,9 @@
     border-radius: 2px;
   }
 }
+html,body{
+  overflow-x: hidden !important
+}
 
 @layer components {
   .eyebrow {

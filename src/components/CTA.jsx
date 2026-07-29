@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import EnquiryForm from './EnquiryForm'
+import { HiLocationMarker, HiMail, HiPhone } from 'react-icons/hi'
 
 export default function CTA() {
   return (
@@ -26,11 +27,51 @@ export default function CTA() {
             Tell us where you'd like to study and what you'd like to study — a
             counsellor will map out your options and next steps.
           </p>
-          <div className="mt-8 flex items-center gap-3 text-sm text-white/85">
-            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/15">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4l6 5 6-5M2 4v8h12V4H2z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" /></svg>
-            </span>
-            hello@worldeducationsociety.org
+          
+          {/* Contact Information */}
+          <div className="mt-8 space-y-3 text-sm text-white/85">
+            {/* Email */}
+            <div className="flex items-center gap-3">
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/15">
+                <HiMail size={16} />
+              </span>
+              <a 
+                href="mailto:hello@worldeducationsociety.org" 
+                className="transition-colors hover:text-white"
+              >
+               info@worldeducationsociety.org
+              </a>
+            </div>
+            
+            {/* Phone */}
+            <div className="flex items-center gap-3">
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/15">
+                <HiPhone size={16} />
+              </span>
+              <a 
+                href="tel:+1234567890" 
+                className="transition-colors hover:text-white"
+              >
+                +1 (000) 000-000
+              </a>
+            </div>
+            
+            {/* Address */}
+            <div className="flex items-start gap-3">
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/15">
+                <HiLocationMarker size={16} />
+              </span>
+              <a 
+                href="https://maps.google.com/?q=123+Education+Street,+New+York,+NY+10001"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="leading-relaxed w-3/4 transition-colors hover:text-white"
+              >
+                123 Education Street,<br />
+                New York, NY 10001,<br />
+                United States
+              </a>
+            </div>
           </div>
         </motion.div>
 

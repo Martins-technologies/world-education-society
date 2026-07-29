@@ -39,7 +39,10 @@ export default function Navbar() {
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
-          <a href="#contact" className="text-sm font-semibold text-navy-700 transition-colors hover:text-ocean-600">
+          <a 
+            href="#contact" 
+            className="rounded-full px-5 py-2.5 text-sm font-semibold text-navy-700 transition-colors bg-amber-400 hover:bg-amber-500"
+          >
             Free Consultation
           </a>
           <a href="#contact" className="btn-primary !py-2.5 !px-5">
