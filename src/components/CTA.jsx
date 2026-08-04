@@ -27,7 +27,7 @@ export default function CTA() {
             Tell us where you'd like to study and what you'd like to study — a
             counsellor will map out your options and next steps.
           </p>
-          
+
           {/* Contact Information */}
           <div className="mt-8 space-y-3 text-sm text-white/85">
             {/* Email */}
@@ -35,41 +35,39 @@ export default function CTA() {
               <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/15">
                 <HiMail size={16} />
               </span>
-              <a 
-                href="mailto:hello@worldeducationsociety.org" 
+              <a
+                href="mailto:hello@worldeducationsociety.org"
                 className="transition-colors hover:text-white"
               >
-               info@worldeducationsociety.org
+                info@worldeducationsociety.com
               </a>
             </div>
-            
+
             {/* Phone */}
             <div className="flex items-center gap-3">
               <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/15">
                 <HiPhone size={16} />
               </span>
-              <a 
-                href="tel:+1234567890" 
+              <a
+                href="tel:+1234567890"
                 className="transition-colors hover:text-white"
               >
-                +1 (000) 000-000
+                +1 587-438-4634
               </a>
             </div>
-            
-            {/* Address */}
+
+            {/* Address with correct map link */}
             <div className="flex items-start gap-3">
               <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/15">
                 <HiLocationMarker size={16} />
               </span>
-              <a 
-                href="https://maps.google.com/?q=123+Education+Street,+New+York,+NY+10001"
+              <a
+                href="https://www.google.com/maps?q=345+3016+5th+Ave+NE+Calgary+AB+T2A+5L7"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="leading-relaxed w-3/4 transition-colors hover:text-white"
               >
-                123 Education Street,<br />
-                New York, NY 10001,<br />
-                United States
+                345, 3016, 5Th Ave, NE Calgary AB T2A 5L7
               </a>
             </div>
           </div>

@@ -100,14 +100,14 @@ export default function Footer() {
               <HiLocationMarker className="mt-0.5 h-4 w-4 shrink-0 text-white/40" />
               <address className="not-italic leading-relaxed">
                 <a 
-                  href="https://maps.google.com/?q=123+Education+Street,+New+York,+NY+10001"
+                  href="https://www.google.com/maps?q=345+3016+5th+Ave+NE+Calgary+AB+T2A+5L7"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="transition-colors hover:text-white"
                 >
-                  123 Education Street,<br />
-                  New York, NY 10001,<br />
-                  United States
+                  345, 3016, 5Th Ave, NE<br />
+                  Calgary AB T2A 5L7<br />
+                  Canada
                 </a>
               </address>
             </div>
@@ -116,10 +116,10 @@ export default function Footer() {
             <div className="flex items-center gap-3">
               <HiPhone className="h-4 w-4 shrink-0 text-white/40" />
               <a 
-                href="tel:+1234567890" 
+                href="tel:+15874384634" 
                 className="transition-colors hover:text-white"
               >
-                +1 (000) 000-000
+                +1 587-438-4634
               </a>
             </div>
 
@@ -127,10 +127,10 @@ export default function Footer() {
             <div className="flex items-center gap-3">
               <HiMail className="h-4 w-4 shrink-0 text-white/40" />
               <a 
-                href="mailto:info@worldeducationsociety.org" 
+                href="mailto:info@worldeducationsociety.com" 
                 className="transition-colors hover:text-white"
               >
-                info@worldeducationsociety.org
+                info@worldeducationsociety.com
               </a>
             </div>
           </div>
