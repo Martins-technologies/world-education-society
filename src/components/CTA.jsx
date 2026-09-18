@@ -48,12 +48,20 @@ export default function CTA() {
               <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/15">
                 <HiPhone size={16} />
               </span>
-              <a
-                href="tel:+1234567890"
-                className="transition-colors hover:text-white"
-              >
-                +1 587-438-4634
-              </a>
+              <div className="flex flex-col gap-0.5">
+                <a
+                  href="tel:+15874384634"
+                  className="transition-colors hover:text-white"
+                >
+                  +1 587-438-4634
+                </a>
+                <a
+                  href="tel:+15874431498"
+                  className="transition-colors hover:text-white"
+                >
+                  +1 587-443-1498
+                </a>
+              </div>
             </div>
 
             {/* Address with correct map link */}
