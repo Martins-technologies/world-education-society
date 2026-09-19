@@ -1,163 +1,96 @@
-import { Link } from "react-router-dom";
-import { footerLinks } from "../data/content";
-import logo from "../assets/logo.png";
-import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
-import { HiLocationMarker, HiPhone, HiMail } from "react-icons/hi";
-
-const socials = [
-  {
-    label: "Facebook",
-    url: "#",
-    icon: FaFacebook,
-  },
-  {
-    label: "Instagram",
-    url: "#",
-    icon: FaInstagram,
-  },
-  {
-    label: "LinkedIn",
-    url: "#",
-    icon: FaLinkedin,
-  },
-];
+import { Link } from 'react-router-dom'
+import logo from '../assets/logo.png'
+import { footerLinks } from '../data/content'
 
 export default function Footer() {
   return (
-    <footer className="bg-navy-900 pt-16 text-white/70">
-      <div className="container grid gap-12 pb-12 sm:grid-cols-2 lg:grid-cols-[1.3fr_0.8fr_0.8fr_1fr]">
-        {/* Brand Section */}
-        <div>
-          <img
-            src={logo}
-            alt="World Education Society"
-            className="h-20 w-auto brightness-0 invert"
-          />
-          <p className="mt-4 max-w-xs text-sm leading-relaxed">
-            Helping students find and secure their place at universities and
-            colleges worldwide, with honest guidance at every step.
-          </p>
-          <div className="mt-5 flex gap-3">
-            {socials.map((s) => {
-              const Icon = s.icon;
-              return (
-                <a
-                  key={s.label}
-                  href={s.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={s.label}
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 transition-colors hover:bg-white/10"
-                >
-                  <Icon size={15} />
-                </a>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Explore Links */}
-        <div>
-          <h4 className="font-display text-sm font-semibold uppercase tracking-wide text-white">
-            Explore
-          </h4>
-          <ul className="mt-4 space-y-2.5 text-sm">
-            {footerLinks.explore.map((l) => (
-              <li key={l.label}>
-                <Link to={l.href} className="transition-colors hover:text-white">
-                  {l.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Support & Offices */}
-        <div>
-          <h4 className="font-display text-sm font-semibold uppercase tracking-wide text-white">
-            Support
-          </h4>
-          <ul className="mt-4 space-y-2.5 text-sm">
-            {footerLinks.support.map((l) => (
-              <li key={l.label}>
-                <Link to={l.href} className="transition-colors hover:text-white">
-                  {l.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Contact & Information */}
-        <div>
-          <h4 className="font-display text-sm font-semibold uppercase tracking-wide text-white">
-            Contact Us
-          </h4>
+    <footer className="bg-[#FBF9F4] pt-16 pb-8 text-[#242A38] border-t border-[#242A38]/10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Top Footer Columns */}
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-12 lg:gap-12 pb-12">
           
-          {/* Address */}
-          <div className="mt-4 space-y-3 text-sm">
-            <div className="flex items-start gap-3">
-              <HiLocationMarker className="mt-0.5 h-4 w-4 shrink-0 text-white/40" />
-              <address className="not-italic leading-relaxed">
-                <a 
-                  href="https://www.google.com/maps?q=345+3016+5th+Ave+NE+Calgary+AB+T2A+5L7"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="transition-colors hover:text-white"
+          {/* Brand Column */}
+          <div className="lg:col-span-5">
+            <Link to="/" className="inline-block">
+              <img
+                src={logo}
+                alt="World Education Society"
+                className="h-12 w-auto sm:h-14"
+              />
+            </Link>
+            <p className="mt-4 max-w-xs text-sm font-semibold text-[#5B6478] leading-relaxed">
+              Education. Opportunity.<br />
+              Stronger communities.
+            </p>
+          </div>
+
+          {/* Explore Links */}
+          <div className="lg:col-span-3">
+            <h4 className="text-sm font-bold text-[#242A38] uppercase tracking-wider mb-4">
+              Explore
+            </h4>
+            <ul className="space-y-2.5 text-sm">
+              {footerLinks.explore.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    to={link.href}
+                    className="text-[#5B6478] transition-colors hover:text-[#0D90C4] font-medium"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact Us Info */}
+          <div className="lg:col-span-4">
+            <h4 className="text-sm font-bold text-[#242A38] uppercase tracking-wider mb-4">
+              Contact Us
+            </h4>
+            <div className="space-y-2.5 text-sm text-[#5B6478] font-medium leading-relaxed">
+              <p>
+                <a
+                  href={`mailto:${footerLinks.contactInfo.email}`}
+                  className="transition-colors hover:text-[#0D90C4]"
                 >
-                  345, 3016, 5Th Ave, NE<br />
-                  Calgary AB T2A 5L7<br />
-                  Canada
+                  {footerLinks.contactInfo.email}
                 </a>
+              </p>
+              <p>
+                <a
+                  href={`tel:${footerLinks.contactInfo.phone.replace(/[^0-9+]/g, '')}`}
+                  className="transition-colors hover:text-[#0D90C4]"
+                >
+                  {footerLinks.contactInfo.phone}
+                </a>
+              </p>
+              <address className="not-italic whitespace-pre-line text-[#5B6478] pt-1">
+                {footerLinks.contactInfo.address}
               </address>
             </div>
+          </div>
 
-            {/* Phone */}
-            <div className="flex items-start gap-3">
-              <HiPhone className="mt-0.5 h-4 w-4 shrink-0 text-white/40" />
-              <div className="flex flex-col gap-1">
-                <a 
-                  href="tel:+15874384634" 
-                  className="transition-colors hover:text-white"
-                >
-                  +1 587-438-4634
-                </a>
-                <a 
-                  href="tel:+15874431498" 
-                  className="transition-colors hover:text-white"
-                >
-                  +1 587-443-1498
-                </a>
-              </div>
-            </div>
+        </div>
 
-            {/* Email */}
-            <div className="flex items-center gap-3">
-              <HiMail className="h-4 w-4 shrink-0 text-white/40" />
-              <a 
-                href="mailto:info@worldeducationsociety.com" 
-                className="transition-colors hover:text-white"
-              >
-                info@worldeducationsociety.com
-              </a>
-            </div>
+        {/* Bottom Copyright & Legal Links */}
+        <div className="border-t border-[#242A38]/15 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#5B6478]">
+          <p>
+            &copy; {new Date().getFullYear()} World Education Society. All rights reserved.
+          </p>
+          <div className="flex items-center gap-3">
+            <Link to="/privacy" className="transition-colors hover:text-[#0D90C4]">
+              Privacy Policy
+            </Link>
+            <span>|</span>
+            <Link to="/terms" className="transition-colors hover:text-[#0D90C4]">
+              Terms of Service
+            </Link>
           </div>
         </div>
-      </div>
 
-      {/* Bottom Bar */}
-      <div className="border-t border-white/10 py-6">
-        <div className="container flex flex-col items-center justify-between gap-3 text-xs text-white/40 sm:flex-row">
-          <p>
-            &copy; {new Date().getFullYear()} World Education Society. All
-            rights reserved.
-          </p>
-          <p>
-            Partnerships with 70+ universities and 300+ colleges, subject to
-            verification.
-          </p>
-        </div>
       </div>
     </footer>
-  );
-}
+  )
+}
