@@ -2,7 +2,7 @@
 
 export const nav = [
   { label: 'Home', href: '/' },
-  { label: 'About Us', href: '/about' },
+  { label: 'About Us', href: '/about-us' },
   { label: 'Our Programs', href: '/programs' },
   { label: 'Get Involved', href: '/get-involved' },
   { label: 'Contact Us', href: '/contact' },
@@ -65,7 +65,7 @@ export const getInvolvedItems = [
 export const footerLinks = {
   explore: [
     { label: 'Home', href: '/' },
-    { label: 'About Us', href: '/about' },
+    { label: 'About Us', href: '/about-us' },
     { label: 'Our Programs', href: '/programs' },
     { label: 'Get Involved', href: '/get-involved' },
     { label: 'Contact Us', href: '/contact' },

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { HiArrowRight } from 'react-icons/hi'
 import { getInvolvedItems } from '../data/content'
 
@@ -23,10 +24,13 @@ export default function GetInvolved() {
             </p>
 
             <div className="mb-6">
-              <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#0D90C4] cursor-pointer hover:underline">
+              <Link
+                to="/get-involved"
+                className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#0D90C4] cursor-pointer hover:underline"
+              >
                 <span>Ways to get involved</span>
                 <HiArrowRight className="h-4 w-4" />
-              </span>
+              </Link>
             </div>
 
             {/* Left Supporting Image */}
@@ -43,7 +47,11 @@ export default function GetInvolved() {
           <div className="lg:col-span-6 pt-2">
             <div className="flex flex-col space-y-6">
               {getInvolvedItems.map((item, idx) => (
-                <div key={idx} className="border-t border-[#242A38]/15 pt-6 group cursor-pointer">
+                <Link
+                  key={idx}
+                  to="/get-involved"
+                  className="border-t border-[#242A38]/15 pt-6 group cursor-pointer block"
+                >
                   <div className="flex items-center justify-between">
                     <h3 className="text-xl font-bold text-[#242A38] transition-colors group-hover:text-[#0D90C4]">
                       {item.title}
@@ -53,7 +61,7 @@ export default function GetInvolved() {
                   <p className="mt-1.5 text-sm text-[#5B6478] leading-relaxed">
                     {item.desc}
                   </p>
-                </div>
+                </Link>
               ))}
             </div>
           </div>

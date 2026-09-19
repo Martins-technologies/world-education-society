@@ -16,7 +16,7 @@ export default function Footer() {
               <img
                 src={logo}
                 alt="World Education Society"
-                className="h-12 w-auto sm:h-14"
+                className="h-14 sm:h-16 lg:h-20 w-auto object-contain"
               />
             </Link>
             <p className="mt-4 max-w-xs text-sm font-semibold text-[#5B6478] leading-relaxed">
