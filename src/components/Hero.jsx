@@ -1,137 +1,121 @@
-import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Link } from 'react-router-dom'
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  show: (i = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.12, duration: 0.6, ease: [0.22, 1, 0.36, 1] },
-  }),
-}
+const heroSlides = [
+  {
+    image: '/Home/hero.jpg',
+    alt: 'Group of students smiling together with a laptop outdoors',
+    color: '#0D90C4',
+  },
+  {
+    image: '/Home/05_a_bright_realistic_high_resolution_outdoor_campu.webp',
+    alt: 'Bright realistic outdoor campus with students',
+    color: '#4FAA4A',
+  },
+  {
+    image: '/Home/15_outdoor_graduation_portrait_scene_on_a_college_cam.webp',
+    alt: 'Outdoor graduation portrait scene on a college campus',
+    color: '#61589B',
+  },
+  {
+    image: '/Home/01_a_bright_modern_indoor_study_learning_scene_in_a.webp',
+    alt: 'Bright modern indoor study learning scene',
+    color: '#EC9136',
+  },
+]
 
 export default function Hero() {
+  const [currentSlide, setCurrentSlide] = useState(0)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length)
+    }, 4500)
+    return () => clearInterval(timer)
+  }, [])
+
   return (
-    <section id="top" className="relative overflow-hidden pb-20 pt-32 sm:pb-28 sm:pt-40">
-      {/* ambient brand-color glow, echoes the logo's globe */}
-      <div className="pointer-events-none absolute -right-32 -top-20 h-[28rem] w-[28rem] rounded-full bg-sun-300/25 blur-3xl" />
-      <div className="pointer-events-none absolute -left-24 top-1/2 h-80 w-80 rounded-full bg-ocean-300/20 blur-3xl" />
+    <section className="relative overflow-hidden pt-24 pb-14 sm:pt-32 sm:pb-20 bg-[#FBF9F4]">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-8">
+          
+          {/* Text Content */}
+          <div className="lg:col-span-6">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#0D90C4] mb-4">
+              LEARNING. BELONGING. OPPORTUNITY.
+            </p>
 
-      <div className="container grid items-center gap-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10">
-        <div>
-          <motion.p variants={fadeUp} initial="hidden" animate="show" custom={0} className="eyebrow">
-            <span className="h-1.5 w-1.5 rounded-full bg-sun-500" />
-            International Education Consultancy
-          </motion.p>
+            <h1 className="text-4xl font-bold leading-[1.1] text-[#242A38] sm:text-5xl lg:text-[3.6rem] font-sans">
+              Education<br />
+              changes <span className="text-[#0D90C4]">lives.</span>
+            </h1>
 
-          <motion.h1
-            variants={fadeUp}
-            initial="hidden"
-            animate="show"
-            custom={1}
-            className="mt-5 text-4xl font-semibold leading-[1.08] text-navy-800 sm:text-5xl lg:text-[3.4rem]"
-          >
-            Study abroad
-            <span className="relative mx-3 inline-block whitespace-nowrap">
-              with confidence
-              <svg
-                viewBox="0 0 300 14"
-                className="absolute -bottom-2 left-0 h-3 w-full text-ocean-500"
-                preserveAspectRatio="none"
-                aria-hidden="true"
+            <p className="mt-6 max-w-lg text-base leading-relaxed text-[#5B6478] sm:text-lg">
+              World Education Society is a non-profit organization helping people access educational opportunities through guidance, support and community partnerships.
+            </p>
+
+            <div className="mt-8 flex flex-wrap items-center gap-4">
+              <Link
+                to="/programs"
+                className="inline-flex items-center justify-center rounded-full bg-[#0D90C4] px-7 py-3.5 text-sm font-semibold text-white shadow-xs transition-colors hover:bg-[#0B76A3]"
               >
-                <path d="M2 10 C 80 2, 220 2, 298 10" stroke="currentColor" strokeWidth="4" fill="none" strokeLinecap="round" />
-              </svg>
-            </span>
-            — anywhere in the world.
-          </motion.h1>
+                Explore Our Programs
+              </Link>
+              <Link
+                to="/get-involved"
+                className="inline-flex items-center justify-center rounded-full border border-[#242A38] px-7 py-3.5 text-sm font-semibold text-[#242A38] transition-colors hover:bg-[#242A38] hover:text-white"
+              >
+                Get Involved
+              </Link>
+            </div>
 
-          <motion.p
-            variants={fadeUp}
-            initial="hidden"
-            animate="show"
-            custom={2}
-            className="mt-6 max-w-xl text-lg leading-relaxed text-navy-600"
-          >
-            Admissions to leading universities and colleges worldwide, with expert
-            guidance, scholarships, and affordable study options — from your first
-            question to your first day of class.
-          </motion.p>
-
-          <motion.div variants={fadeUp} initial="hidden" animate="show" custom={3} className="mt-8 flex flex-wrap gap-4">
-            <a href="#contact" className="btn-primary">
-              Apply Now
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" /></svg>
-            </a>
-            <a href="#contact" className="btn-secondary">
-              Free Consultation
-            </a>
-          </motion.div>
-
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            animate="show"
-            custom={4}
-            className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-navy-600"
-          >
-            {[
-              ['70+', 'Universities'],
-              ['300+', 'Colleges'],
-              ['15+', 'Countries'],
-            ].map(([n, l]) => (
-              <div key={l} className="flex items-baseline gap-2">
-                <span className="font-display text-xl font-semibold text-navy-800">{n}</span>
-                <span>{l}</span>
-              </div>
-            ))}
-          </motion.div>
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0, scale: 0.92 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-          className="relative mx-auto aspect-square w-full max-w-md lg:max-w-none"
-        >
-          {/* rotating dashed globe ring, direct nod to the logo mark */}
-          <svg viewBox="0 0 400 400" className="absolute inset-0 h-full w-full animate-spin-slow text-navy-800/10" aria-hidden="true">
-            <circle cx="200" cy="200" r="188" fill="none" stroke="currentColor" strokeWidth="1.5" strokeDasharray="2 10" strokeLinecap="round" />
-          </svg>
-
-          <div className="absolute inset-[8%] overflow-hidden rounded-[2.5rem] shadow-card">
-            <img
-              src="https://plus.unsplash.com/premium_photo-1713296255442-e9338f42aad8?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8VW5pdmVyc2l0eXxlbnwwfHwwfHx8MA%3D%3D"
-              alt="Students walking together on a university campus"
-              className="h-full w-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-navy-900/50 via-navy-900/0 to-transparent" />
+            <p className="mt-8 text-xs font-medium text-[#5B6478]/80 sm:text-sm">
+              For students. For communities. For a fairer future.
+            </p>
           </div>
 
-          <motion.div
-            animate={{ y: [0, -12, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-            className="absolute -left-4 top-8 flex items-center gap-3 rounded-2xl bg-white/95 px-4 py-3 shadow-card backdrop-blur sm:-left-8"
-          >
-            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-leaf-100 text-leaf-600">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" /></svg>
-            </span>
-            <div className="leading-tight">
-              <p className="text-sm font-bold text-navy-800">Visa Approved</p>
-              <p className="text-xs text-navy-400">University of Toronto</p>
-            </div>
-          </motion.div>
+          {/* Hero Image Block */}
+          <div className="lg:col-span-6">
+            <div className="relative mx-auto max-w-xl lg:max-w-none">
+              <div className="relative overflow-hidden rounded-[28px] bg-gray-100 aspect-[4/3] sm:aspect-[1.25/1]">
+                <AnimatePresence mode="wait">
+                  <motion.img
+                    key={currentSlide}
+                    src={heroSlides[currentSlide].image}
+                    alt={heroSlides[currentSlide].alt}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="h-full w-full object-cover absolute inset-0"
+                  />
+                </AnimatePresence>
+              </div>
 
-          <motion.div
-            animate={{ y: [0, 12, 0] }}
-            transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
-            className="absolute -right-4 bottom-10 rounded-2xl bg-white/95 px-4 py-3 shadow-card backdrop-blur sm:-right-8"
-          >
-            <p className="font-display text-lg font-semibold text-navy-800">10,000+</p>
-            <p className="text-xs text-navy-400">Students guided abroad</p>
-          </motion.div>
-        </motion.div>
+              {/* Carousel indicator dots */}
+              <div className="mt-3 flex items-center gap-1.5 pl-1">
+                {heroSlides.map((slide, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentSlide(index)}
+                    aria-label={`Go to slide ${index + 1}`}
+                    className="focus:outline-none cursor-pointer"
+                  >
+                    <span
+                      className={`block h-1.5 rounded-full transition-all duration-300 ${
+                        currentSlide === index ? 'w-6' : 'w-3 opacity-60 hover:opacity-100'
+                      }`}
+                      style={{ backgroundColor: slide.color }}
+                    />
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
     </section>
   )
 }
- 
