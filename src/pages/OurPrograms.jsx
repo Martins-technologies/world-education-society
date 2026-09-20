@@ -52,7 +52,7 @@ export default function OurPrograms() {
       
       {/* 1) HERO SECTION */}
       <section className="relative overflow-hidden pt-28 pb-16 sm:pt-36 sm:pb-24">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto px-[15px] sm:px-6 lg:px-8">
           <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-8">
             
             {/* Left Text Content */}
@@ -94,7 +94,7 @@ export default function OurPrograms() {
                   <img
                     src="/our-programs/hero.webp"
                     alt="Group of students smiling together with a laptop outdoors"
-                    className="h-full w-full object-cover object-center"
+                    className="h-full w-full object-cover object-top"
                   />
                 </div>
               </div>
@@ -107,7 +107,7 @@ export default function OurPrograms() {
 
       {/* 2) PROGRAMS INTRO & 3) GRID */}
       <section className="py-16 sm:py-24 border-t border-[#242A38]/5 bg-[#FBF9F4]">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto px-[15px] sm:px-6 lg:px-8">
           
           {/* Header Block */}
           <div className="mb-12">
@@ -128,11 +128,11 @@ export default function OurPrograms() {
               <div key={item.id} className="flex flex-col group">
                 
                 {/* Card Top Image */}
-                <div className="overflow-hidden rounded-[20px] bg-gray-100 aspect-[1.4/1] mb-5 shadow-xs">
+                <div className="overflow-hidden rounded-[20px] bg-gray-100 aspect-[1.33/1] mb-5 shadow-xs">
                   <img
                     src={item.image}
                     alt={item.title}
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-103"
+                    className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-103"
                   />
                 </div>
 
@@ -174,7 +174,7 @@ export default function OurPrograms() {
 
       {/* 4) OUR IMPACT SECTION */}
       <section className="py-16 sm:py-24 border-t border-[#242A38]/5">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto px-[15px] sm:px-6 lg:px-8">
           <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-12">
             
             {/* Left Supporting Image */}
@@ -252,7 +252,7 @@ export default function OurPrograms() {
 
       {/* 5) BOTTOM CTA BAND */}
       <section className="bg-[#242A38] py-16 sm:py-20 text-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto px-[15px] sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
             
             {/* Left Text Block */}

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 export default function CTA() {
   return (
     <section className="bg-[#242A38] py-16 sm:py-20 text-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-[15px] sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
           
           {/* Left Text Block */}

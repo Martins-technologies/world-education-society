@@ -4,7 +4,7 @@ import { HiArrowRight } from 'react-icons/hi'
 export default function Purpose() {
   return (
     <section className="py-16 sm:py-24 bg-[#FBF9F4]">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-[15px] sm:px-6 lg:px-8">
         <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-12">
           
           {/* Left Supporting Image */}

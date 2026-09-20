@@ -22,7 +22,7 @@ export default function Navbar() {
         scrolled ? 'shadow-xs backdrop-blur-md py-2 sm:py-2.5' : 'py-3 sm:py-3.5'
       }`}
     >
-      <div className="container mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto flex items-center justify-between px-[15px] sm:px-6 lg:px-8">
         
         {/* Logo */}
         <Link to="/" className="flex items-center gap-3 shrink-0 py-0.5">
