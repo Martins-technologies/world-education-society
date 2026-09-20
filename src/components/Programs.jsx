@@ -5,7 +5,7 @@ import { programCategories } from '../data/content'
 export default function Programs() {
   return (
     <section className="py-16 sm:py-24 bg-[#FBF9F4]">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-[15px] sm:px-6 lg:px-8">
         
         {/* Header Block */}
         <div className="mb-12">

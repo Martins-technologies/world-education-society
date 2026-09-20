@@ -5,7 +5,7 @@ import { footerLinks } from '../data/content'
 export default function Footer() {
   return (
     <footer className="bg-[#FBF9F4] pt-16 pb-8 text-[#242A38] border-t border-[#242A38]/10">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-[15px] sm:px-6 lg:px-8">
         
         {/* Top Footer Columns */}
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-12 lg:gap-12 pb-12">
