@@ -51,50 +51,53 @@ export default function OurPrograms() {
     <div className="bg-[#FBF9F4] min-h-screen text-[#242A38]">
       
       {/* 1) HERO SECTION */}
-      <section className="relative overflow-hidden pt-28 pb-16 sm:pt-36 sm:pb-24">
+      <section className="relative overflow-hidden pt-24 pb-14 sm:pt-32 sm:pb-20 bg-[#FBF9F4]">
         <div className="container mx-auto px-[15px] sm:px-6 lg:px-8">
           <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-8">
             
             {/* Left Text Content */}
-            <div className="lg:col-span-6 pr-2 lg:pr-4">
+            <div className="lg:col-span-6">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#0D90C4] mb-4">
                 OUR PROGRAMS
               </p>
 
-              <h1 className="text-3xl font-bold leading-[1.15] text-[#242A38] sm:text-4xl lg:text-[2.6rem] xl:text-[3.1rem] font-sans">
+              <h1 className="text-4xl font-bold leading-[1.1] text-[#242A38] sm:text-5xl lg:text-[3.6rem] font-sans">
                 Learning today.<br />
                 Brighter <span className="text-[#0D90C4]">tomorrows.</span>
               </h1>
-
-              {/* Accent Line Bar */}
-              <div className="mt-4 h-1 w-12 rounded-full bg-[#EC9136]" />
 
               <p className="mt-6 max-w-lg text-base leading-relaxed text-[#5B6478] sm:text-lg">
                 Our programs are designed to remove barriers, create opportunities and empower individuals and communities through education, support and collaboration.
               </p>
 
-              <div className="mt-8 flex flex-col items-start gap-3">
+              <div className="mt-8 flex flex-wrap items-center gap-4">
                 <Link
                   to="/contact"
-                  className="inline-flex items-center gap-2 justify-center rounded-full bg-[#0D90C4] px-7 py-3.5 text-sm font-semibold text-white shadow-xs transition-colors hover:bg-[#0B76A3]"
+                  className="inline-flex items-center justify-center rounded-full bg-[#0D90C4] px-7 py-3.5 text-sm font-semibold text-white shadow-xs transition-colors hover:bg-[#0B76A3]"
                 >
-                  <span>Get Support</span>
-                  <HiArrowRight className="h-4 w-4" />
+                  Get Support
                 </Link>
-                <p className="text-xs font-medium text-[#5B6478]/80 sm:text-sm">
-                  For students. For communities. For a fairer future.
-                </p>
+                <Link
+                  to="/get-involved"
+                  className="inline-flex items-center justify-center rounded-full border border-[#242A38] px-7 py-3.5 text-sm font-semibold text-[#242A38] transition-colors hover:bg-[#242A38] hover:text-white"
+                >
+                  Get Involved
+                </Link>
               </div>
+
+              <p className="mt-8 text-xs font-medium text-[#5B6478]/80 sm:text-sm">
+                For students. For communities. For a fairer future.
+              </p>
             </div>
 
             {/* Right Hero Image */}
-            <div className="lg:col-span-6 flex lg:justify-end">
-              <div className="relative w-full max-w-xl lg:max-w-md xl:max-w-lg">
-                <div className="overflow-hidden rounded-t-[70px] rounded-b-[36px] sm:rounded-t-[95px] sm:rounded-b-[44px] bg-gray-100 aspect-[1.35/1] w-full shadow-xs">
+            <div className="lg:col-span-6">
+              <div className="relative mx-auto max-w-xl lg:max-w-none">
+                <div className="relative overflow-hidden rounded-[28px] bg-[#EFECE4] aspect-[4/3] shadow-xs">
                   <img
                     src="/our-programs/hero.webp"
                     alt="Group of students smiling together with a laptop outdoors"
-                    className="h-full w-full object-cover object-top"
+                    className="h-full w-full object-cover object-center absolute inset-0 rounded-[28px]"
                   />
                 </div>
               </div>
