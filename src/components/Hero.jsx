@@ -78,7 +78,7 @@ export default function Hero() {
           {/* Hero Image Block */}
           <div className="lg:col-span-6">
             <div className="relative mx-auto max-w-xl lg:max-w-none">
-              <div className="relative overflow-hidden rounded-[28px] bg-gray-100 aspect-[4/3] sm:aspect-[1.25/1]">
+              <div className="relative overflow-hidden rounded-[28px] bg-[#EFECE4] aspect-[4/3]">
                 <AnimatePresence mode="wait">
                   <motion.img
                     key={currentSlide}
@@ -88,7 +88,7 @@ export default function Hero() {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.5 }}
-                    className="h-full w-full object-cover absolute inset-0"
+                    className="h-full w-full object-contain absolute inset-0 rounded-[28px]"
                   />
                 </AnimatePresence>
               </div>
