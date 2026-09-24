@@ -258,7 +258,7 @@ export default function AboutUs() {
         imageFit="contain"
         imagePosition="center"
         imageNotes={
-          <p className="absolute right-3 top-4 w-[46%] text-right font-hand text-[1.45rem] font-semibold leading-[1.12] text-white [text-shadow:0_2px_12px_rgba(15,40,70,0.55)] sm:right-5 sm:top-5 sm:w-auto sm:max-w-[11.5rem] sm:text-[2rem] lg:right-6 lg:top-6 lg:max-w-[12rem] lg:text-[2.15rem]">
+          <p className="absolute right-3 top-[calc(1rem+5%)] w-[46%] text-right font-hand text-[1.45rem] font-semibold leading-[1.12] text-white [text-shadow:0_2px_12px_rgba(15,40,70,0.55)] sm:right-5 sm:top-[calc(1.25rem+5%)] sm:w-auto sm:max-w-[11.5rem] sm:text-[2rem] lg:right-6 lg:top-[calc(1.5rem+5%)] lg:max-w-[12rem] lg:text-[2.15rem]">
             People.
             <br />
             Education.
