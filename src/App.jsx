@@ -7,6 +7,7 @@ import AboutUs from './pages/AboutUs'
 import OurPrograms from './pages/OurPrograms'
 import GetInvolvedPage from './pages/GetInvolvedPage'
 import ContactUsPage from './pages/ContactUsPage'
+import OurImpact from './pages/OurImpact'
 import ComingSoon from './pages/ComingSoon'
 
 export default function App() {
@@ -25,6 +26,7 @@ export default function App() {
           <Route path="/getinvolved" element={<GetInvolvedPage />} />
           <Route path="/contact" element={<ContactUsPage />} />
           <Route path="/contact-us" element={<ContactUsPage />} />
+          <Route path="/our-impact" element={<OurImpact />} />
           {/* Every other route is a placeholder until that page is built */}
           <Route path="*" element={<ComingSoon />} />
         </Routes>

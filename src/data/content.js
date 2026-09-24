@@ -3,9 +3,13 @@
 export const nav = [
   { label: 'Home', href: '/' },
   { label: 'About Us', href: '/about-us' },
-  { label: 'Our Programs', href: '/programs' },
-  { label: 'Get Involved', href: '/get-involved' },
+  { label: 'Our Programs', href: '/programs', caret: true },
+  { label: 'Get Involved', href: '/get-involved', caret: true },
+  { label: 'Campaigns', href: '/campaigns' },
+  { label: 'Our Impact', href: '/our-impact' },
+  { label: 'Resources', href: '/resources' },
   { label: 'Contact Us', href: '/contact' },
+  { label: 'Get Support', href: '/get-support' },
 ]
 
 export const programCategories = [
@@ -62,17 +66,63 @@ export const getInvolvedItems = [
   },
 ]
 
+export const navMenus = {
+  'Our Programs': [
+    { label: 'Education Guidance', href: '/programs#education-guidance' },
+    { label: 'Student Support', href: '/programs#student-support' },
+    { label: 'Study Opportunities', href: '/programs#study-opportunities' },
+    { label: 'Scholarships & Funding', href: '/programs#scholarships-funding' },
+    { label: 'Career & Skills Development', href: '/programs#career-skills' },
+    { label: 'Community Education', href: '/programs#community-education' },
+    { label: 'Vernacular Learning Support', href: '/programs#vernacular-learning' },
+    { label: 'Transportation Assistance', href: '/programs#transportation-assistance' },
+  ],
+  'Get Involved': [
+    { label: 'Volunteer With Us', href: '/get-involved' },
+    { label: 'Partner With Us', href: '/get-involved' },
+    { label: 'Support Our Programs', href: '/get-involved' },
+    { label: 'Current Campaigns', href: '/campaigns' },
+    { label: 'Host a Workshop', href: '/get-involved' },
+  ],
+}
+
 export const footerLinks = {
-  explore: [
+  quick: [
     { label: 'Home', href: '/' },
     { label: 'About Us', href: '/about-us' },
     { label: 'Our Programs', href: '/programs' },
     { label: 'Get Involved', href: '/get-involved' },
+  ],
+  more: [
+    { label: 'Campaigns', href: '/campaigns' },
+    { label: 'Our Impact', href: '/our-impact' },
+    { label: 'Resources', href: '/resources' },
     { label: 'Contact Us', href: '/contact' },
+    { label: 'Get Support', href: '/get-support' },
+  ],
+  involved: [
+    { label: 'Volunteer With Us', href: '/get-involved' },
+    { label: 'Partner With Us', href: '/get-involved' },
+    { label: 'Donate', href: '/donate' },
+    { label: 'Current Campaigns', href: '/campaigns' },
+    { label: 'Host a Workshop', href: '/get-involved' },
+  ],
+  programs: [
+    { label: 'Education Guidance', href: '/programs#education-guidance' },
+    { label: 'Student Support', href: '/programs#student-support' },
+    { label: 'Study Opportunities', href: '/programs#study-opportunities' },
+    { label: 'Scholarships & Funding', href: '/programs#scholarships-funding' },
+    { label: 'Career & Skills Development', href: '/programs#career-skills' },
+    { label: 'Community Education', href: '/programs#community-education' },
+  ],
+  legal: [
+    { label: 'Privacy Policy', href: '/privacy' },
+    { label: 'Terms of Service', href: '/terms' },
+    { label: 'Site Map', href: '/sitemap' },
   ],
   contactInfo: {
     email: 'info@worldeducationsociety.com',
     phone: '+1 587-438-4634',
-    address: '345, 3016, 5th Ave NE\nCalgary, AB T2A 5L7',
+    address: '345, 3016, 5th Ave NE, Calgary, AB T2A 5L7',
   },
 }
