@@ -1,4 +1,4 @@
-export const pageContainer = 'mx-auto w-full max-w-[1380px] px-6 sm:px-8 lg:px-10'
+export const pageContainer = 'mx-auto w-full max-w-[1380px] px-6 sm:px-8 lg:px-12 xl:px-16'
 export const heroPrimaryButton =
   'inline-flex items-center gap-2 rounded-full bg-[#1E4E8C] px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#183E72] sm:text-[15px]'
 export const heroTextLink =
@@ -15,30 +15,41 @@ export default function PageHero({
   image,
   imageAlt,
   imagePosition = 'center',
+  imageOrigin,
+  imageScale = 1,
+  imageFit = 'cover',
   imageLayout = 'cover',
   imageNotes,
   footnote,
   children,
 }) {
   const fullImage = imageLayout === 'full'
+  const zoomed = Number(imageScale) !== 1
+  const framedImageStyle = {
+    objectPosition: imagePosition,
+    ...(zoomed
+      ? {
+          transform: `scale(${imageScale})`,
+          transformOrigin: imageOrigin || imagePosition,
+        }
+      : {}),
+  }
+  const heroFrame =
+    'hero-frame pointer-events-none absolute bottom-0 top-[74px] hidden w-[58%] max-w-[760px] overflow-hidden lg:block'
 
   return (
     <section className="relative overflow-hidden bg-[#F7FBFE] pt-[74px]">
       {fullImage ? (
-        <div
-          className="pointer-events-none absolute bottom-0 right-0 top-[74px] hidden w-[58%] lg:block"
-          style={{ clipPath: 'url(#heroCurveClip)' }}
-        >
-          <img src={image} alt={imageAlt} className="h-full w-full object-cover object-center" />
+        <div className={`${heroFrame} ${imageFit === 'contain' ? 'bg-[#F7FBFE]' : ''}`} style={{ clipPath: 'url(#heroCurveClip)' }}>
+          <img
+            src={image}
+            alt={imageAlt}
+            className={imageFit === 'contain' ? 'h-full w-full object-contain' : 'h-full w-full object-cover'}
+            style={framedImageStyle}
+          />
         </div>
-      ) : null}
-      {fullImage && imageNotes ? (
-        <div className="pointer-events-none absolute bottom-0 right-0 top-[74px] hidden w-[58%] lg:block">
-          {imageNotes}
-        </div>
-      ) : null}
-      {!fullImage ? (
-        <div className="absolute bottom-0 left-[36%] right-0 top-[74px] hidden lg:block">
+      ) : (
+        <div className={`${heroFrame} !max-w-none lg:!left-[36%] lg:!w-auto`}>
           <img
             src={image}
             alt={imageAlt}
@@ -46,7 +57,8 @@ export default function PageHero({
             style={{ objectPosition: imagePosition }}
           />
         </div>
-      ) : null}
+      )}
+      {fullImage && imageNotes ? <div className={heroFrame}>{imageNotes}</div> : null}
       {fullImage ? (
         <svg className="absolute h-0 w-0" aria-hidden="true">
           <clipPath id="heroCurveClip" clipPathUnits="objectBoundingBox">
@@ -77,13 +89,22 @@ export default function PageHero({
           {footnote && <div className="mt-7">{footnote}</div>}
         </div>
 
-        <div className={`bg-[#E7EEF2] lg:hidden ${fullImage ? '' : 'overflow-hidden rounded-[28px]'}`}>
+        <div className="relative min-w-0 overflow-hidden rounded-[28px] bg-[#E7EEF2] lg:hidden">
           <img
             src={image}
             alt={imageAlt}
-            className={fullImage ? 'h-auto w-full rounded-[28px] object-contain' : 'h-[300px] w-full object-cover sm:h-[400px]'}
-            style={fullImage ? undefined : { objectPosition: imagePosition }}
+            className={
+              fullImage
+                ? zoomed
+                  ? 'h-[460px] w-full rounded-[28px] object-cover sm:h-[520px]'
+                  : 'h-auto w-full max-w-full rounded-[28px] object-contain'
+                : 'h-[300px] w-full object-cover sm:h-[400px]'
+            }
+            style={fullImage && !zoomed ? { objectPosition: imagePosition } : framedImageStyle}
           />
+          {fullImage && imageNotes ? (
+            <div className="pointer-events-none absolute inset-0 z-10 overflow-hidden rounded-[28px]">{imageNotes}</div>
+          ) : null}
         </div>
       </div>
     </section>

@@ -304,7 +304,7 @@ export default function Home() {
       </PageHero>
 
       <section className="bg-[#F7FBFE]">
-        <div className="relative mx-auto max-w-[1380px] px-6 pb-14 sm:px-8 lg:px-10 lg:pb-16">
+        <div className="relative mx-auto max-w-[1380px] px-6 pb-14 sm:px-8 lg:px-12 xl:px-16 lg:pb-16">
           <div className="grid grid-cols-2 divide-[#E6EEF4] overflow-hidden rounded-2xl border border-[#E6EEF4] bg-white shadow-[0_10px_30px_-24px_rgba(27,58,107,0.5)] sm:grid-cols-3 xl:grid-cols-6 xl:divide-x">
             {metrics.map((item) => (
               <div key={item.label} className="flex flex-col items-center px-3 py-5 text-center">
@@ -318,7 +318,7 @@ export default function Home() {
       </section>
 
       <section className="bg-[#FBF9F4]">
-        <div className="mx-auto max-w-[1380px] px-6 py-6 sm:px-8 lg:px-10 lg:py-8">
+        <div className="mx-auto max-w-[1380px] px-6 py-6 sm:px-8 lg:px-12 xl:px-16 lg:py-8">
           <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#7B8C9C]">Our Purpose</p>
           <h2 className="mt-3 font-sans text-[1.65rem] font-bold leading-tight tracking-tight text-[#1B3A6B] sm:text-[2.05rem]">
             Opportunity begins with support.
@@ -374,7 +374,7 @@ export default function Home() {
       </section>
 
       <section className="bg-white">
-        <div className="mx-auto max-w-[1380px] px-6 py-12 sm:px-8 lg:px-10 lg:py-16">
+        <div className="mx-auto max-w-[1380px] px-6 py-12 sm:px-8 lg:px-12 xl:px-16 lg:py-16">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
               <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#7B8C9C]">Our Programs</p>
@@ -416,7 +416,7 @@ export default function Home() {
       </section>
 
       <section className="bg-[#FBF9F4]">
-        <div className="mx-auto max-w-[1380px] px-6 py-12 sm:px-8 lg:px-10 lg:py-16">
+        <div className="mx-auto max-w-[1380px] px-6 py-12 sm:px-8 lg:px-12 xl:px-16 lg:py-16">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
               <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#7B8C9C]">Our Programs</p>
@@ -452,7 +452,7 @@ export default function Home() {
       </section>
 
       <section id="how-we-support" className="bg-[#F4F8FB]">
-        <div className="mx-auto max-w-[1380px] px-6 py-12 sm:px-8 lg:px-10 lg:py-14">
+        <div className="mx-auto max-w-[1380px] px-6 py-12 sm:px-8 lg:px-12 xl:px-16 lg:py-14">
           <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#7B8C9C]">How We Support</p>
           <h2 className="mt-3 font-sans text-3xl font-bold tracking-tight text-[#1B3A6B] sm:text-[2.05rem]">
             Turning barriers into opportunity.
@@ -490,7 +490,7 @@ export default function Home() {
       </section>
 
       <section className="bg-[#FBF9F4]">
-        <div className="mx-auto grid max-w-[1380px] gap-6 px-6 py-12 sm:px-8 lg:grid-cols-12 lg:px-10 lg:py-14">
+        <div className="mx-auto grid max-w-[1380px] gap-6 px-6 py-12 sm:px-8 lg:grid-cols-12 lg:px-12 xl:px-16 lg:py-14">
           <div className="lg:col-span-5">
             <div className="mb-3 flex items-center justify-between gap-3">
               <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#7B8C9C]">Current Campaign</p>
@@ -562,7 +562,7 @@ export default function Home() {
       </section>
 
       <section className="bg-[#FBF9F4]">
-        <div className="mx-auto grid max-w-[1380px] gap-6 px-6 pb-16 sm:px-8 lg:grid-cols-3 lg:px-10 lg:pb-20">
+        <div className="mx-auto grid max-w-[1380px] gap-6 px-6 pb-16 sm:px-8 lg:grid-cols-3 lg:px-12 xl:px-16 lg:pb-20">
           <article>
             <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#7B8C9C]">Success Story</p>
             <div className="flex h-[calc(100%-1.75rem)] gap-4 rounded-2xl border border-[#E6EEF4] bg-white p-4 shadow-[0_12px_30px_-24px_rgba(27,58,107,0.45)]">
