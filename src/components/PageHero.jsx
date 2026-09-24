@@ -79,12 +79,26 @@ export default function PageHero({
       <div className="pointer-events-none absolute -left-24 top-40 h-64 w-64 rounded-full bg-[#DDEEF9]/70 blur-3xl" />
 
       <div className={`relative grid items-center gap-8 py-12 lg:min-h-[520px] lg:grid-cols-[minmax(0,540px)_1fr] lg:py-16 ${pageContainer}`}>
-        <div className="max-w-[540px]">
+        <div className={fullImage ? 'hero-copy relative z-10' : 'max-w-[540px]'}>
           <p className="text-[12px] font-bold uppercase tracking-[0.16em] text-[#1E4E8C] sm:text-[13px]">{eyebrow}</p>
-          <h1 className="mt-4 font-display text-[2.75rem] font-bold leading-[1.05] tracking-tight text-[#1B3A6B] sm:text-6xl lg:text-[4rem]">
+          <h1
+            className={
+              fullImage
+                ? 'mt-4 font-display text-[2rem] font-bold leading-[1.1] tracking-tight text-[#1B3A6B] sm:text-[2.35rem] lg:text-[1.95rem] xl:text-[2.25rem] min-[1440px]:text-[2.45rem]'
+                : 'mt-4 font-display text-[2.75rem] font-bold leading-[1.05] tracking-tight text-[#1B3A6B] sm:text-6xl lg:text-[4rem]'
+            }
+          >
             {title}
           </h1>
-          <p className="mt-5 max-w-[470px] text-base leading-relaxed text-[#3E5670] sm:text-[17px]">{description}</p>
+          <p
+            className={
+              fullImage
+                ? 'mt-4 max-w-full text-[15px] leading-relaxed text-[#3E5670]'
+                : 'mt-5 max-w-[470px] text-base leading-relaxed text-[#3E5670] sm:text-[17px]'
+            }
+          >
+            {description}
+          </p>
           {children && <div className="mt-8 flex flex-wrap items-center gap-3">{children}</div>}
           {footnote && <div className="mt-7">{footnote}</div>}
         </div>
