@@ -246,7 +246,7 @@ export default function AboutUs() {
         title={
           <>
             About World Education Society
-            <span className="mt-3 block text-[1.7rem] leading-tight text-[#2E9A4A] sm:text-4xl lg:text-[2.6rem]">
+            <span className="mt-2 block text-[1.2rem] leading-snug text-[#2E9A4A] sm:text-[1.4rem] lg:text-[1.25rem] xl:text-[1.45rem] min-[1440px]:text-[1.6rem]">
               Advancing education. Empowering youth. Creating opportunity.
             </span>
           </>

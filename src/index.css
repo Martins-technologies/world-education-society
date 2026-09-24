@@ -34,9 +34,24 @@ html,body{
     right: 3rem;
   }
 
+  .hero-copy {
+    width: 100%;
+    max-width: 34rem;
+  }
+
+  @media (min-width: 1024px) {
+    .hero-copy {
+      max-width: calc(100vw - min(58vw, 760px) - 6rem - 2.75rem);
+    }
+  }
+
   @media (min-width: 1280px) {
     .hero-frame {
       right: max(4rem, calc((100% - 1380px) / 2 + 4rem));
+    }
+
+    .hero-copy {
+      max-width: calc(100vw - min(58vw, 760px) - 2 * max(4rem, (100vw - 1380px) / 2 + 4rem) - 2.75rem);
     }
   }
 
