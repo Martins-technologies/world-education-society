@@ -5,16 +5,14 @@ import {
   HiArrowRight,
   HiBookOpen,
   HiChartBar,
-  HiChatBubbleLeftRight,
   HiCog6Tooth,
   HiHeart,
   HiLightBulb,
   HiMagnifyingGlass,
-  HiPaperAirplane,
   HiUserGroup,
   HiUsers,
 } from 'react-icons/hi2'
-import PageHero, { heroGreenButton, heroOutlineButton, heroPrimaryButton } from '../components/PageHero'
+import PageHero, { heroOutlineButton, heroPrimaryButton } from '../components/PageHero'
 
 const photos = {
   hero: '/homeupdated/01_Hero_Students.webp',
@@ -57,60 +55,6 @@ const purposePoints = [
   },
 ]
 
-const supportPrograms = [
-  {
-    title: 'Education Guidance',
-    text: 'Personalized guidance to help students navigate educational pathways.',
-    icon: HiBookOpen,
-    href: '/programs#education-guidance',
-  },
-  {
-    title: 'Student Support',
-    text: 'Academic, social and wellness support to help youth succeed.',
-    icon: HiUsers,
-    href: '/programs#student-support',
-  },
-  {
-    title: 'Study Opportunities',
-    text: 'Information and support for international and domestic study options (including study abroad).',
-    icon: HiPaperAirplane,
-    href: '/programs#study-opportunities',
-  },
-  {
-    title: 'Scholarships & Funding',
-    text: 'Connecting students with scholarships, bursaries and other funding opportunities.',
-    icon: HiAcademicCap,
-    href: '/programs#scholarships-funding',
-  },
-  {
-    title: 'Career & Skills Development',
-    text: 'Workshops, training and mentorship to build real-world skills.',
-    icon: HiChartBar,
-    href: '/programs#career-skills',
-  },
-  {
-    title: 'Community Education',
-    text: 'Programs and resources that strengthen communities through learning.',
-    icon: HiUserGroup,
-    href: '/programs#community-education',
-  },
-]
-
-const extraSupportPrograms = [
-  {
-    title: 'Vernacular Learning Support',
-    text: 'Language support and culturally responsive resources to make education more accessible.',
-    icon: HiChatBubbleLeftRight,
-    href: '/programs#vernacular-learning',
-  },
-  {
-    title: 'Transportation Assistance',
-    text: 'Helping reduce transportation barriers so students can participate in education.',
-    icon: BusIcon,
-    href: '/programs#transportation-assistance',
-  },
-]
-
 const programs = [
   {
     title: 'Language & Communication',
@@ -132,7 +76,6 @@ const programs = [
     image: photos.academic,
     alt: 'Learners and a mentor reviewing work together at a community table',
     position: 'object-top',
-    featured: true,
   },
 ]
 
@@ -196,18 +139,6 @@ const newsItems = [
   },
 ]
 
-function BusIcon({ className }) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
-      <rect x="4" y="4" width="16" height="12" rx="2.2" stroke="currentColor" strokeWidth="1.7" />
-      <path d="M4 11h16" stroke="currentColor" strokeWidth="1.7" />
-      <path d="M7 20v-2M17 20v-2" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
-      <circle cx="8" cy="14.2" r="1" fill="currentColor" />
-      <circle cx="16" cy="14.2" r="1" fill="currentColor" />
-    </svg>
-  )
-}
-
 function SproutIcon({ className }) {
   return (
     <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
@@ -261,24 +192,6 @@ export default function Home() {
         image={photos.hero}
         imageAlt="Students smiling together outdoors, representing stronger students and stronger communities"
         imageLayout="full"
-        imageNotes={
-          <>
-            <p className="absolute right-14 top-10 text-right font-hand text-[1.75rem] font-semibold leading-[1.15] text-[#1B3A6B] [text-shadow:0_1px_10px_rgba(255,255,255,0.95)]">
-              Stronger
-              <br />
-              Students
-              <br />
-              Stronger
-              <br />
-              Communities
-            </p>
-            <p className="absolute bottom-12 right-10 rounded-xl bg-white/90 px-4 py-2 font-hand text-[1.35rem] leading-tight text-[#1B3A6B] shadow-sm">
-              For students. For communities.
-              <br />
-              For a fairer future.
-            </p>
-          </>
-        }
         footnote={
           <div className="flex max-w-[480px] items-start gap-3">
             <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#E7F1FB] text-[#1E4E8C]">
@@ -297,9 +210,6 @@ export default function Home() {
         </Link>
         <Link to="/get-involved" className={heroOutlineButton}>
           Get Involved
-        </Link>
-        <Link to="/get-support" className={heroGreenButton}>
-          Get Support
         </Link>
       </PageHero>
 
@@ -341,18 +251,6 @@ export default function Home() {
                 alt="A student writing in a notebook during a learning session"
                 className="h-full w-full object-cover object-[32%_28%]"
               />
-              <figure className="absolute left-3 top-6 w-[128px] rounded-2xl bg-[#1B3A6B]/90 px-2.5 py-2 text-white shadow-lg">
-                <blockquote className="text-[11px] font-medium leading-[1.25]">
-                  “Education
-                  <br />
-                  gives me a future
-                  <br />
-                  and a place to
-                  <br />
-                  belong.”
-                </blockquote>
-                <figcaption className="mt-1 text-[10px] leading-tight text-white/80">– WES Participant</figcaption>
-              </figure>
             </div>
           </div>
 
@@ -373,48 +271,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-white">
-        <div className="mx-auto max-w-[1380px] px-6 py-12 sm:px-8 lg:px-12 xl:px-16 lg:py-16">
-          <div className="flex flex-wrap items-end justify-between gap-4">
-            <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#7B8C9C]">Our Programs</p>
-              <h2 className="mt-3 font-sans text-3xl font-bold tracking-tight text-[#1B3A6B] sm:text-[2.15rem]">
-                Comprehensive support for brighter futures.
-              </h2>
-            </div>
-            <ArrowLink to="/programs">View All Programs</ArrowLink>
-          </div>
-
-          <div className="mt-8 grid gap-6 sm:grid-cols-2 xl:grid-cols-6">
-            {supportPrograms.map((program) => (
-              <article key={program.title} className="text-left">
-                <program.icon className="h-8 w-8 text-[#1E4E8C]" aria-hidden="true" />
-                <h3 className="mt-4 font-sans text-[15px] font-semibold text-[#1B3A6B]">{program.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-[#5C6B7C]">{program.text}</p>
-                <div className="mt-4">
-                  <ArrowLink to={program.href}>Learn More</ArrowLink>
-                </div>
-              </article>
-            ))}
-          </div>
-
-          <div className="mt-8 grid gap-6 md:grid-cols-2">
-            {extraSupportPrograms.map((program) => (
-              <article key={program.title} className="flex items-start gap-4">
-                <program.icon className="mt-0.5 h-8 w-8 shrink-0 text-[#1E4E8C]" aria-hidden="true" />
-                <div>
-                  <h3 className="font-sans text-[15px] font-semibold text-[#1B3A6B]">{program.title}</h3>
-                  <p className="mt-1 text-sm leading-relaxed text-[#5C6B7C]">{program.text}</p>
-                  <div className="mt-3">
-                    <ArrowLink to={program.href}>Learn More</ArrowLink>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="bg-[#FBF9F4]">
         <div className="mx-auto max-w-[1380px] px-6 py-12 sm:px-8 lg:px-12 xl:px-16 lg:py-16">
           <div className="flex flex-wrap items-end justify-between gap-4">
@@ -430,13 +286,8 @@ export default function Home() {
           <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {programs.map((program) => (
               <article key={program.title} className="overflow-hidden rounded-2xl border border-[#E6EEF4] bg-white shadow-[0_12px_30px_-24px_rgba(27,58,107,0.55)]">
-                <div className="relative h-64 overflow-hidden bg-[#E7EEF2]">
+                <div className="h-64 overflow-hidden bg-[#E7EEF2]">
                   <img src={program.image} alt={program.alt} className={`h-full w-full object-cover ${program.position}`} />
-                  {program.featured && (
-                    <span className="absolute left-3 top-3 rounded-full bg-white/95 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#1E4E8C]">
-                      Featured Program
-                    </span>
-                  )}
                 </div>
                 <div className="px-5 py-5">
                   <h3 className="font-sans text-lg font-semibold text-[#1B3A6B]">{program.title}</h3>

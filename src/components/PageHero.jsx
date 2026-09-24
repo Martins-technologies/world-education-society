@@ -21,6 +21,7 @@ export default function PageHero({
   imageLayout = 'cover',
   imageNotes,
   footnote,
+  breadcrumb,
   children,
 }) {
   const fullImage = imageLayout === 'full'
@@ -35,7 +36,7 @@ export default function PageHero({
       : {}),
   }
   const heroFrame =
-    'hero-frame pointer-events-none absolute bottom-0 top-[74px] hidden w-[58%] max-w-[760px] overflow-hidden lg:block'
+    'hero-frame pointer-events-none absolute bottom-0 top-[74px] z-0 hidden w-[58%] max-w-[760px] overflow-hidden lg:block'
 
   return (
     <section className="relative overflow-hidden bg-[#F7FBFE] pt-[74px]">
@@ -78,9 +79,12 @@ export default function PageHero({
       )}
       <div className="pointer-events-none absolute -left-24 top-40 h-64 w-64 rounded-full bg-[#DDEEF9]/70 blur-3xl" />
 
-      <div className={`relative grid items-center gap-8 py-12 lg:min-h-[520px] lg:grid-cols-[minmax(0,540px)_1fr] lg:py-16 ${pageContainer}`}>
-        <div className={fullImage ? 'hero-copy relative z-10' : 'max-w-[540px]'}>
-          <p className="text-[12px] font-bold uppercase tracking-[0.16em] text-[#1E4E8C] sm:text-[13px]">{eyebrow}</p>
+      <div className={`relative z-10 grid w-full min-w-0 items-center gap-8 py-12 lg:min-h-[520px] lg:grid-cols-[minmax(0,540px)_1fr] lg:py-16 ${pageContainer}`}>
+        <div className={fullImage ? 'hero-copy relative z-20 min-w-0 max-w-full' : 'relative z-20 min-w-0 max-w-[540px]'}>
+          {breadcrumb}
+          {eyebrow ? (
+            <p className="text-[12px] font-bold uppercase tracking-[0.16em] text-[#1E4E8C] sm:text-[13px]">{eyebrow}</p>
+          ) : null}
           <h1
             className={
               fullImage
@@ -99,7 +103,7 @@ export default function PageHero({
           >
             {description}
           </p>
-          {children && <div className="mt-8 flex flex-wrap items-center gap-3">{children}</div>}
+          {children && <div className="mt-8 flex w-full min-w-0 max-w-full flex-wrap items-center gap-3">{children}</div>}
           {footnote && <div className="mt-7">{footnote}</div>}
         </div>
 

@@ -21,42 +21,42 @@ const glance = [
   {
     value: '12,500+',
     title: 'Youth Supported',
-    text: 'Young people gaining access to education and opportunities',
+    text: 'Young people gaining access to education and opportunities.',
     color: '#2E9A4A',
     icon: 'people',
   },
   {
     value: '45,000+',
     title: 'Educational Resources Distributed',
-    text: 'Books, digital tools and learning materials shared worldwide',
+    text: 'Books, digital tools and learning materials shared worldwide.',
     color: '#1E4E8C',
     icon: 'book',
   },
   {
     value: '320+',
     title: 'Workshops & Programs',
-    text: 'Interactive learning experiences delivered in communities',
+    text: 'Interactive learning experiences delivered in communities.',
     color: '#E0A11B',
     icon: 'laptop',
   },
   {
     value: '1,800+',
     title: 'Internship Pathways',
-    text: 'Connections to real-world experience and career growth',
+    text: 'Connections to real-world experience and career growth.',
     color: '#1E4E8C',
     icon: 'briefcase',
   },
   {
     value: '25,000+',
     title: 'Volunteer Hours',
-    text: 'Individuals giving their time and skills to create change',
+    text: 'Individuals giving their time and skills to create change.',
     color: '#2E9A4A',
     icon: 'heart',
   },
   {
     value: '110+',
     title: 'Community Campaigns',
-    text: 'Awareness and advocacy initiatives for stronger, more inclusive communities',
+    text: 'Awareness and advocacy initiatives for stronger, more inclusive communities.',
     color: '#E0A11B',
     icon: 'megaphone',
   },
@@ -118,25 +118,31 @@ const outcomes = [
 
 const stories = [
   {
-    image: photos.daniel,
-    alt: 'Portrait of Daniel R.',
-    quote: 'Through WES, I joined new skills and the confidence to pursue my career goals. The support I received helped me see a brighter future for myself.',
-    name: 'Daniel R.',
-    role: 'Program Participant',
-  },
-  {
     image: photos.aisha,
-    alt: 'Portrait of Aisha K.',
-    quote: 'The workshops gave me the knowledge and tools I needed to believe in myself and take the next step towards my dreams.',
-    name: 'Aisha K.',
-    role: 'Youth Program Participant',
+    alt: 'Portrait of Aisha M.',
+    quote:
+      'With the support of World Education Society, I was able to access language training, improve my skills and secure an internship. It changed the direction of my future.',
+    name: 'Aisha M.',
+    role: 'Program Participant',
+    place: 'Toronto, ON',
   },
   {
     image: photos.marcus,
     alt: 'Portrait of Marcus T.',
-    quote: 'WES opened doors for me through mentorship and career guidance. Now I have opportunities I never thought possible.',
+    quote:
+      'I gained practical skills, a supportive mentor and the confidence to pursue my career goals. WES gave me the opportunity to believe in myself.',
     name: 'Marcus T.',
+    role: 'Youth Program Participant',
+    place: 'Calgary, AB',
+  },
+  {
+    image: photos.girl,
+    alt: 'Portrait of Sofia L.',
+    quote:
+      'Through WES, I found a community that believes in young people. The workshops helped me discover my passion and gave me the tools to succeed.',
+    name: 'Sofia L.',
     role: 'Workshop Participant',
+    place: 'Vancouver, BC',
   },
 ]
 
@@ -438,22 +444,25 @@ export default function OurImpact() {
             Real People.
             <br />
             Brighter Futures.
+            <br />
+            <span className="text-[#2E9A4A]">Measurable Change.</span>
           </>
         }
-        description="At World Education Society, we measure our impact by the lives we touch. Through education, guidance and community partnerships, we help individuals overcome barriers, build new skills and create meaningful opportunities for a stronger, more inclusive future."
+        description="At World Education Society, we measure our impact by the access we create, the resources we share, the skills we develop, and the opportunities we unlock for youth and communities around the world."
         image={photos.hero}
-        imageAlt="A student with a backpack and books smiling on a university campus"
-        imagePosition="65% 25%"
+        imageAlt="Students smiling together outdoors"
+        imageLayout="full"
+        imagePosition="68% 42%"
       >
         <Link to="/resources" className={heroPrimaryButton}>
-          View Our Annual Report
+          Read Our Annual Report
           <HiArrowRight className="h-4 w-4" aria-hidden="true" />
         </Link>
       </PageHero>
 
       <section className="bg-white">
         <div className="mx-auto max-w-[1380px] px-6 py-12 sm:px-8 lg:px-12 xl:px-16 lg:py-14">
-          <SectionHeading title="Our Impact at a Glance" action="View Full Annual Report" to="/resources" />
+          <SectionHeading title="Our Impact at a Glance" action="All Impact Metrics" to="/resources" />
           <div className="mt-8 grid grid-cols-2 gap-x-4 gap-y-8 md:grid-cols-3 xl:grid-cols-6">
             {glance.map((item, index) => (
               <div
@@ -476,6 +485,9 @@ export default function OurImpact() {
         <div className="mx-auto grid max-w-[1380px] gap-10 px-6 py-12 sm:px-8 lg:grid-cols-12 lg:px-12 xl:px-16 lg:py-14">
           <div className="lg:col-span-5">
             <SectionHeading title="2024 Annual Highlights" action="View Full Annual Report" to="/resources" />
+            <p className="mt-3 text-[14px] leading-relaxed text-[#5C6B7C]">
+              Together, we made significant progress in expanding educational opportunities and building stronger, more inclusive communities.
+            </p>
             <div className="mt-6 rounded-[28px] bg-[#F3F8FC] px-3 py-8 sm:px-5">
               <div className="grid grid-cols-2 gap-6 sm:grid-cols-4 lg:grid-cols-4">
                 {highlights.map((item) => (
@@ -493,6 +505,9 @@ export default function OurImpact() {
 
           <div className="lg:col-span-7">
             <SectionHeading title="Program Outcomes" action="View All Program Outcomes" to="/programs" />
+            <p className="mt-3 text-[14px] leading-relaxed text-[#5C6B7C]">
+              Our programs create real, measurable change in the lives of young people.
+            </p>
             <div className="mt-6 grid grid-cols-2 gap-4 lg:grid-cols-4">
               {outcomes.map((item) => (
                 <article key={item.value}>
@@ -513,8 +528,23 @@ export default function OurImpact() {
         <div className="relative mx-auto grid max-w-[1380px] gap-10 px-6 py-12 sm:px-8 lg:grid-cols-12 lg:px-12 xl:px-16 lg:py-14">
           <div id="community-reach" className="scroll-mt-24 lg:col-span-5">
             <SectionHeading title="Our Community Reach" action="View All Regions" to="#community-reach" />
+            <p className="mt-3 text-[14px] leading-relaxed text-[#5C6B7C]">
+              From local neighborhoods to global communities.
+            </p>
             <div className="mt-4 grid items-center gap-4 sm:grid-cols-[1fr_150px]">
-              <WorldMap />
+              <div>
+                <WorldMap />
+                <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-[12px] text-[#5C6B7C]">
+                  <li className="flex items-center gap-2">
+                    <span className="h-2.5 w-2.5 rounded-full bg-[#1E4E8C]" />
+                    Current Reach
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="h-2.5 w-2.5 rounded-full bg-[#2E9A4A]" />
+                    Expanding in 2025
+                  </li>
+                </ul>
+              </div>
               <ul className="space-y-5">
                 <li className="flex items-center gap-3">
                   <Icon name="globe" className="h-7 w-7 shrink-0 text-[#1E4E8C]" />
@@ -546,6 +576,9 @@ export default function OurImpact() {
 
           <div id="impact-stories" className="scroll-mt-24 lg:col-span-7">
             <SectionHeading title="Impact Stories" action="View More Stories" to="#impact-stories" />
+            <p className="mt-3 text-[14px] leading-relaxed text-[#5C6B7C]">
+              Real stories from the young people and communities we serve.
+            </p>
             <div className="mt-6 grid gap-4 md:grid-cols-3">
               {stories.map((story) => (
                 <article key={story.name} className="flex gap-3 rounded-2xl border border-[#E4EEF6] bg-white p-3 shadow-[0_10px_30px_-24px_rgba(27,58,107,0.8)]">
@@ -558,6 +591,7 @@ export default function OurImpact() {
                     <p className="text-[11.5px] leading-snug text-[#4E6072]">“{story.quote}”</p>
                     <p className="mt-2 text-[13px] font-bold text-[#1B3A6B]">{story.name}</p>
                     <p className="text-[11px] text-[#7B8B9A]">{story.role}</p>
+                    <p className="text-[11px] text-[#7B8B9A]">{story.place}</p>
                   </div>
                 </article>
               ))}
@@ -574,7 +608,7 @@ export default function OurImpact() {
           <p className="mt-2 text-[15px] text-[#5C6B7C]">
             Our support helps remove barriers and creates real pathways to brighter futures.
           </p>
-          <div className="mt-8 grid items-stretch gap-4 lg:grid-cols-[1fr_auto_1fr_auto_1fr] lg:gap-3">
+          <div className="mt-8 grid items-stretch gap-4 lg:grid-cols-[1fr_auto_1fr_auto_1fr_minmax(210px,0.8fr)] lg:gap-3">
             {journey.map((step, index) => (
               <div key={step.title} className="contents">
                 <article className="flex gap-4 rounded-2xl border border-[#E3EEF6] bg-white px-4 py-5 shadow-[0_10px_24px_-22px_rgba(27,58,107,0.9)]">
@@ -600,6 +634,12 @@ export default function OurImpact() {
                 )}
               </div>
             ))}
+            <blockquote className="flex items-center rounded-2xl bg-[#F3F8FC] px-5 py-6">
+              <p className="font-display text-[1.35rem] font-semibold italic leading-snug text-[#1B3A6B] sm:text-[1.5rem]">
+                “Education turns barriers into possibilities.”
+                <span className="mt-3 block font-sans text-[13px] font-semibold not-italic text-[#5C6B7C]">— WES Participant</span>
+              </p>
+            </blockquote>
           </div>
         </div>
       </section>
