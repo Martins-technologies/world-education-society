@@ -1,5 +1,17 @@
 import { Link } from 'react-router-dom'
-import { HiArrowRight, HiAcademicCap, HiBookOpen, HiEye, HiGlobeAlt, HiHeart, HiUserGroup } from 'react-icons/hi2'
+import {
+  HiAcademicCap,
+  HiArrowRight,
+  HiBookOpen,
+  HiChartBar,
+  HiChatBubbleLeftRight,
+  HiEye,
+  HiGlobeAlt,
+  HiHeart,
+  HiPaperAirplane,
+  HiUserGroup,
+  HiUsers,
+} from 'react-icons/hi2'
 import PageHero, { heroOutlineButton, heroPrimaryButton } from '../components/PageHero'
 
 const photos = {
@@ -99,12 +111,60 @@ const audiences = [
   },
 ]
 
-const partners = [
-  'Calgary Board of Education',
-  'United Way Calgary and Area',
-  'Alberta Government',
-  'Community Partners',
+
+const communitySupports = [
+  {
+    title: 'Education Access',
+    text: 'Helping individuals understand educational pathways and access opportunities and resources.',
+    icon: HiBookOpen,
+  },
+  {
+    title: 'Student Support',
+    text: 'Academic, social and wellness support to help youth stay engaged and succeed.',
+    icon: HiUsers,
+  },
+  {
+    title: 'Scholarships & Funding',
+    text: 'Guidance on scholarships, bursaries and other funding options.',
+    icon: HiAcademicCap,
+  },
+  {
+    title: 'Career & Skills Development',
+    text: 'Workshops, training and mentorship to build real-world skills.',
+    icon: HiChartBar,
+  },
+  {
+    title: 'Community Education',
+    text: 'Programs and resources that strengthen communities through learning.',
+    icon: HiUserGroup,
+  },
+  {
+    title: 'Vernacular Learning Support',
+    text: 'Language support and culturally responsive resources.',
+    icon: HiChatBubbleLeftRight,
+  },
+  {
+    title: 'Transportation Assistance',
+    text: 'Helping reduce transportation barriers so students can participate in education.',
+    icon: BusIcon,
+  },
+  {
+    title: 'Internship Pathways',
+    text: 'Connecting youth with internships, mentorship and career opportunities (including opportunities abroad).',
+    icon: HiPaperAirplane,
+  },
 ]
+
+function BusIcon({ className }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+      <rect x="4" y="4" width="16" height="13" rx="2" stroke="currentColor" strokeWidth="1.7" />
+      <path d="M4 10h16M8 17v2M16 17v2" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+      <circle cx="8" cy="13.5" r="0.8" fill="currentColor" />
+      <circle cx="16" cy="13.5" r="0.8" fill="currentColor" />
+    </svg>
+  )
+}
 
 function HandshakeIcon({ className }) {
   return (
@@ -195,8 +255,10 @@ export default function AboutUs() {
         image={photos.hero}
         imageAlt="Students smiling together outdoors"
         imageLayout="full"
+        imageFit="contain"
+        imagePosition="center"
         imageNotes={
-          <p className="absolute right-10 top-12 text-right font-hand text-[1.85rem] font-semibold leading-[1.15] text-white [text-shadow:0_2px_12px_rgba(15,40,70,0.55)] sm:right-14 sm:top-16 sm:text-[2.15rem]">
+          <p className="absolute right-3 top-4 w-[46%] text-right font-hand text-[1.45rem] font-semibold leading-[1.12] text-white [text-shadow:0_2px_12px_rgba(15,40,70,0.55)] sm:right-5 sm:top-5 sm:w-auto sm:max-w-[11.5rem] sm:text-[2rem] lg:right-6 lg:top-6 lg:max-w-[12rem] lg:text-[2.15rem]">
             People.
             <br />
             Education.
@@ -217,18 +279,20 @@ export default function AboutUs() {
       </PageHero>
 
       <section id="our-story" className="scroll-mt-24 bg-[#FBF9F4]">
-        <div className="mx-auto grid max-w-[1380px] items-center gap-10 px-6 py-14 sm:px-8 lg:grid-cols-12 lg:gap-10 lg:px-10 lg:py-16">
+        <div className="mx-auto grid max-w-[1380px] items-center gap-10 px-6 py-14 sm:px-8 lg:grid-cols-12 lg:gap-10 lg:px-12 xl:px-16 lg:py-16">
           <div className="lg:col-span-4">
             <div className="relative h-[280px] overflow-hidden rounded-[24px] bg-[#E7EEF2] sm:h-[320px] lg:h-[340px]">
               <img
                 src={photos.story}
                 alt="Students with backpacks looking toward the Calgary skyline"
-                className="h-full w-full object-cover object-center"
+                className="h-full w-full object-cover object-[62%_center]"
               />
-              <p className="absolute left-5 top-5 font-hand text-[2rem] font-semibold leading-tight text-white [text-shadow:0_2px_10px_rgba(15,40,70,0.45)] sm:text-[2.35rem]">
+              <p className="absolute right-4 top-4 max-w-[46%] text-right font-hand text-[1.7rem] font-semibold leading-tight text-white [text-shadow:0_2px_10px_rgba(15,40,70,0.45)] sm:right-5 sm:top-5 sm:text-[2.05rem]">
                 Education
                 <br />
-                Changes Lives.
+                Changes
+                <br />
+                Lives.
               </p>
             </div>
           </div>
@@ -265,19 +329,14 @@ export default function AboutUs() {
         </div>
       </section>
 
-      <section id="why-we-exist" className="relative scroll-mt-24 overflow-hidden bg-[#FBF9F4]">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -left-16 top-1/2 h-64 w-36 -translate-y-1/2 bg-[#D6EAF8]"
-          style={{ borderRadius: '0 72% 68% 0 / 0 48% 52% 0' }}
-        />
-        <div className="relative mx-auto grid max-w-[1380px] items-stretch gap-5 px-6 py-8 sm:px-8 lg:grid-cols-[1.35fr_0.7fr_0.95fr] lg:gap-6 lg:px-10 lg:py-10">
-          <div className="flex flex-col justify-center rounded-[26px] bg-[#E4F0FA] px-7 py-8 sm:px-8 sm:py-9">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#6E8AA3]">Why We Exist</p>
-            <h2 className="mt-3 font-sans text-[1.65rem] font-bold leading-[1.15] tracking-tight text-[#1B3A6B] lg:text-[1.7rem]">
+      <section id="why-we-exist" className="scroll-mt-24 bg-[#F7FBFE]">
+        <div className="mx-auto grid max-w-[1380px] items-stretch gap-5 px-6 py-8 sm:px-8 lg:grid-cols-[1.15fr_0.85fr] lg:gap-6 lg:px-12 xl:px-16 lg:py-10">
+          <div className="flex flex-col justify-center rounded-[22px] bg-[#F4F8FC] px-7 py-8 sm:px-8 sm:py-9">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#7B8C9C]">Why We Exist</p>
+            <h2 className="mt-3 font-sans text-[1.7rem] font-bold leading-[1.15] tracking-tight text-[#1B3A6B] sm:text-[2rem]">
               Education Creates Stronger People and Communities.
             </h2>
-            <p className="mt-4 text-[15px] leading-relaxed text-[#5C6B7C]">
+            <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-[#5C6B7C]">
               We believe education is a fundamental right and a powerful tool for individual and community change. Many people face barriers such as financial hardship, lack of information, language challenges and limited access to resources. We exist to remove those barriers and create practical, supportive pathways to opportunity.
             </p>
             <div className="mt-6">
@@ -285,62 +344,98 @@ export default function AboutUs() {
             </div>
           </div>
 
-          <div className="relative min-h-[240px] overflow-hidden rounded-[22px] bg-[#E7EEF2] sm:min-h-[280px] lg:min-h-full">
+          <div className="relative min-h-[240px] overflow-hidden rounded-[22px] bg-[#E7EEF2] sm:min-h-[280px]">
             <img
               src={photos.purpose}
               alt="A student writing during a learning session"
-              className="h-full w-full object-cover object-center"
+              className="h-full w-full object-cover object-[center_18%]"
             />
-            <figure className="absolute right-3 top-3 max-w-[210px] rounded-xl bg-[#1B3A6B]/90 px-3 py-2.5 text-white shadow-lg">
-              <blockquote className="text-[12px] font-medium leading-snug">
+            <figure className="absolute right-3 top-3 max-w-[168px] rounded-xl bg-[#1B3A6B] px-3.5 py-2.5 text-white shadow-lg sm:max-w-[190px]">
+              <blockquote className="text-[15px] font-semibold leading-snug">
                 “When young people are supported, communities thrive.”
               </blockquote>
             </figure>
           </div>
-
-          <div className="flex flex-col justify-center lg:py-2 lg:pl-2">
-            <h2 className="font-sans text-[1.65rem] font-bold leading-[1.15] tracking-tight text-[#1B3A6B] sm:text-[1.85rem]">
-              International Education
-              <br />
-              is One Part of Our Work
-            </h2>
-            <p className="mt-4 text-[15px] leading-relaxed text-[#5C6B7C]">
-              We support international education and study abroad as one of our program areas, helping students explore learning opportunities in Canada and around the world. While these programs create valuable experiences, they are not the sole focus of our organization. Our broader mandate is to improve access to education for all, locally and globally.
-            </p>
-            <div className="mt-5">
-              <TextAction to="/programs">Learn About Our Programs</TextAction>
-            </div>
-          </div>
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-[#FBF8F3]">
-        <img
-          src={photos.quote}
-          alt=""
-          className="absolute inset-0 h-full w-full object-cover object-center"
-        />
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-[62%] bg-gradient-to-r from-transparent via-[#FBF8F3]/75 to-[#FBF8F3] sm:w-[55%]" />
-        <div className="relative mx-auto flex min-h-[220px] max-w-[1380px] items-center justify-end px-6 py-8 sm:min-h-[250px] sm:px-8 lg:min-h-[300px] lg:px-10">
-          <div className="flex max-w-[520px] items-start gap-2 sm:gap-3">
-            <span className="mt-0.5 font-serif text-4xl leading-none text-[#E2A322] sm:text-5xl" aria-hidden="true">
+      <section className="bg-[#F7FBFE]">
+        <div className="mx-auto max-w-[1380px] px-6 pb-6 pt-4 sm:px-8 lg:px-12 xl:px-16 lg:pb-8">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#7B8C9C]">How We Serve Communities</p>
+              <h2 className="mt-2 font-sans text-[1.7rem] font-bold tracking-tight text-[#1B3A6B] sm:text-[2rem]">
+                Comprehensive Support for Brighter Futures
+              </h2>
+            </div>
+            <TextAction to="/programs">View All Programs</TextAction>
+          </div>
+
+          <ul className="mt-6 grid grid-cols-2 gap-3 md:grid-cols-4 xl:grid-cols-8">
+            {communitySupports.map((item) => (
+              <li key={item.title} className="flex flex-col rounded-2xl border border-[#E6EEF4] bg-white px-3 py-4">
+                <item.icon className="h-7 w-7 text-[#1E4E8C]" aria-hidden="true" />
+                <h3 className="mt-3 font-sans text-[13px] font-bold leading-snug text-[#1B3A6B]">{item.title}</h3>
+                <p className="mt-2 flex-1 text-[12px] leading-relaxed text-[#5C6B7C]">{item.text}</p>
+                <div className="mt-3">
+                  <TextAction to="/programs">Learn More</TextAction>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="bg-[#F7FBFE]">
+        <div className="mx-auto grid max-w-[1380px] items-stretch gap-4 px-6 pb-12 sm:px-8 lg:grid-cols-3 lg:px-12 xl:px-16 lg:pb-14">
+          <div className="flex flex-col justify-center rounded-[22px] bg-[#F4F8FC] px-6 py-7">
+            <div className="flex items-start gap-3">
+              <HiGlobeAlt className="mt-1 h-8 w-8 shrink-0 text-[#1E4E8C]" aria-hidden="true" />
+              <h2 className="font-sans text-[1.45rem] font-bold leading-tight tracking-tight text-[#1B3A6B]">
+                International Education is One Part of Our Work
+              </h2>
+            </div>
+            <p className="mt-4 text-[14px] leading-relaxed text-[#5C6B7C]">
+              We support international education and study abroad as one of our program areas, helping students explore learning opportunities in Canada and around the world. While these programs create valuable experiences, they are not the sole focus of our organization. Our broader mandate is to improve access to education for all, locally and globally.
+            </p>
+            <div className="mt-6">
+              <FilledAction to="/programs">Learn About Our Programs</FilledAction>
+            </div>
+          </div>
+
+          <div className="relative min-h-[260px] overflow-hidden rounded-[22px] bg-[#E7EEF2]">
+            <img
+              src={photos.quote}
+              alt="Students with backpacks looking toward the Calgary skyline"
+              className="h-full w-full object-cover object-center"
+            />
+            <p className="absolute right-4 top-4 max-w-[46%] text-right font-hand text-[1.65rem] font-semibold leading-tight text-white [text-shadow:0_2px_10px_rgba(15,40,70,0.45)] sm:right-5 sm:top-5 sm:max-w-[11rem] sm:text-[1.95rem]">
+              More
+              <br />
+              Opportunities.
+              <br />
+              Brighter
+              <br />
+              Tomorrows.
+            </p>
+          </div>
+
+          <div className="flex flex-col justify-center rounded-[22px] bg-[#E7F6EA] px-6 py-7">
+            <span className="font-serif text-5xl leading-none text-[#2E9A4A]" aria-hidden="true">
               “
             </span>
-            <div>
-              <p className="font-sans text-[1.45rem] font-bold leading-[1.25] tracking-tight text-[#1B3A6B] sm:text-[1.75rem] lg:text-[1.95rem]">
-                Education is not a privilege.
-                <br />
-                It’s a possibility for everyone.
-              </p>
-              <p className="mt-3 text-sm font-semibold text-[#5C6B7C]">— World Education Society</p>
-              <span className="mt-4 block h-[3px] w-14 rounded-full bg-[#E2A322]" aria-hidden="true" />
-            </div>
+            <p className="mt-2 font-sans text-[1.45rem] font-bold leading-tight tracking-tight text-[#1B3A6B]">
+              Education is not a privilege.
+              <br />
+              It’s a possibility for everyone.
+            </p>
+            <p className="mt-4 text-sm font-semibold text-[#5C6B7C]">— World Education Society</p>
           </div>
         </div>
       </section>
 
       <section id="our-milestones" className="scroll-mt-24 bg-[#FBF9F4]">
-        <div className="mx-auto max-w-[1380px] px-6 py-14 sm:px-8 lg:px-10 lg:py-16">
+        <div className="mx-auto max-w-[1380px] px-6 py-14 sm:px-8 lg:px-12 xl:px-16 lg:py-16">
           <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#7B8C9C]">Our Milestones</p>
           <h2 className="mt-3 font-sans text-3xl font-bold tracking-tight text-[#1B3A6B] sm:text-[2.15rem]">A Journey of Growing Impact</h2>
 
@@ -358,7 +453,7 @@ export default function AboutUs() {
       </section>
 
       <section className="bg-white">
-        <div className="mx-auto max-w-[1380px] px-6 pb-6 pt-12 sm:px-8 lg:px-10 lg:pb-4 lg:pt-16">
+        <div className="mx-auto max-w-[1380px] px-6 pb-6 pt-12 sm:px-8 lg:px-12 xl:px-16 lg:pb-4 lg:pt-16">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div>
               <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#7B8C9C]">Our Leadership</p>
@@ -391,7 +486,7 @@ export default function AboutUs() {
       </section>
 
       <section id="who-we-serve" className="scroll-mt-24 bg-white">
-        <div className="mx-auto max-w-[1380px] px-6 py-10 sm:px-8 lg:px-10 lg:py-12">
+        <div className="mx-auto max-w-[1380px] px-6 py-10 sm:px-8 lg:px-12 xl:px-16 lg:py-12">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
               <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#7B8C9C]">Who We Serve</p>
@@ -415,7 +510,7 @@ export default function AboutUs() {
       </section>
 
       <section className="bg-white">
-        <div className="mx-auto grid max-w-[1380px] items-stretch gap-5 px-6 pb-14 pt-2 sm:px-8 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.15fr)_minmax(0,0.95fr)] lg:items-center lg:gap-8 lg:px-10 lg:pb-16">
+        <div className="mx-auto grid max-w-[1380px] items-stretch gap-5 px-6 pb-14 pt-2 sm:px-8 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.15fr)_minmax(0,0.95fr)] lg:items-center lg:gap-8 lg:px-12 xl:px-16 lg:pb-16">
           <div className="h-[220px] overflow-hidden rounded-[22px] bg-[#E7EEF2] sm:h-[250px] lg:h-[230px]">
             <img
               src={photos.serve}
@@ -426,19 +521,31 @@ export default function AboutUs() {
 
           <div>
             <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#7B8C9C]">Our Partnerships</p>
-            <h2 className="mt-2 font-sans text-[1.85rem] font-bold tracking-tight text-[#1B3A6B] sm:text-[2.05rem]">
+            <h2 className="mt-2 whitespace-nowrap font-sans text-[clamp(1.35rem,3.2vw,2.05rem)] font-bold leading-none tracking-tight text-[#1B3A6B]">
               Stronger Together
             </h2>
             <p className="mt-3 max-w-md text-[14px] leading-relaxed text-[#5C6B7C]">
-              We work with schools, community organizations, businesses, governments and individual supporters to expand access to education and create lasting impact. Together, we can build more inclusive, resilient communities.
+              We collaborate with educational institutions, community organizations and like-minded partners to expand opportunities and create meaningful change.
             </p>
-            <ul className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
-              {partners.map((name) => (
-                <li key={name} className="font-sans text-[13px] font-bold leading-tight text-[#1B3A6B]">
-                  {name}
-                </li>
-              ))}
-            </ul>
+            <div className="mt-6 flex flex-wrap items-center gap-x-8 gap-y-4">
+              <div className="flex items-center gap-2 text-[#1F8A4C]">
+                <svg viewBox="0 0 28 28" className="h-8 w-8" aria-hidden="true">
+                  <path d="M6 16c2-8 8-12 14-10-4 2-6 6-5 12 4-2 8-1 10 3-6 1-12 0-19-5Z" fill="#2E9A4A" />
+                  <path d="M8 20c4 3 10 3 14 0" stroke="#2E9A4A" strokeWidth="2" fill="none" strokeLinecap="round" />
+                </svg>
+                <span className="font-sans text-[22px] font-semibold tracking-tight">Georgian</span>
+              </div>
+              <div className="flex items-center gap-2 text-[#C8102E]">
+                <div className="leading-none">
+                  <p className="font-sans text-[16px] font-extrabold tracking-[0.12em]">YORK</p>
+                  <p className="mt-0.5 font-sans text-[8px] font-semibold tracking-[0.18em]">UNIVERSITY</p>
+                </div>
+                <span className="inline-flex h-8 w-8 items-center justify-center bg-[#C8102E] font-sans text-lg font-bold text-white">
+                  U
+                </span>
+              </div>
+              <p className="font-sans text-[28px] font-bold tracking-tight text-[#C8102E]">Seneca</p>
+            </div>
           </div>
 
           <div className="rounded-[22px] bg-[#F4F8FC] px-6 py-7">
@@ -447,10 +554,10 @@ export default function AboutUs() {
             </span>
             <h3 className="mt-4 font-sans text-lg font-bold text-[#1B3A6B]">Partner With Us</h3>
             <p className="mt-2 max-w-[240px] text-sm leading-relaxed text-[#5C6B7C]">
-              Building stronger communities through collaboration.
+              Together, we can create more opportunities and stronger communities.
             </p>
             <div className="mt-4">
-              <TextAction to="/get-involved">Partner With Us</TextAction>
+              <TextAction to="/get-involved">Explore Partnerships</TextAction>
             </div>
           </div>
         </div>

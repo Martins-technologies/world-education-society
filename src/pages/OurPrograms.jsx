@@ -266,7 +266,7 @@ export default function OurPrograms() {
       </PageHero>
 
       <section className="border-y border-[#E6EEF4] bg-white">
-        <div className="mx-auto flex max-w-[1380px] gap-1 overflow-x-auto px-6 sm:px-8 lg:px-10">
+        <div className="mx-auto flex max-w-[1380px] gap-1 overflow-x-auto px-6 sm:px-8 lg:px-12 xl:px-16">
           {audiences.map(({ id, label, Icon }) => {
             const active = audience === id
             return (
@@ -290,7 +290,7 @@ export default function OurPrograms() {
 
       <section ref={exploreRef} className="relative scroll-mt-24 overflow-hidden bg-[#F7F6F2] py-12 sm:py-16">
         <div className="pointer-events-none absolute -left-10 top-24 h-48 w-48 rounded-full bg-[#E7F3FB]/90 blur-3xl" />
-        <div className="relative mx-auto max-w-[1380px] px-6 sm:px-8 lg:px-10">
+        <div className="relative mx-auto max-w-[1380px] px-6 sm:px-8 lg:px-12 xl:px-16">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-xl">
               <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#8A97A6]">Programs</p>
@@ -374,7 +374,7 @@ export default function OurPrograms() {
 
       <section id="international" className="relative scroll-mt-24 overflow-hidden bg-[#F3F8FC] py-14 sm:py-16">
         <div className="pointer-events-none absolute -right-10 top-0 h-56 w-56 rounded-full bg-white/70 blur-3xl" />
-        <div className="mx-auto grid max-w-[1380px] items-center gap-10 px-6 sm:px-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.15fr)_minmax(220px,0.7fr)] lg:gap-10 lg:px-10">
+        <div className="mx-auto grid max-w-[1380px] items-center gap-10 px-6 sm:px-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.15fr)_minmax(220px,0.7fr)] lg:gap-10 lg:px-12 xl:px-16">
           <div className="h-[280px] overflow-hidden rounded-[24px] bg-[#E7EEF2] sm:h-[360px] lg:h-[420px]">
             <img
               src="/extras/11_exploring_the_historic_university_quad.webp"
@@ -435,7 +435,7 @@ export default function OurPrograms() {
       </section>
 
       <section className="bg-[#F7F6F2] py-14 sm:py-16">
-        <div className="mx-auto max-w-[1380px] px-6 sm:px-8 lg:px-10">
+        <div className="mx-auto max-w-[1380px] px-6 sm:px-8 lg:px-12 xl:px-16">
           <h2 className="font-sans text-3xl font-bold tracking-tight text-[#1B3A6B] sm:text-4xl">Program Outcomes</h2>
           <p className="mt-2 text-sm text-[#5C6B7C] sm:text-[15px]">
             Our programs create real change in the lives of students, youth and communities.

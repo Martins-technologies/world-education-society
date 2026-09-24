@@ -452,7 +452,7 @@ export default function OurImpact() {
       </PageHero>
 
       <section className="bg-white">
-        <div className="mx-auto max-w-[1380px] px-6 py-12 sm:px-8 lg:px-10 lg:py-14">
+        <div className="mx-auto max-w-[1380px] px-6 py-12 sm:px-8 lg:px-12 xl:px-16 lg:py-14">
           <SectionHeading title="Our Impact at a Glance" action="View Full Annual Report" to="/resources" />
           <div className="mt-8 grid grid-cols-2 gap-x-4 gap-y-8 md:grid-cols-3 xl:grid-cols-6">
             {glance.map((item, index) => (
@@ -473,7 +473,7 @@ export default function OurImpact() {
       </section>
 
       <section className="bg-[#FBF9F4]">
-        <div className="mx-auto grid max-w-[1380px] gap-10 px-6 py-12 sm:px-8 lg:grid-cols-12 lg:px-10 lg:py-14">
+        <div className="mx-auto grid max-w-[1380px] gap-10 px-6 py-12 sm:px-8 lg:grid-cols-12 lg:px-12 xl:px-16 lg:py-14">
           <div className="lg:col-span-5">
             <SectionHeading title="2024 Annual Highlights" action="View Full Annual Report" to="/resources" />
             <div className="mt-6 rounded-[28px] bg-[#F3F8FC] px-3 py-8 sm:px-5">
@@ -510,7 +510,7 @@ export default function OurImpact() {
 
       <section className="relative overflow-hidden bg-[#F4F9FC]">
         <div className="pointer-events-none absolute -left-16 top-10 h-56 w-56 rounded-full bg-[#E3F2FB]" />
-        <div className="relative mx-auto grid max-w-[1380px] gap-10 px-6 py-12 sm:px-8 lg:grid-cols-12 lg:px-10 lg:py-14">
+        <div className="relative mx-auto grid max-w-[1380px] gap-10 px-6 py-12 sm:px-8 lg:grid-cols-12 lg:px-12 xl:px-16 lg:py-14">
           <div id="community-reach" className="scroll-mt-24 lg:col-span-5">
             <SectionHeading title="Our Community Reach" action="View All Regions" to="#community-reach" />
             <div className="mt-4 grid items-center gap-4 sm:grid-cols-[1fr_150px]">
@@ -567,7 +567,7 @@ export default function OurImpact() {
       </section>
 
       <section className="bg-white">
-        <div className="mx-auto max-w-[1380px] px-6 py-12 sm:px-8 lg:px-10 lg:py-16">
+        <div className="mx-auto max-w-[1380px] px-6 py-12 sm:px-8 lg:px-12 xl:px-16 lg:py-16">
           <h2 className="font-sans text-[1.7rem] font-bold tracking-tight text-[#1B3A6B] sm:text-[2rem]">
             A Journey From Barriers to Opportunity
           </h2>
@@ -605,7 +605,7 @@ export default function OurImpact() {
       </section>
 
       <section id="impact-action" className="scroll-mt-24 bg-[#F4F9FC]">
-        <div className="mx-auto max-w-[1380px] px-6 py-12 sm:px-8 lg:px-10 lg:py-14">
+        <div className="mx-auto max-w-[1380px] px-6 py-12 sm:px-8 lg:px-12 xl:px-16 lg:py-14">
           <div className="flex flex-wrap items-end justify-between gap-3">
             <div>
               <h2 className="font-sans text-[1.7rem] font-bold tracking-tight text-[#1B3A6B] sm:text-[1.85rem]">Impact in Action</h2>
@@ -624,7 +624,7 @@ export default function OurImpact() {
       </section>
 
       <section className="bg-white">
-        <div className="mx-auto max-w-[1380px] px-6 py-12 sm:px-8 lg:px-10 lg:py-14">
+        <div className="mx-auto max-w-[1380px] px-6 py-12 sm:px-8 lg:px-12 xl:px-16 lg:py-14">
           <h2 className="font-sans text-[1.7rem] font-bold tracking-tight text-[#1B3A6B] sm:text-[1.85rem]">
             Our Partner Organizations
           </h2>

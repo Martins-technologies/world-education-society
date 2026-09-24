@@ -30,6 +30,16 @@ html,body{
 }
 
 @layer components {
+  .hero-frame {
+    right: 3rem;
+  }
+
+  @media (min-width: 1280px) {
+    .hero-frame {
+      right: max(4rem, calc((100% - 1380px) / 2 + 4rem));
+    }
+  }
+
   .eyebrow {
     @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-ocean-600;
   }

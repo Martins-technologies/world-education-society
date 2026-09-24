@@ -70,7 +70,7 @@ export default function ContactUsPage() {
       
       {/* 1) HERO SECTION */}
       <section className="relative overflow-hidden pt-24 pb-14 sm:pt-32 sm:pb-20 bg-[#FBF9F4]">
-        <div className="container mx-auto px-[15px] sm:px-6 lg:px-8">
+        <div className="mx-auto w-full max-w-[1380px] px-6 sm:px-8 lg:px-12 xl:px-16">
           <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-8">
             
             {/* Left Text Content */}
@@ -128,7 +128,7 @@ export default function ContactUsPage() {
 
       {/* 2) REACH OUT TO OUR TEAM & 3) CONTACT DETAILS */}
       <section className="py-16 sm:py-24 border-t border-[#242A38]/5">
-        <div className="container mx-auto px-[15px] sm:px-6 lg:px-8">
+        <div className="mx-auto w-full max-w-[1380px] px-6 sm:px-8 lg:px-12 xl:px-16">
           
           <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-12 mb-16">
             
@@ -213,7 +213,7 @@ export default function ContactUsPage() {
 
       {/* 4) SEND US A MESSAGE SECTION */}
       <section id="message-form" className="py-16 sm:py-24 border-t border-[#242A38]/5 bg-[#FBF9F4]">
-        <div className="container mx-auto px-[15px] sm:px-6 lg:px-8">
+        <div className="mx-auto w-full max-w-[1380px] px-6 sm:px-8 lg:px-12 xl:px-16">
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-12 items-start">
             
             {/* Left Column: Form */}
@@ -429,7 +429,7 @@ export default function ContactUsPage() {
 
       {/* 5) BOTTOM CTA BAND (Soft Light-Blue Treatment) */}
       <section className="py-12 sm:py-16">
-        <div className="container mx-auto px-[15px] sm:px-6 lg:px-8">
+        <div className="mx-auto w-full max-w-[1380px] px-6 sm:px-8 lg:px-12 xl:px-16">
           <div className="overflow-hidden rounded-[32px] bg-[#E5F5FC] px-8 sm:px-12 py-12 sm:py-16">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
               
