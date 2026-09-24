@@ -5,24 +5,26 @@ import {
   HiArrowRight,
   HiBookOpen,
   HiChartBar,
+  HiChatBubbleLeftRight,
   HiCog6Tooth,
   HiHeart,
   HiLightBulb,
   HiMagnifyingGlass,
+  HiPaperAirplane,
   HiUserGroup,
   HiUsers,
 } from 'react-icons/hi2'
-import PageHero, { heroPrimaryButton, heroTextLink } from '../components/PageHero'
+import PageHero, { heroGreenButton, heroOutlineButton, heroPrimaryButton } from '../components/PageHero'
 
 const photos = {
-  purpose: '/extras/13_a_bright_modern_educational_workshop_setting_in_a.webp',
-  language: '/Home/01_a_bright_modern_indoor_study_learning_scene_in_a.webp',
-  digital: '/extras/12_hands_on_robotics_workshop_mentorship.webp',
-  academic: '/Home/07_warm_community_study_session.webp',
-  campaign: '/Home/05_a_bright_realistic_high_resolution_outdoor_campu.webp',
-  involved: '/Home/14_collaborative_community_vision_board.webp',
-  story: '/Home/15_outdoor_graduation_portrait_scene_on_a_college_cam.webp',
-  news: '/Home/programs-side.jpg',
+  hero: '/homeupdated/01_Hero_Students.webp',
+  purpose: '/homeupdated/02_Our_Purpose_Student.webp',
+  language: '/homeupdated/03_Language_Communication.webp',
+  digital: '/homeupdated/04_Digital_Skills.webp',
+  academic: '/homeupdated/05_Academic_Support.webp',
+  campaign: '/homeupdated/06_Current_Campaign_Back_to_Learning_Drive.webp',
+  involved: '/homeupdated/07_Get_Involved_Volunteering.webp',
+  story: '/homeupdated/08_Success_Story.webp',
 }
 
 const metrics = [
@@ -55,12 +57,66 @@ const purposePoints = [
   },
 ]
 
+const supportPrograms = [
+  {
+    title: 'Education Guidance',
+    text: 'Personalized guidance to help students navigate educational pathways.',
+    icon: HiBookOpen,
+    href: '/programs#education-guidance',
+  },
+  {
+    title: 'Student Support',
+    text: 'Academic, social and wellness support to help youth succeed.',
+    icon: HiUsers,
+    href: '/programs#student-support',
+  },
+  {
+    title: 'Study Opportunities',
+    text: 'Information and support for international and domestic study options (including study abroad).',
+    icon: HiPaperAirplane,
+    href: '/programs#study-opportunities',
+  },
+  {
+    title: 'Scholarships & Funding',
+    text: 'Connecting students with scholarships, bursaries and other funding opportunities.',
+    icon: HiAcademicCap,
+    href: '/programs#scholarships-funding',
+  },
+  {
+    title: 'Career & Skills Development',
+    text: 'Workshops, training and mentorship to build real-world skills.',
+    icon: HiChartBar,
+    href: '/programs#career-skills',
+  },
+  {
+    title: 'Community Education',
+    text: 'Programs and resources that strengthen communities through learning.',
+    icon: HiUserGroup,
+    href: '/programs#community-education',
+  },
+]
+
+const extraSupportPrograms = [
+  {
+    title: 'Vernacular Learning Support',
+    text: 'Language support and culturally responsive resources to make education more accessible.',
+    icon: HiChatBubbleLeftRight,
+    href: '/programs#vernacular-learning',
+  },
+  {
+    title: 'Transportation Assistance',
+    text: 'Helping reduce transportation barriers so students can participate in education.',
+    icon: BusIcon,
+    href: '/programs#transportation-assistance',
+  },
+]
+
 const programs = [
   {
     title: 'Language & Communication',
     text: 'Building essential language, literacy, and communication skills for everyday success.',
     image: photos.language,
-    alt: 'A mentor and students working together around a laptop in a bright classroom',
+    alt: 'Students building language and communication skills together',
     position: 'object-top',
   },
   {
@@ -85,7 +141,7 @@ const steps = [
     n: '1',
     icon: HiMagnifyingGlass,
     title: 'Identify Barriers',
-    text: 'We listen and understand challenges.',
+    text: 'We listen and understand the educational, financial, and social barriers.',
     badge: 'bg-[#2F6FE4]',
     iconColor: 'text-[#2F6FE4]',
   },
@@ -93,7 +149,7 @@ const steps = [
     n: '2',
     icon: HiLightBulb,
     title: 'Guide & Advise',
-    text: 'We provide personalized support and resources.',
+    text: 'We provide personalized guidance, resources and referrals.',
     badge: 'bg-[#2E9A4A]',
     iconColor: 'text-[#2E9A4A]',
   },
@@ -101,7 +157,7 @@ const steps = [
     n: '3',
     icon: HiCog6Tooth,
     title: 'Build Skills',
-    text: 'We offer training and learning opportunities.',
+    text: 'We offer training, workshops and learning opportunities to build confidence and skills.',
     badge: 'bg-[#E8A317]',
     iconColor: 'text-[#E8A317]',
   },
@@ -109,7 +165,7 @@ const steps = [
     n: '4',
     icon: HiUserGroup,
     title: 'Connect Opportunities',
-    text: 'We link individuals with pathways to growth.',
+    text: 'We link students with scholarships, internships, mentors and programs.',
     badge: 'bg-[#7A62C4]',
     iconColor: 'text-[#7A62C4]',
   },
@@ -117,7 +173,7 @@ const steps = [
     n: '5',
     icon: HiChartBar,
     title: 'Support Progress',
-    text: 'We stay engaged to help create lasting change.',
+    text: 'We stay connected, celebrate progress and provide ongoing support.',
     badge: 'bg-[#148A9C]',
     iconColor: 'text-[#148A9C]',
   },
@@ -126,8 +182,31 @@ const steps = [
 const involveRows = [
   { icon: HiHeart, title: 'Volunteer', text: 'Give your time and skills.' },
   { icon: FaHandshake, title: 'Partner With Us', text: 'Explore partnership opportunities.' },
-  { icon: HiHeart, title: 'Support Our Work', text: 'Help us create brighter futures.' },
+  { icon: HiHeart, title: 'Support Our Programs', text: 'Help us create brighter futures.' },
 ]
+
+const newsItems = [
+  {
+    title: 'World Education Society Launches Skills for Tomorrow Campaign',
+    date: 'Oct 12, 2025',
+  },
+  {
+    title: 'New Partnerships to Expand Educational Opportunities',
+    date: 'Sep 28, 2025',
+  },
+]
+
+function BusIcon({ className }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+      <rect x="4" y="4" width="16" height="12" rx="2.2" stroke="currentColor" strokeWidth="1.7" />
+      <path d="M4 11h16" stroke="currentColor" strokeWidth="1.7" />
+      <path d="M7 20v-2M17 20v-2" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+      <circle cx="8" cy="14.2" r="1" fill="currentColor" />
+      <circle cx="16" cy="14.2" r="1" fill="currentColor" />
+    </svg>
+  )
+}
 
 function SproutIcon({ className }) {
   return (
@@ -172,30 +251,60 @@ export default function Home() {
         eyebrow="Learning. Belonging. Opportunity."
         title={
           <>
-            Education
-            <br />
-            Creates
-            <br />
-            Opportunity.
+            Education Creates Opportunity.
+            <span className="mt-3 block text-[1.7rem] leading-tight text-[#2E9A4A] sm:text-4xl lg:text-[2.6rem]">
+              We Help Make It Accessible.
+            </span>
           </>
         }
-        description="We help people access educational opportunities through guidance, support and community partnerships. For students. For communities. For a fairer future."
-        image="/homehero.webp"
-        imageAlt="Students and community members gathered together"
-        imagePosition="center 40%"
+        description="World Education Society advances education and supports youth by removing barriers, building skills, and creating opportunities through guidance, community partnerships, internships and educational access."
+        image={photos.hero}
+        imageAlt="Students smiling together outdoors, representing stronger students and stronger communities"
+        imageLayout="full"
+        imageNotes={
+          <>
+            <p className="absolute right-14 top-10 text-right font-hand text-[1.75rem] font-semibold leading-[1.15] text-[#1B3A6B] [text-shadow:0_1px_10px_rgba(255,255,255,0.95)]">
+              Stronger
+              <br />
+              Students
+              <br />
+              Stronger
+              <br />
+              Communities
+            </p>
+            <p className="absolute bottom-12 right-10 rounded-xl bg-white/90 px-4 py-2 font-hand text-[1.35rem] leading-tight text-[#1B3A6B] shadow-sm">
+              For students. For communities.
+              <br />
+              For a fairer future.
+            </p>
+          </>
+        }
+        footnote={
+          <div className="flex max-w-[480px] items-start gap-3">
+            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#E7F1FB] text-[#1E4E8C]">
+              <HiUserGroup className="h-5 w-5" aria-hidden="true" />
+            </span>
+            <p className="text-[13px] leading-relaxed text-[#5C6B7C]">
+              A non-profit organization helping people access educational opportunities through guidance, support and
+              community partnerships.
+            </p>
+          </div>
+        }
       >
         <Link to="/programs" className={heroPrimaryButton}>
           Explore Our Programs
           <HiArrowRight className="h-4 w-4" aria-hidden="true" />
         </Link>
-        <Link to="/get-involved" className={heroTextLink}>
+        <Link to="/get-involved" className={heroOutlineButton}>
           Get Involved
-          <HiArrowRight className="h-4 w-4" aria-hidden="true" />
+        </Link>
+        <Link to="/get-support" className={heroGreenButton}>
+          Get Support
         </Link>
       </PageHero>
 
       <section className="bg-[#F7FBFE]">
-        <div className="relative mx-auto max-w-[1200px] px-6 pb-14 sm:px-8 lg:px-10 lg:pb-16">
+        <div className="relative mx-auto max-w-[1380px] px-6 pb-14 sm:px-8 lg:px-10 lg:pb-16">
           <div className="grid grid-cols-2 divide-[#E6EEF4] overflow-hidden rounded-2xl border border-[#E6EEF4] bg-white shadow-[0_10px_30px_-24px_rgba(27,58,107,0.5)] sm:grid-cols-3 xl:grid-cols-6 xl:divide-x">
             {metrics.map((item) => (
               <div key={item.label} className="flex flex-col items-center px-3 py-5 text-center">
@@ -209,29 +318,41 @@ export default function Home() {
       </section>
 
       <section className="bg-[#FBF9F4]">
-        <div className="mx-auto max-w-[1200px] px-6 py-6 sm:px-8 lg:px-10 lg:py-8">
+        <div className="mx-auto max-w-[1380px] px-6 py-6 sm:px-8 lg:px-10 lg:py-8">
           <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#7B8C9C]">Our Purpose</p>
           <h2 className="mt-3 font-sans text-[1.65rem] font-bold leading-tight tracking-tight text-[#1B3A6B] sm:text-[2.05rem]">
-            Education for a More Equitable World
+            Opportunity begins with support.
           </h2>
 
           <div className="mt-6 grid items-center gap-8 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-4">
             <p className="max-w-md text-[15px] leading-relaxed text-[#5C6B7C]">
-              We believe in the power of education to unlock potential, build confidence, and create opportunities for a fairer, more inclusive world. Through programs, partnerships, and community support, we help individuals gain the skills and knowledge needed to create lasting change.
+              World Education Society is a non-profit organization that helps people access educational opportunities through guidance, support and community partnerships. We work to remove barriers, expand access to education, build skills, and create inclusive pathways for youth and communities to thrive.
             </p>
             <div className="mt-6">
-              <Pill to="/about-us">Learn More About Us</Pill>
+              <Pill to="/about-us">Learn More About Our Mission</Pill>
             </div>
           </div>
 
           <div className="lg:col-span-4">
-            <div className="mx-auto h-[240px] w-full max-w-[520px] overflow-hidden rounded-2xl bg-[#E7EEF2] sm:h-[260px] lg:h-[280px] lg:max-w-none">
+            <div className="relative mx-auto h-[240px] w-full max-w-[520px] overflow-hidden rounded-2xl bg-[#E7EEF2] sm:h-[260px] lg:h-[280px] lg:max-w-none">
               <img
                 src={photos.purpose}
-                alt="Learners writing and studying together in a community workshop"
-                className="h-full w-full object-cover object-[center_28%]"
+                alt="A student writing in a notebook during a learning session"
+                className="h-full w-full object-cover object-[32%_28%]"
               />
+              <figure className="absolute left-3 top-6 w-[128px] rounded-2xl bg-[#1B3A6B]/90 px-2.5 py-2 text-white shadow-lg">
+                <blockquote className="text-[11px] font-medium leading-[1.25]">
+                  “Education
+                  <br />
+                  gives me a future
+                  <br />
+                  and a place to
+                  <br />
+                  belong.”
+                </blockquote>
+                <figcaption className="mt-1 text-[10px] leading-tight text-white/80">– WES Participant</figcaption>
+              </figure>
             </div>
           </div>
 
@@ -252,8 +373,50 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="bg-white">
+        <div className="mx-auto max-w-[1380px] px-6 py-12 sm:px-8 lg:px-10 lg:py-16">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#7B8C9C]">Our Programs</p>
+              <h2 className="mt-3 font-sans text-3xl font-bold tracking-tight text-[#1B3A6B] sm:text-[2.15rem]">
+                Comprehensive support for brighter futures.
+              </h2>
+            </div>
+            <ArrowLink to="/programs">View All Programs</ArrowLink>
+          </div>
+
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 xl:grid-cols-6">
+            {supportPrograms.map((program) => (
+              <article key={program.title} className="text-left">
+                <program.icon className="h-8 w-8 text-[#1E4E8C]" aria-hidden="true" />
+                <h3 className="mt-4 font-sans text-[15px] font-semibold text-[#1B3A6B]">{program.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-[#5C6B7C]">{program.text}</p>
+                <div className="mt-4">
+                  <ArrowLink to={program.href}>Learn More</ArrowLink>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <div className="mt-8 grid gap-6 md:grid-cols-2">
+            {extraSupportPrograms.map((program) => (
+              <article key={program.title} className="flex items-start gap-4">
+                <program.icon className="mt-0.5 h-8 w-8 shrink-0 text-[#1E4E8C]" aria-hidden="true" />
+                <div>
+                  <h3 className="font-sans text-[15px] font-semibold text-[#1B3A6B]">{program.title}</h3>
+                  <p className="mt-1 text-sm leading-relaxed text-[#5C6B7C]">{program.text}</p>
+                  <div className="mt-3">
+                    <ArrowLink to={program.href}>Learn More</ArrowLink>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="bg-[#FBF9F4]">
-        <div className="mx-auto max-w-[1200px] px-6 py-12 sm:px-8 lg:px-10 lg:py-16">
+        <div className="mx-auto max-w-[1380px] px-6 py-12 sm:px-8 lg:px-10 lg:py-16">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
               <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#7B8C9C]">Our Programs</p>
@@ -289,7 +452,7 @@ export default function Home() {
       </section>
 
       <section id="how-we-support" className="bg-[#F4F8FB]">
-        <div className="mx-auto max-w-[1200px] px-6 py-12 sm:px-8 lg:px-10 lg:py-14">
+        <div className="mx-auto max-w-[1380px] px-6 py-12 sm:px-8 lg:px-10 lg:py-14">
           <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#7B8C9C]">How We Support</p>
           <h2 className="mt-3 font-sans text-3xl font-bold tracking-tight text-[#1B3A6B] sm:text-[2.05rem]">
             Turning barriers into opportunity.
@@ -327,7 +490,7 @@ export default function Home() {
       </section>
 
       <section className="bg-[#FBF9F4]">
-        <div className="mx-auto grid max-w-[1200px] gap-6 px-6 py-12 sm:px-8 lg:grid-cols-12 lg:px-10 lg:py-14">
+        <div className="mx-auto grid max-w-[1380px] gap-6 px-6 py-12 sm:px-8 lg:grid-cols-12 lg:px-10 lg:py-14">
           <div className="lg:col-span-5">
             <div className="mb-3 flex items-center justify-between gap-3">
               <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#7B8C9C]">Current Campaign</p>
@@ -337,7 +500,7 @@ export default function Home() {
               <div className="h-64 overflow-hidden bg-[#E7EEF2]">
                 <img
                   src={photos.campaign}
-                  alt="Students studying together with a laptop on a campus lawn"
+                  alt="Students supported through the Back to Learning Drive"
                   className="h-full w-full object-cover object-top"
                 />
               </div>
@@ -363,14 +526,14 @@ export default function Home() {
               <div className="h-64 overflow-hidden bg-[#E7EEF2]">
                 <img
                   src={photos.involved}
-                  alt="Community members collaborating around a planning board"
+                  alt="Volunteers and students walking together outdoors"
                   className="h-full w-full object-cover object-top"
                 />
               </div>
               <div className="px-5 py-5">
-                <h3 className="font-sans text-xl font-semibold text-[#1B3A6B]">Many Ways to Make a Difference</h3>
+                <h3 className="font-sans text-xl font-semibold text-[#1B3A6B]">Get Involved. Make a Difference.</h3>
                 <p className="mt-2 text-sm leading-relaxed text-[#5C6B7C]">
-                  Volunteer, partner, or support our programs. Your involvement helps create real opportunities in our communities.
+                  Volunteer, partner or support our programs. Your involvement helps create real opportunities for young people.
                 </p>
                 <div className="mt-4">
                   <ArrowLink to="/get-involved">Get Involved</ArrowLink>
@@ -399,47 +562,40 @@ export default function Home() {
       </section>
 
       <section className="bg-[#FBF9F4]">
-        <div className="mx-auto grid max-w-[1200px] gap-6 px-6 pb-16 sm:px-8 lg:grid-cols-3 lg:px-10 lg:pb-20">
+        <div className="mx-auto grid max-w-[1380px] gap-6 px-6 pb-16 sm:px-8 lg:grid-cols-3 lg:px-10 lg:pb-20">
           <article>
             <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#7B8C9C]">Success Story</p>
             <div className="flex h-[calc(100%-1.75rem)] gap-4 rounded-2xl border border-[#E6EEF4] bg-white p-4 shadow-[0_12px_30px_-24px_rgba(27,58,107,0.45)]">
               <div className="h-28 w-24 shrink-0 overflow-hidden rounded-xl bg-[#E7EEF2] sm:h-32 sm:w-28">
                 <img
                   src={photos.story}
-                  alt="Portrait of a smiling graduate on campus"
+                  alt="Portrait of a World Education Society participant"
                   className="h-full w-full object-cover object-top"
                 />
               </div>
               <div className="min-w-0">
                 <p className="font-serif text-3xl leading-none text-[#1E4E8C]">“</p>
                 <p className="text-[13px] leading-relaxed text-[#5C6B7C]">
-                  With the support of World Education Society, I gained the confidence, skills, and guidance to pursue my goals. It changed the direction of my future.
+                  With the support of World Education Society, I was able to access guidance, improve my skills and gain the confidence to pursue my goals. It changed the direction of my future.
                 </p>
-                <p className="mt-3 text-sm font-semibold text-[#1B3A6B]">Aisha M.</p>
-                <p className="text-[12px] text-[#7A8794]">Program Participant</p>
+                <p className="mt-3 text-sm font-semibold text-[#1B3A6B]">WES Participant</p>
+                <p className="text-[12px] text-[#7A8794]">Success Story</p>
               </div>
             </div>
           </article>
 
           <article>
             <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#7B8C9C]">Latest News</p>
-            <div className="flex h-[calc(100%-1.75rem)] flex-col rounded-2xl border border-[#E6EEF4] bg-white p-4 shadow-[0_12px_30px_-24px_rgba(27,58,107,0.45)] sm:flex-row sm:items-center sm:gap-4">
-              <div className="mb-3 h-28 overflow-hidden rounded-xl bg-[#E7EEF2] sm:mb-0 sm:h-24 sm:w-32 sm:shrink-0">
-                <img
-                  src={photos.news}
-                  alt="A student with a backpack on a campus walkway"
-                  className="h-full w-full object-cover object-top"
-                />
-              </div>
-              <div>
-                <h3 className="font-sans text-[15px] font-semibold leading-snug text-[#1B3A6B]">
-                  World Education Society Launches Skills for Tomorrow Campaign
-                </h3>
-                <p className="mt-2 text-[12px] text-[#7A8794]">Oct 12, 2025</p>
-                <div className="mt-3">
-                  <ArrowLink to="/campaigns">Read More</ArrowLink>
+            <div className="flex h-[calc(100%-1.75rem)] flex-col divide-y divide-[#E6EEF4] rounded-2xl border border-[#E6EEF4] bg-white px-4 shadow-[0_12px_30px_-24px_rgba(27,58,107,0.45)]">
+              {newsItems.map((item) => (
+                <div key={item.title} className="py-4">
+                  <h3 className="font-sans text-[15px] font-semibold leading-snug text-[#1B3A6B]">{item.title}</h3>
+                  <p className="mt-2 text-[12px] text-[#7A8794]">{item.date}</p>
+                  <div className="mt-3">
+                    <ArrowLink to="/campaigns">Read More</ArrowLink>
+                  </div>
                 </div>
-              </div>
+              ))}
             </div>
           </article>
 

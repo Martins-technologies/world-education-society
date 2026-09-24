@@ -59,6 +59,7 @@ export default {
       fontFamily: {
         display: ['"Fraunces"', 'serif'],
         sans: ['"Inter"', 'system-ui', 'sans-serif'],
+        hand: ['"Caveat"', 'cursive'],
       },
       keyframes: {
         floaty: {

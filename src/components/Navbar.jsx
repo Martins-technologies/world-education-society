@@ -21,7 +21,7 @@ export default function Navbar() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-[#E6EEF4]/80 bg-white">
-      <div className="relative mx-auto flex h-[74px] w-full max-w-[1280px] items-center px-5 sm:px-6 lg:px-8">
+      <div className="relative mx-auto flex h-[74px] w-full max-w-[1380px] items-center px-6 sm:px-8 lg:px-10">
         <Link to="/" className="relative z-10 shrink-0 py-1">
           <img
             src={logo}
@@ -110,7 +110,7 @@ export default function Navbar() {
             transition={{ duration: 0.22, ease: 'easeInOut' }}
             className="overflow-hidden border-t border-[#E6EEF4] bg-white xl:hidden"
           >
-            <div className="mx-auto flex max-w-[1200px] flex-col gap-1 px-6 py-4 sm:px-8 lg:px-10">
+            <div className="mx-auto flex max-w-[1380px] flex-col gap-1 px-6 py-4 sm:px-8 lg:px-10">
               {nav.map((item) => {
                 const active = isActivePath(item.href, location.pathname)
                 const menu = navMenus[item.label]

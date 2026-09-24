@@ -14,7 +14,7 @@ const socials = [
 export default function Footer() {
   return (
     <footer className="border-t border-[#E7E2D8] bg-[#FBF9F4] text-[#1B3A6B]">
-      <div className="mx-auto max-w-[1200px] px-6 pb-6 pt-12 sm:px-8 lg:px-10 lg:pt-14">
+      <div className="mx-auto max-w-[1380px] px-6 pb-6 pt-12 sm:px-8 lg:px-10 lg:pt-14">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-3">
             <Link to="/" className="inline-block">
