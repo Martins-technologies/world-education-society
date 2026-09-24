@@ -75,7 +75,7 @@ export const navMenus = {
     { label: 'Career & Skills Development', href: '/programs#career-skills' },
     { label: 'Community Education', href: '/programs#community-education' },
     { label: 'Vernacular Learning Support', href: '/programs#vernacular-learning' },
-    { label: 'Transportation Assistance', href: '/programs#transportation-assistance' },
+    { label: 'Transportation Assistance', href: '/programs/transportation-assistance' },
   ],
   'Get Involved': [
     { label: 'Volunteer With Us', href: '/get-involved' },

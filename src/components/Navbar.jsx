@@ -3,12 +3,13 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { Link, useLocation } from 'react-router-dom'
 import { HiChevronDown, HiOutlineMagnifyingGlass } from 'react-icons/hi2'
 import { nav, navMenus } from '../data/content'
+import { pageContainer } from './PageHero'
 import logo from '../assets/logo.png'
 
 function isActivePath(href, pathname) {
   if (href === '/') return pathname === '/'
   if (href === '/about-us') return pathname === '/about-us' || pathname === '/about'
-  if (href === '/programs') return pathname === '/programs' || pathname === '/our-programs'
+  if (href === '/programs') return pathname === '/programs' || pathname === '/our-programs' || pathname.startsWith('/programs/')
   if (href === '/get-involved') return pathname === '/get-involved' || pathname === '/getinvolved'
   if (href === '/contact') return pathname === '/contact' || pathname === '/contact-us'
   return pathname === href
@@ -21,7 +22,7 @@ export default function Navbar() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-[#E6EEF4]/80 bg-white">
-      <div className="relative mx-auto flex h-[74px] w-full max-w-[1380px] items-center px-6 sm:px-8 lg:px-12 xl:px-16">
+      <div className={`relative flex h-[74px] min-w-0 items-center ${pageContainer}`}>
         <Link to="/" className="relative z-10 shrink-0 py-1">
           <img
             src={logo}
@@ -30,7 +31,7 @@ export default function Navbar() {
           />
         </Link>
 
-        <nav className="ml-6 hidden flex-1 items-center justify-start gap-3 xl:flex 2xl:ml-10 2xl:gap-4">
+        <nav className="ml-3 hidden min-w-0 flex-1 items-center justify-start gap-1 xl:flex min-[1440px]:ml-5 min-[1440px]:gap-2 2xl:ml-8 2xl:gap-3">
           {nav.filter((item) => item.label !== 'Get Support').map((item) => {
             const active = isActivePath(item.href, location.pathname)
             const menu = navMenus[item.label]
@@ -38,7 +39,7 @@ export default function Navbar() {
               <div key={item.label} className="group relative">
                 <Link
                   to={item.href}
-                  className={`inline-flex items-center gap-0.5 whitespace-nowrap rounded-full px-2.5 py-1.5 text-[13px] font-medium transition-colors ${
+                  className={`inline-flex items-center gap-0.5 whitespace-nowrap rounded-full px-1.5 py-1.5 text-[12px] font-medium transition-colors min-[1440px]:px-2 min-[1440px]:text-[13px] 2xl:px-2.5 ${
                     active
                       ? 'bg-[#D9EEF8] text-[#1B3A6B]'
                       : 'text-[#1B3A6B] hover:bg-[#F3F8FC]'
@@ -82,7 +83,7 @@ export default function Navbar() {
           </Link>
           <Link
             to="/donate"
-            className="inline-flex items-center justify-center rounded-full bg-[#E2A52E] px-3.5 py-2 text-[13px] font-semibold text-white shadow-sm transition-colors hover:bg-[#d1961f] sm:px-5"
+            className="inline-flex items-center justify-center rounded-full bg-[#E2A52E] px-3 py-2 text-[13px] font-semibold text-white shadow-sm transition-colors hover:bg-[#d1961f] sm:px-5"
           >
             Donate
           </Link>
@@ -110,7 +111,7 @@ export default function Navbar() {
             transition={{ duration: 0.22, ease: 'easeInOut' }}
             className="overflow-hidden border-t border-[#E6EEF4] bg-white xl:hidden"
           >
-            <div className="mx-auto flex max-w-[1380px] flex-col gap-1 px-6 py-4 sm:px-8 lg:px-12 xl:px-16">
+            <div className={`flex flex-col gap-1 py-4 ${pageContainer}`}>
               {nav.map((item) => {
                 const active = isActivePath(item.href, location.pathname)
                 const menu = navMenus[item.label]

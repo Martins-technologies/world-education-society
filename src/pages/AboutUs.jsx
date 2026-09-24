@@ -12,7 +12,7 @@ import {
   HiUserGroup,
   HiUsers,
 } from 'react-icons/hi2'
-import PageHero, { heroOutlineButton, heroPrimaryButton } from '../components/PageHero'
+import PageHero, { heroOutlineButton } from '../components/PageHero'
 
 const photos = {
   hero: '/aboutusupdated/wes_about_01_hero.webp',
@@ -257,22 +257,7 @@ export default function AboutUs() {
         imageLayout="full"
         imageFit="contain"
         imagePosition="center"
-        imageNotes={
-          <p className="absolute right-3 top-[calc(1rem+5%)] w-[46%] text-right font-hand text-[1.45rem] font-semibold leading-[1.12] text-white [text-shadow:0_2px_12px_rgba(15,40,70,0.55)] sm:right-5 sm:top-[calc(1.25rem+5%)] sm:w-auto sm:max-w-[11.5rem] sm:text-[2rem] lg:right-6 lg:top-[calc(1.5rem+5%)] lg:max-w-[12rem] lg:text-[2.15rem]">
-            People.
-            <br />
-            Education.
-            <br />
-            Stronger
-            <br />
-            Communities.
-          </p>
-        }
       >
-        <a href="#our-story" className={heroPrimaryButton}>
-          Get to Know Us
-          <HiArrowRight className="h-4 w-4" aria-hidden="true" />
-        </a>
         <Link to="/our-impact" className={heroOutlineButton}>
           Our Impact
         </Link>
@@ -287,13 +272,6 @@ export default function AboutUs() {
                 alt="Students with backpacks looking toward the Calgary skyline"
                 className="h-full w-full object-cover object-[62%_center]"
               />
-              <p className="absolute right-4 top-4 max-w-[46%] text-right font-hand text-[1.7rem] font-semibold leading-tight text-white [text-shadow:0_2px_10px_rgba(15,40,70,0.45)] sm:right-5 sm:top-5 sm:text-[2.05rem]">
-                Education
-                <br />
-                Changes
-                <br />
-                Lives.
-              </p>
             </div>
           </div>
 
@@ -308,9 +286,6 @@ export default function AboutUs() {
             <p className="mt-4 text-[15px] leading-relaxed text-[#5C6B7C]">
               Today, we work with individuals, families, schools and community organizations to remove barriers to education and create pathways to brighter futures.
             </p>
-            <div className="mt-6">
-              <FilledAction to="#our-milestones">Our Journey</FilledAction>
-            </div>
           </div>
 
           <div className="space-y-7 lg:col-span-3">
@@ -350,11 +325,6 @@ export default function AboutUs() {
               alt="A student writing during a learning session"
               className="h-full w-full object-cover object-[center_18%]"
             />
-            <figure className="absolute right-3 top-3 max-w-[168px] rounded-xl bg-[#1B3A6B] px-3.5 py-2.5 text-white shadow-lg sm:max-w-[190px]">
-              <blockquote className="text-[15px] font-semibold leading-snug">
-                “When young people are supported, communities thrive.”
-              </blockquote>
-            </figure>
           </div>
         </div>
       </section>
@@ -406,18 +376,9 @@ export default function AboutUs() {
           <div className="relative min-h-[260px] overflow-hidden rounded-[22px] bg-[#E7EEF2]">
             <img
               src={photos.quote}
-              alt="Students with backpacks looking toward the Calgary skyline"
+              alt="A graduate holding a diploma on campus"
               className="h-full w-full object-cover object-center"
             />
-            <p className="absolute right-4 top-4 max-w-[46%] text-right font-hand text-[1.65rem] font-semibold leading-tight text-white [text-shadow:0_2px_10px_rgba(15,40,70,0.45)] sm:right-5 sm:top-5 sm:max-w-[11rem] sm:text-[1.95rem]">
-              More
-              <br />
-              Opportunities.
-              <br />
-              Brighter
-              <br />
-              Tomorrows.
-            </p>
           </div>
 
           <div className="flex flex-col justify-center rounded-[22px] bg-[#E7F6EA] px-6 py-7">
