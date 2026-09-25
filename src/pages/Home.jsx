@@ -183,7 +183,7 @@ export default function Home() {
         title={
           <>
             Education Creates Opportunity.
-            <span className="mt-2 block text-[1.2rem] leading-snug text-[#2E9A4A] sm:text-[1.4rem] lg:text-[1.25rem] xl:text-[1.45rem] min-[1440px]:text-[1.6rem]">
+            <span className="mt-2 block text-[1.05rem] leading-snug text-[#2E9A4A] sm:text-[1.15rem] lg:text-[1.02rem] xl:text-[1.1rem] min-[1440px]:text-[1.2rem]">
               We Help Make It Accessible.
             </span>
           </>
