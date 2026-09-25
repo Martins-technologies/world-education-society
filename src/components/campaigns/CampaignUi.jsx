@@ -95,7 +95,7 @@ export function SectionIntro({ children, className = '' }) {
 
 export function ArrowLink({ to, children, onClick, className = '' }) {
   const baseClass =
-    'inline-flex items-center gap-1.5 text-sm font-semibold text-[#1E4E8C] transition-colors hover:text-[#163E70] whitespace-nowrap'
+    'inline-flex items-center gap-1.5 text-sm font-semibold text-[#1E4E8C] transition-colors hover:text-[#163E70]'
   if (onClick) {
     return (
       <button type="button" onClick={onClick} className={`${baseClass} ${className}`}>
@@ -146,18 +146,18 @@ export function CampaignCard({ campaign }) {
           <CampaignMeta dates={campaign.dates} location={campaign.location} audience={campaign.audience} />
           <ProgressBar value={campaign.progress} label={campaign.progressLabel} />
         </div>
-        <div className="mt-5 grid grid-cols-2 gap-2.5">
+        <div className="mt-5 flex flex-col gap-2.5 min-[420px]:flex-row">
           <ActionButton
             to={campaign.primaryCta.href}
             variant={primaryCtaVariant(campaign.primaryCta.label)}
-            className="!justify-center !px-4 !py-2.5 !text-[13px]"
+            className="min-w-0 flex-1 !justify-center !px-3 !py-2.5 !text-[13px]"
           >
             {campaign.primaryCta.label}
           </ActionButton>
           <ActionButton
             to={campaign.secondaryCta.href}
             variant="outline"
-            className="!justify-center !px-4 !py-2.5 !text-[13px]"
+            className="min-w-0 flex-1 !justify-center !px-3 !py-2.5 !text-[13px]"
           >
             {campaign.secondaryCta.label}
           </ActionButton>
@@ -236,9 +236,9 @@ export function CampaignSectionSubintro({ children }) {
 export function CampaignSplitSectionHeader({ title, linkTo, linkLabel, intro }) {
   return (
     <div className="mb-5">
-      <div className="flex items-start justify-between gap-3">
-        <SectionHeading className="!text-[1.5rem] leading-tight sm:!text-[1.65rem]">{title}</SectionHeading>
-        <ArrowLink to={linkTo} className="mt-0.5 shrink-0 text-[13px] sm:text-sm">
+      <div className="flex flex-wrap items-start justify-between gap-x-3 gap-y-2">
+        <SectionHeading className="min-w-0 max-w-full !text-[1.45rem] leading-tight sm:!text-[1.65rem]">{title}</SectionHeading>
+        <ArrowLink to={linkTo} className="mt-0.5 text-[13px] sm:text-sm">
           {linkLabel}
         </ArrowLink>
       </div>
@@ -251,7 +251,7 @@ export function CampaignOutlineButton({ to, children, className = '' }) {
   return (
     <Link
       to={to}
-      className={`inline-flex items-center justify-center whitespace-nowrap rounded-full border border-[#1B3A6B] bg-white px-6 py-2.5 text-[13px] font-semibold text-[#1B3A6B] transition-colors hover:bg-[#F6F9FB] sm:px-7 sm:py-3 sm:text-[14px] ${className}`}
+      className={`inline-flex max-w-full items-center justify-center rounded-full border border-[#1B3A6B] bg-white px-6 py-2.5 text-center text-[13px] font-semibold text-[#1B3A6B] transition-colors hover:bg-[#F6F9FB] sm:px-7 sm:py-3 sm:text-[14px] ${className}`}
     >
       {children}
     </Link>

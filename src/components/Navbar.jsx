@@ -25,11 +25,11 @@ export default function Navbar() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-[#E6EEF4]/80 bg-white">
       <div className={`relative flex h-[74px] min-w-0 items-center ${pageContainer}`}>
-        <Link to="/" className="relative z-10 shrink-0 py-1">
+        <Link to="/" className="relative z-10 min-w-0 shrink py-1">
           <img
             src={logo}
             alt="World Education Society"
-            className="h-10 w-auto object-contain sm:h-12"
+            className="h-9 w-auto max-w-[42vw] object-contain object-left sm:h-12 sm:max-w-none"
           />
         </Link>
 

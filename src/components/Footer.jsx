@@ -15,8 +15,8 @@ export default function Footer() {
   return (
     <footer className="border-t border-[#E7E2D8] bg-[#FBF9F4] text-[#1B3A6B]">
       <div className="mx-auto max-w-[1380px] px-6 pb-6 pt-12 sm:px-8 lg:px-12 xl:px-16 lg:pt-14">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8">
-          <div className="lg:col-span-3">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 xl:gap-8">
+          <div className="min-w-0">
             <Link to="/" className="inline-block">
               <img src={logo} alt="World Education Society" className="h-14 w-auto object-contain" />
             </Link>
@@ -37,7 +37,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="lg:col-span-3">
+          <div className="min-w-0">
             <h2 className="font-sans text-[13px] font-semibold text-[#1B3A6B]">Quick Links</h2>
             <div className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2.5">
               <ul className="space-y-2.5">
@@ -61,7 +61,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="lg:col-span-2">
+          <div className="min-w-0">
             <h2 className="font-sans text-[13px] font-semibold text-[#1B3A6B]">Our Programs</h2>
             <ul className="mt-4 space-y-2.5">
               {footerLinks.programs.map((link) => (
@@ -74,7 +74,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="lg:col-span-2">
+          <div className="min-w-0">
             <h2 className="font-sans text-[13px] font-semibold text-[#1B3A6B]">Get Involved</h2>
             <ul className="mt-4 space-y-2.5">
               {footerLinks.involved.map((link) => (
@@ -87,12 +87,12 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="lg:col-span-2">
+          <div className="min-w-0 sm:col-span-2 lg:col-span-1 xl:col-span-1">
             <h2 className="font-sans text-[13px] font-semibold text-[#1B3A6B]">Contact Us</h2>
             <ul className="mt-4 space-y-3 text-[13px] text-[#5C6B7C]">
               <li className="flex items-start gap-2.5">
                 <HiEnvelope className="mt-0.5 h-4 w-4 shrink-0 text-[#1E4E8C]" aria-hidden="true" />
-                <a href={`mailto:${footerLinks.contactInfo.email}`} className="transition-colors hover:text-[#1E4E8C]">
+                <a href={`mailto:${footerLinks.contactInfo.email}`} className="min-w-0 break-all transition-colors hover:text-[#1E4E8C]">
                   {footerLinks.contactInfo.email}
                 </a>
               </li>

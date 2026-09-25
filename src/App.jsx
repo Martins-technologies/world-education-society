@@ -23,11 +23,11 @@ import CampaignOrganizeDrivePage from './pages/CampaignOrganizeDrivePage'
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#FBF9F4]">
+    <div className="min-h-screen min-w-0 overflow-x-clip bg-[#FBF9F4]">
       <ComingSoonProvider>
       <ScrollToTop />
       <Navbar />
-      <main>
+      <main className="min-w-0">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<AboutUs />} />

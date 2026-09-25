@@ -183,7 +183,7 @@ const volunteerRequirements = [
 
 const labelClass = 'mb-1.5 block text-[12px] font-semibold text-[#1B3A6B]'
 const controlClass =
-  'w-full rounded-lg border border-[#E3EAF1] bg-white px-3 py-2.5 text-[13px] text-[#1B3A6B] placeholder:text-[#9AA8B5] focus:border-[#1E4E8C] focus:outline-none'
+  'w-full min-w-0 rounded-lg border border-[#E3EAF1] bg-white px-3 py-2.5 text-base text-[#1B3A6B] placeholder:text-[#9AA8B5] focus:border-[#1E4E8C] focus:outline-none'
 
 function Required() {
   return <span className="text-[#D14343]"> *</span>
@@ -338,7 +338,7 @@ export default function VolunteerWithUsPage() {
     try {
       await submitFormFromElement({
         form,
-        subject: 'Volunteer Application — World Education Society',
+        subject: 'Volunteer With Us — Application — World Education Society',
         sections,
         replyTo,
         fileFieldNames: ['attachment'],

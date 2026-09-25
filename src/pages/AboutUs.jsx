@@ -266,18 +266,18 @@ export default function AboutUs() {
       <section id="our-story" className="scroll-mt-24 bg-[#FBF9F4]">
         <div className="mx-auto grid max-w-[1380px] items-center gap-10 px-6 py-14 sm:px-8 lg:grid-cols-12 lg:gap-10 lg:px-12 xl:px-16 lg:py-16">
           <div className="lg:col-span-4">
-            <div className="relative h-[280px] overflow-hidden rounded-[24px] bg-[#E7EEF2] sm:h-[320px] lg:h-[340px]">
+            <div className="rounded-[24px] bg-[#E7EEF2] max-lg:overflow-visible lg:relative lg:h-[340px] lg:overflow-hidden">
               <img
                 src={photos.story}
                 alt="Students with backpacks looking toward the Calgary skyline"
-                className="h-full w-full object-cover object-[62%_center]"
+                className="block w-full max-lg:h-auto max-lg:object-contain max-lg:object-center lg:h-full lg:object-cover lg:object-[62%_center]"
               />
             </div>
           </div>
 
           <div className="lg:col-span-5">
             <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#7B8C9C]">Our Story</p>
-            <h2 className="mt-3 whitespace-nowrap font-sans text-[clamp(1.05rem,4.4vw,2rem)] font-bold leading-none tracking-tight text-[#1B3A6B]">
+            <h2 className="mt-3 font-sans text-[1.7rem] font-bold leading-tight tracking-tight text-[#1B3A6B] sm:text-[2rem]">
               A Brighter Future, Together.
             </h2>
             <p className="mt-4 text-[15px] leading-relaxed text-[#5C6B7C]">
@@ -319,11 +319,11 @@ export default function AboutUs() {
             </div>
           </div>
 
-          <div className="relative min-h-[240px] overflow-hidden rounded-[22px] bg-[#E7EEF2] sm:min-h-[280px]">
+          <div className="rounded-[22px] bg-[#E7EEF2] max-lg:overflow-visible lg:relative lg:min-h-[280px] lg:overflow-hidden">
             <img
               src={photos.purpose}
               alt="A student writing during a learning session"
-              className="h-full w-full object-cover object-[center_18%]"
+              className="block w-full max-lg:h-auto max-lg:object-contain max-lg:object-center lg:absolute lg:inset-0 lg:h-full lg:object-cover lg:object-[center_18%]"
             />
           </div>
         </div>
@@ -370,11 +370,11 @@ export default function AboutUs() {
             </div>
           </div>
 
-          <div className="relative min-h-[260px] overflow-hidden rounded-[22px] bg-[#E7EEF2]">
+          <div className="rounded-[22px] bg-[#E7EEF2] max-lg:overflow-visible lg:relative lg:min-h-[260px] lg:overflow-hidden">
             <img
               src={photos.quote}
               alt="A graduate holding a diploma on campus"
-              className="h-full w-full object-cover object-center"
+              className="block w-full max-lg:h-auto max-lg:object-contain max-lg:object-center lg:absolute lg:inset-0 lg:h-full lg:object-cover lg:object-center"
             />
           </div>
 
@@ -425,11 +425,11 @@ export default function AboutUs() {
           <ul className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-5">
             {leaders.map((person) => (
               <li key={person.name} className="overflow-hidden rounded-2xl bg-white shadow-[0_8px_28px_rgba(27,58,107,0.06)] ring-1 ring-[#E8EEF4]">
-                <div className="aspect-[5/4] overflow-hidden bg-[#E7EEF2]">
+                <div className="bg-[#E7EEF2] max-lg:overflow-visible lg:aspect-[5/4] lg:overflow-hidden">
                   <img
                     src={person.image}
                     alt={person.alt}
-                    className="h-full w-full object-cover object-[center_18%]"
+                    className="block w-full max-lg:h-auto max-lg:object-contain max-lg:object-center lg:h-full lg:object-cover lg:object-[center_18%]"
                   />
                 </div>
                 <div className="px-4 py-3.5">
@@ -467,18 +467,18 @@ export default function AboutUs() {
       </section>
 
       <section className="bg-white">
-        <div className="mx-auto grid max-w-[1380px] items-stretch gap-5 px-6 pb-14 pt-2 sm:px-8 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.15fr)_minmax(0,0.95fr)] lg:items-center lg:gap-8 lg:px-12 xl:px-16 lg:pb-16">
-          <div className="h-[220px] overflow-hidden rounded-[22px] bg-[#E7EEF2] sm:h-[250px] lg:h-[230px]">
+        <div className="mx-auto grid max-w-[1380px] max-lg:items-start items-stretch gap-5 px-6 pb-14 pt-2 sm:px-8 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.15fr)_minmax(0,0.95fr)] lg:items-center lg:gap-8 lg:px-12 xl:px-16 lg:pb-16">
+          <div className="rounded-[22px] bg-[#E7EEF2] max-lg:overflow-visible lg:h-[230px] lg:overflow-hidden">
             <img
               src={photos.serve}
               alt="Students and partners working together"
-              className="h-full w-full object-cover object-[center_40%]"
+              className="block w-full max-lg:h-auto max-lg:object-contain max-lg:object-center lg:h-full lg:object-cover lg:object-[center_40%]"
             />
           </div>
 
           <div>
             <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#7B8C9C]">Our Partnerships</p>
-            <h2 className="mt-2 whitespace-nowrap font-sans text-[clamp(1.35rem,3.2vw,2.05rem)] font-bold leading-none tracking-tight text-[#1B3A6B]">
+            <h2 className="mt-2 font-sans text-[1.7rem] font-bold leading-tight tracking-tight text-[#1B3A6B] sm:text-[2.05rem]">
               Stronger Together
             </h2>
             <p className="mt-3 max-w-md text-[14px] leading-relaxed text-[#5C6B7C]">

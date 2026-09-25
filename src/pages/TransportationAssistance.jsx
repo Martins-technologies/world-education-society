@@ -47,7 +47,7 @@ const accessOptions = ['None', 'Wheelchair access', 'Mobility support', 'Other a
 
 const labelClass = 'mb-1.5 block text-[12px] font-semibold text-[#1B3A6B]'
 const controlClass =
-  'w-full rounded-lg border border-[#E3EAF1] bg-white px-3 py-2.5 text-[13px] text-[#1B3A6B] placeholder:text-[#9AA8B5] focus:border-[#1E4E8C] focus:outline-none'
+  'w-full min-w-0 rounded-lg border border-[#E3EAF1] bg-white px-3 py-2.5 text-base text-[#1B3A6B] placeholder:text-[#9AA8B5] focus:border-[#1E4E8C] focus:outline-none'
 
 function Required() {
   return <span className="text-[#D14343]"> *</span>
@@ -219,7 +219,7 @@ export default function TransportationAssistance() {
     ]
     try {
       await submitFormEmail({
-        subject: 'Transportation Assistance Application — World Education Society',
+        subject: 'Transportation Assistance — Application — World Education Society',
         sections,
         replyTo: text('email'),
       })
@@ -520,7 +520,7 @@ export default function TransportationAssistance() {
               <ul className="mt-3 space-y-2 text-[13px] text-[#3E5164]">
                 <li className="flex items-start gap-2">
                   <HiOutlineEnvelope className="mt-0.5 h-4 w-4 shrink-0 text-[#1E4E8C]" aria-hidden="true" />
-                  <a href="mailto:info@worldeducationsociety.com" className="hover:text-[#1E4E8C]">
+                  <a href="mailto:info@worldeducationsociety.com" className="min-w-0 break-all hover:text-[#1E4E8C]">
                     info@worldeducationsociety.com
                   </a>
                 </li>

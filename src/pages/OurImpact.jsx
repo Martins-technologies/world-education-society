@@ -347,8 +347,8 @@ function SectionHeading({ title, action, to, comingSoonMessage }) {
     'inline-flex shrink-0 items-center gap-1.5 text-[12.5px] font-semibold text-[#1E5AAF] transition-colors hover:text-[#163E70]'
 
   return (
-    <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 lg:flex-nowrap">
-      <h2 className="font-sans text-[1.35rem] font-bold leading-tight tracking-tight text-[#1B3A6B] sm:text-[1.45rem] lg:whitespace-nowrap lg:text-[1.4rem]">
+    <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+      <h2 className="min-w-0 font-sans text-[1.35rem] font-bold leading-tight tracking-tight text-[#1B3A6B] sm:text-[1.45rem]">
         {title}
       </h2>
       {action ? (
@@ -533,8 +533,12 @@ export default function OurImpact() {
             <div className="mt-6 grid grid-cols-2 gap-4 lg:grid-cols-4">
               {outcomes.map((item) => (
                 <article key={item.value}>
-                  <div className="h-[132px] overflow-hidden rounded-2xl bg-[#E7EEF2] sm:h-[148px]">
-                    <img src={item.image} alt={item.alt} className="h-full w-full object-cover object-[center_18%]" />
+                  <div className="overflow-hidden rounded-2xl bg-[#E7EEF2] lg:h-[148px]">
+                    <img
+                      src={item.image}
+                      alt={item.alt}
+                      className="block h-auto w-full lg:h-full lg:object-cover lg:object-[center_18%]"
+                    />
                   </div>
                   <p className="mt-3 font-sans text-[1.45rem] font-bold leading-none text-[#1B3A6B]">{item.value}</p>
                   <p className="mt-2 text-[12px] leading-snug text-[#6A7A8A]">{item.text}</p>

@@ -7,6 +7,24 @@
     scroll-behavior: smooth;
   }
 
+  img,
+  video,
+  iframe,
+  canvas {
+    max-width: 100%;
+  }
+
+  input,
+  select,
+  textarea {
+    max-width: 100%;
+  }
+
+  /* Let grid tracks shrink instead of forcing the page wider than the screen. */
+  .grid > * {
+    min-width: 0;
+  }
+
   ::selection {
     background-color: #ec9136;
     color: #ffffff;

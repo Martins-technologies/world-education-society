@@ -1,8 +1,15 @@
 import { FORM_RECIPIENT_EMAIL } from '../config/email.js'
 
-const FORMSUBMIT_ENDPOINT = `https://formsubmit.co/${encodeURIComponent(FORM_RECIPIENT_EMAIL)}`
-const FORMSUBMIT_AJAX_ENDPOINT = `https://formsubmit.co/ajax/${encodeURIComponent(FORM_RECIPIENT_EMAIL)}`
 const GENERIC_ERROR = 'Unable to send your message. Please try again or contact us directly.'
+
+function formsubmitEndpoints(recipient) {
+  const to = recipient || FORM_RECIPIENT_EMAIL
+  const encoded = encodeURIComponent(to)
+  return {
+    post: `https://formsubmit.co/${encoded}`,
+    ajax: `https://formsubmit.co/ajax/${encoded}`,
+  }
+}
 
 /**
  * Flattens sections into ordered FormSubmit fields, using a heading row per
@@ -33,7 +40,8 @@ function buildMetaFields({ subject, replyTo }) {
  * FormSubmit's AJAX endpoint discards uploads, so submissions carrying a file
  * post a real multipart form into a hidden iframe instead.
  */
-function submitWithAttachments({ subject, replyTo, fields, files }) {
+function submitWithAttachments({ subject, replyTo, fields, files, recipient }) {
+  const { post: formSubmitEndpoint } = formsubmitEndpoints(recipient)
   return new Promise((resolve) => {
     const frameName = `wes-form-${Date.now()}`
     const iframe = document.createElement('iframe')
@@ -44,7 +52,7 @@ function submitWithAttachments({ subject, replyTo, fields, files }) {
     document.body.appendChild(iframe)
 
     const form = document.createElement('form')
-    form.action = FORMSUBMIT_ENDPOINT
+    form.action = formSubmitEndpoint
     form.method = 'POST'
     form.enctype = 'multipart/form-data'
     form.target = frameName
@@ -95,12 +103,13 @@ function submitWithAttachments({ subject, replyTo, fields, files }) {
   })
 }
 
-async function submitWithoutAttachments({ subject, replyTo, fields }) {
+async function submitWithoutAttachments({ subject, replyTo, fields, recipient }) {
+  const { ajax: formSubmitAjaxEndpoint } = formsubmitEndpoints(recipient)
   const body = new FormData()
   Object.entries(buildMetaFields({ subject, replyTo })).forEach(([key, value]) => body.append(key, value))
   Object.entries(fields).forEach(([key, value]) => body.append(key, value))
 
-  const response = await fetch(FORMSUBMIT_AJAX_ENDPOINT, {
+  const response = await fetch(formSubmitAjaxEndpoint, {
     method: 'POST',
     body,
     headers: { Accept: 'application/json' },
@@ -117,15 +126,22 @@ async function submitWithoutAttachments({ subject, replyTo, fields }) {
  * Sends a website form to the recipient in src/config/email.js.
  * Pass `sections` for grouped output and `files` for attachments.
  */
-export async function submitFormEmail({ subject, replyTo, sections = [], fields = {}, files = [] }) {
+export async function submitFormEmail({
+  subject,
+  replyTo,
+  sections = [],
+  fields = {},
+  files = [],
+  recipient,
+}) {
   const payload = sections.length > 0 ? { ...fieldsFromSections(sections), ...fields } : fields
   const attachments = files.map((entry) => (entry instanceof File ? entry : entry?.file)).filter((file) => file instanceof File && file.size > 0)
 
   const canAttach = typeof DataTransfer !== 'undefined' && typeof document !== 'undefined'
   if (attachments.length > 0 && canAttach) {
-    return submitWithAttachments({ subject, replyTo, fields: payload, files: attachments })
+    return submitWithAttachments({ subject, replyTo, fields: payload, files: attachments, recipient })
   }
-  return submitWithoutAttachments({ subject, replyTo, fields: payload })
+  return submitWithoutAttachments({ subject, replyTo, fields: payload, recipient })
 }
 
 /** Collects files from a live form's file inputs, then sends via {@link submitFormEmail}. */
@@ -137,6 +153,7 @@ export async function submitFormFromElement({
   fields = {},
   fileFieldNames = ['attachment', 'resume'],
   extraFiles = [],
+  recipient,
 }) {
   const data = new FormData(form)
   const files = []
@@ -151,5 +168,5 @@ export async function submitFormFromElement({
     if (file instanceof File && file.size > 0 && !alreadyAdded(file)) files.push(file)
   })
 
-  return submitFormEmail({ subject, replyTo, sections, fields, files })
+  return submitFormEmail({ subject, replyTo, sections, fields, files, recipient })
 }

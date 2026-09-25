@@ -11,9 +11,10 @@ import {
 import PageHero, { heroPrimaryButton, pageContainer } from '../components/PageHero'
 import { ArrowLink, SectionHeading } from '../components/campaigns/CampaignUi'
 import { footerLinks } from '../data/content'
+import { CONTACT_FORM_RECIPIENT_EMAIL } from '../config/email.js'
 import { submitFormEmail } from '../utils/submitFormEmail.js'
 
-const CONTACT_HERO_IMAGE = '/contacthero.jpeg'
+const CONTACT_HERO_IMAGE = '/contact.webp'
 const { contactInfo } = footerLinks
 
 const contactingAsOptions = [
@@ -34,7 +35,7 @@ const faqQuestions = [
 
 const labelClass = 'mb-1.5 block text-[12px] font-semibold text-[#1B3A6B]'
 const controlClass =
-  'w-full rounded-lg border border-[#E3EAF1] bg-white px-3 py-2.5 text-[13px] text-[#1B3A6B] placeholder:text-[#9AA8B5] focus:border-[#1E4E8C] focus:outline-none'
+  'w-full min-w-0 rounded-lg border border-[#E3EAF1] bg-white px-3 py-2.5 text-base text-[#1B3A6B] placeholder:text-[#9AA8B5] focus:border-[#1E4E8C] focus:outline-none'
 
 function Required() {
   return <span className="text-[#D14343]"> *</span>
@@ -132,7 +133,8 @@ export default function ContactUsPage() {
 
     try {
       await submitFormEmail({
-        subject: `Contact Us: ${formData.subject}`,
+        recipient: CONTACT_FORM_RECIPIENT_EMAIL,
+        subject: `Contact Us — ${formData.contactingAs} — ${formData.subject}`,
         replyTo: formData.email,
         sections: [
           {
@@ -171,16 +173,17 @@ export default function ContactUsPage() {
         title={
           <>
             Contact Us
-            <span className="mt-2 block text-[1.05rem] font-semibold leading-snug text-[#2E9A4A] sm:text-[1.15rem] lg:text-[1.02rem] xl:text-[1.1rem] min-[1440px]:text-[1.2rem]">
+            <span className="mt-2 block text-[1.05rem] leading-snug text-[#2E9A4A] sm:text-[1.15rem] lg:text-[1.02rem] xl:text-[1.1rem] min-[1440px]:text-[1.2rem]">
               We&apos;re Here to Help.
             </span>
           </>
         }
         description="Students, families, volunteers, and partners are welcome to reach out. Together, we can create brighter futures and stronger communities."
         image={CONTACT_HERO_IMAGE}
-        imageAlt="Three students smiling together outdoors with laptops and notebooks"
+        imageAlt="Students smiling together on campus"
         imageLayout="full"
-        imagePosition="center center"
+        imagePosition="42% center"
+        imageFetchPriority="high"
         breadcrumb={
           <nav aria-label="Breadcrumb" className="mb-4 max-w-full text-[13px] leading-relaxed text-[#8A97A6]">
             <Link to="/" className="transition-colors hover:text-[#1E4E8C]">
@@ -196,9 +199,9 @@ export default function ContactUsPage() {
 
       <section className="border-t border-[#E6EEF4] bg-[#F7FBFE] py-12 sm:py-16">
         <div className={pageContainer}>
-          <div className="grid gap-8 lg:grid-cols-2 lg:gap-10 xl:gap-12">
+          <div className="grid min-w-0 gap-8 lg:grid-cols-2 lg:gap-10 xl:gap-12">
             {/* Send Us a Message */}
-            <div className="rounded-2xl border border-[#E6EEF4] bg-[#EAF4FB]/60 p-6 shadow-[0_12px_30px_-24px_rgba(27,58,107,0.35)] sm:p-8">
+            <div className="min-w-0 rounded-2xl border border-[#E6EEF4] bg-[#EAF4FB]/60 p-4 shadow-[0_12px_30px_-24px_rgba(27,58,107,0.35)] sm:p-8">
               <h2 className="font-display text-[1.5rem] font-bold leading-tight text-[#1B3A6B] sm:text-[1.65rem]">
                 Send Us a Message
               </h2>
@@ -332,7 +335,7 @@ export default function ContactUsPage() {
             </div>
 
             {/* Our Contact Information */}
-            <div className="rounded-2xl border border-[#E6EEF4] bg-white p-6 shadow-[0_12px_30px_-24px_rgba(27,58,107,0.35)] sm:p-8">
+            <div className="min-w-0 rounded-2xl border border-[#E6EEF4] bg-white p-4 shadow-[0_12px_30px_-24px_rgba(27,58,107,0.35)] sm:p-8">
               <h2 className="font-display text-[1.5rem] font-bold leading-tight text-[#1B3A6B] sm:text-[1.65rem]">
                 Our Contact Information
               </h2>
@@ -342,7 +345,7 @@ export default function ContactUsPage() {
 
               <div className="mt-4">
                 <ContactInfoRow icon={HiOutlineEnvelope} title="Email">
-                  <a href={`mailto:${contactInfo.email}`} className="transition-colors hover:text-[#1E4E8C]">
+                  <a href={`mailto:${contactInfo.email}`} className="break-all transition-colors hover:text-[#1E4E8C]">
                     {contactInfo.email}
                   </a>
                 </ContactInfoRow>

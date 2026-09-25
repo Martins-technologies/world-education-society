@@ -91,12 +91,6 @@ const PROGRAM_LEARN_MORE = {
     ],
     whoCanJoin: 'Students, graduates, job seekers, and individuals planning their next career step.',
   },
-  'skills-development': {
-    overview:
-      'A practical learning program focused on strengthening personal, professional, and transferable skills for education, employment, and everyday life.',
-    learn: ['Communication', 'Teamwork', 'Problem-solving', 'Time management', 'Workplace skills'],
-    whoCanJoin: 'Students, job seekers, professionals, and community members interested in building practical skills.',
-  },
   'student-support': {
     overview:
       'Supportive learning opportunities that help youth and community members build confidence, communication skills, and positive life skills.',
@@ -127,8 +121,8 @@ const programs = [
   },
   {
     id: 'student-support',
-    title: 'Youth & Community Learning',
-    desc: 'Supportive learning opportunities that help youth and community members build confidence and life skills.',
+    title: 'Student Support',
+    desc: 'Academic, social and wellness support to help youth succeed.',
     eligibility: 'Youth (ages 12–29)',
     delivery: 'In-person & virtual',
     image: '/programsupdated/03_Student_Support.webp',
@@ -143,7 +137,7 @@ const programs = [
     title: 'Study Opportunities',
     desc: 'Information and support for international and domestic study options (including study abroad).',
     eligibility: 'High school & post-secondary students',
-    delivery: 'Online & in-person',
+    delivery: 'Online & In-person',
     image: '/programsupdated/04_Study_Opportunities.webp',
     alt: 'A student with a backpack looking toward a city skyline',
     audiences: ['students', 'youth', 'lifelong'],
@@ -168,8 +162,8 @@ const programs = [
   },
   {
     id: 'career-skills',
-    title: 'Career Development',
-    desc: 'Practical support for employment, career changes, and professional growth.',
+    title: 'Career & Skills Development',
+    desc: 'Workshops, training and mentorship to build real-world skills.',
     eligibility: 'Youth and emerging professionals',
     delivery: 'In-person & virtual',
     image: '/programsupdated/07_Career_and_Skills_Development.webp',
@@ -180,22 +174,9 @@ const programs = [
     Icon: HiOutlineChartBar,
   },
   {
-    id: 'skills-development',
-    title: 'Skills Development',
-    desc: 'Strengthen personal, professional, and transferable skills for education, work, and everyday life.',
-    eligibility: 'Students, job seekers, professionals, and community members',
-    delivery: 'In-person & virtual',
-    image: '/programsupdated/10_Digital_Skills_for_Tomorrow.webp',
-    alt: 'Learners building practical skills together',
-    audiences: ['youth', 'lifelong', 'students', 'communities'],
-    categories: ['skills'],
-    tint: 'blue',
-    Icon: HiOutlineChartBar,
-  },
-  {
     id: 'community-education',
-    title: 'Community Education Programs',
-    desc: 'Accessible learning that builds practical knowledge and encourages community participation.',
+    title: 'Community Education',
+    desc: 'Programs and resources that strengthen communities through learning.',
     eligibility: 'Community members of all ages',
     delivery: 'In-person & community partnerships',
     image: '/programsupdated/06_Community_Education.webp',
@@ -507,7 +488,8 @@ export default function OurPrograms() {
               Home
             </Link>
             <span className="mx-1.5" aria-hidden="true">
-              ›
+              {' '}
+              &gt;{' '}
             </span>
             <span className="text-[#5C6B7C]">Our Programs</span>
           </nav>
@@ -515,7 +497,7 @@ export default function OurPrograms() {
       />
 
       <section className="border-y border-[#E6EEF4] bg-white">
-        <div className="mx-auto flex max-w-[1380px] gap-1 overflow-x-auto px-6 sm:px-8 lg:px-12 xl:px-16">
+        <div className="mx-auto grid max-w-[1380px] grid-cols-2 sm:grid-cols-3 lg:flex lg:px-12 xl:px-16 px-4 sm:px-8">
           {audiences.map(({ id, label, Icon }) => {
             const active = audience === id
             return (
@@ -523,27 +505,29 @@ export default function OurPrograms() {
                 key={id}
                 type="button"
                 onClick={() => setAudience(id)}
-                className={`flex min-w-[148px] flex-1 flex-col items-center gap-2 border-b-[3px] px-3 py-4 text-[13px] font-semibold transition-colors ${
+                className={`flex min-w-0 flex-col items-center gap-2 border-b-[3px] px-2 py-3 text-center text-[13px] font-semibold transition-colors sm:px-3 sm:py-4 lg:min-w-[148px] lg:flex-1 ${
+                  id === 'lifelong' ? 'col-span-2 sm:col-span-1 ' : ''
+                }${
                   active
                     ? 'border-[#2F6FE4] text-[#2F6FE4]'
                     : 'border-transparent text-[#7B8B9A] hover:text-[#1B3A6B]'
                 }`}
               >
-                <Icon className="h-5 w-5" aria-hidden="true" />
-                <span className="whitespace-nowrap">{label}</span>
+                <Icon className="h-5 w-5 shrink-0" aria-hidden="true" />
+                <span className="leading-snug">{label}</span>
               </button>
             )
           })}
         </div>
       </section>
 
-      <section className="relative scroll-mt-24 overflow-hidden bg-[#F7FBFE] py-12 sm:py-14">
+      <section id="explore-programs" className="relative scroll-mt-24 overflow-hidden bg-[#F7FBFE] py-12 sm:py-14">
         <SoftBlobs />
         <div className="relative mx-auto max-w-[1380px] px-6 sm:px-8 lg:px-12 xl:px-16">
           <div className="grid items-center gap-5 lg:grid-cols-[auto_minmax(0,1fr)_260px] lg:gap-10">
             <div>
               <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#8A97A6]">Programs</p>
-              <h2 className="mt-1.5 whitespace-nowrap font-display text-[2rem] font-bold leading-none tracking-tight text-[#1B3A6B] sm:text-[2.15rem]">
+              <h2 className="mt-1.5 font-display text-[1.75rem] font-bold leading-tight tracking-tight text-[#1B3A6B] sm:text-[2.15rem]">
                 Explore Our Programs
               </h2>
             </div>
@@ -617,16 +601,15 @@ export default function OurPrograms() {
                         </span>
                       </li>
                     </ul>
-                    {program.href || PROGRAM_LEARN_MORE[program.id] ? (
-                      <div className="mt-3.5 flex flex-wrap gap-2">
-                        {PROGRAM_LEARN_MORE[program.id] ? (
-                          <LearnMoreTrigger onClick={() => setLearnMoreProgram(program)} />
-                        ) : null}
-                        {program.href ? (
-                          <LearnMore href={program.href} label={program.action || 'Learn More'} />
-                        ) : null}
-                      </div>
-                    ) : null}
+                    <div className="mt-3.5">
+                      {PROGRAM_LEARN_MORE[program.id] ? (
+                        <LearnMoreTrigger onClick={() => setLearnMoreProgram(program)} />
+                      ) : program.href ? (
+                        <LearnMore href={program.href} label={program.action || 'Learn More'} />
+                      ) : (
+                        <LearnMore href="/contact" />
+                      )}
+                    </div>
                   </div>
                 </article>
               ))}

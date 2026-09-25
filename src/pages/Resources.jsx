@@ -210,8 +210,8 @@ export default function Resources() {
               size={1}
               value={query}
               onChange={(event) => setQuery(event.target.value)}
-              placeholder="Search resources (e.g. scholarships, resumes, study tips...)"
-              className="w-full min-w-0 flex-1 bg-transparent py-2 text-[13px] text-[#1B3A6B] placeholder:text-[#8AA0B5] focus:outline-none sm:text-[14px]"
+              placeholder="Search resources"
+              className="w-full min-w-0 flex-1 bg-transparent py-2 text-base text-[#1B3A6B] placeholder:text-[#8AA0B5] focus:outline-none"
             />
             <button
               type="submit"
