@@ -333,8 +333,8 @@ export default function CampaignsPage() {
       {/* Past Campaigns + Upcoming */}
       <section className="border-t border-[#E6EEF4]/80 bg-[#FBF9F4] py-12 sm:py-14">
         <div className={pageContainer}>
-          <div className="grid gap-10 lg:grid-cols-2 lg:gap-8 xl:gap-12">
-            <div>
+          <div className="grid gap-10 lg:grid-cols-2 lg:items-start lg:gap-8 xl:gap-12">
+            <div className="flex min-w-0 flex-col">
               <CampaignSplitSectionHeader
                 title="Past Campaigns"
                 linkTo="/campaigns/past"
@@ -347,7 +347,7 @@ export default function CampaignsPage() {
                 />
               ) : null}
             </div>
-            <div>
+            <div className="flex min-w-0 flex-col">
               <CampaignSplitSectionHeader
                 title="Upcoming Community Drives"
                 linkTo="/campaigns/events"
