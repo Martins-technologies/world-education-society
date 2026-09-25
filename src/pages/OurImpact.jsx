@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
 import { HiArrowRight } from 'react-icons/hi2'
 import PageHero, { heroPrimaryButton } from '../components/PageHero'
+import ComingSoonButton from '../components/ComingSoonButton'
+import { useComingSoon } from '../components/ComingSoonProvider'
 
 const photos = {
   hero: '/our-impact/impact-hero.png',
@@ -339,13 +341,26 @@ function ArrowLink({ to, children }) {
   return <Link to={to} className={classes}>{inner}</Link>
 }
 
-function SectionHeading({ title, action, to }) {
+function SectionHeading({ title, action, to, comingSoonMessage }) {
+  const showComingSoon = useComingSoon()
+  const linkClasses =
+    'inline-flex shrink-0 items-center gap-1.5 text-[12.5px] font-semibold text-[#1E5AAF] transition-colors hover:text-[#163E70]'
+
   return (
     <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 lg:flex-nowrap">
       <h2 className="font-sans text-[1.35rem] font-bold leading-tight tracking-tight text-[#1B3A6B] sm:text-[1.45rem] lg:whitespace-nowrap lg:text-[1.4rem]">
         {title}
       </h2>
-      <ArrowLink to={to}>{action}</ArrowLink>
+      {action ? (
+        comingSoonMessage ? (
+          <button type="button" className={linkClasses} onClick={() => showComingSoon(comingSoonMessage)}>
+            <span>{action}</span>
+            <HiArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+          </button>
+        ) : (
+          <ArrowLink to={to}>{action}</ArrowLink>
+        )
+      ) : null}
     </div>
   )
 }
@@ -454,10 +469,13 @@ export default function OurImpact() {
         imageLayout="full"
         imagePosition="68% 42%"
       >
-        <Link to="/resources" className={heroPrimaryButton}>
+        <ComingSoonButton
+          message="Our annual report will be available for download soon."
+          className={heroPrimaryButton}
+        >
           Read Our Annual Report
           <HiArrowRight className="h-4 w-4" aria-hidden="true" />
-        </Link>
+        </ComingSoonButton>
       </PageHero>
 
       <section className="bg-white">
@@ -484,7 +502,11 @@ export default function OurImpact() {
       <section className="bg-[#FBF9F4]">
         <div className="mx-auto grid max-w-[1380px] gap-10 px-6 py-12 sm:px-8 lg:grid-cols-12 lg:px-12 xl:px-16 lg:py-14">
           <div className="lg:col-span-5">
-            <SectionHeading title="2024 Annual Highlights" action="View Full Annual Report" to="/resources" />
+            <SectionHeading
+              title="2024 Annual Highlights"
+              action="View Full Annual Report"
+              comingSoonMessage="The full annual report is coming soon."
+            />
             <p className="mt-3 text-[14px] leading-relaxed text-[#5C6B7C]">
               Together, we made significant progress in expanding educational opportunities and building stronger, more inclusive communities.
             </p>
@@ -527,7 +549,7 @@ export default function OurImpact() {
         <div className="pointer-events-none absolute -left-16 top-10 h-56 w-56 rounded-full bg-[#E3F2FB]" />
         <div className="relative mx-auto grid max-w-[1380px] gap-10 px-6 py-12 sm:px-8 lg:grid-cols-12 lg:px-12 xl:px-16 lg:py-14">
           <div id="community-reach" className="scroll-mt-24 lg:col-span-5">
-            <SectionHeading title="Our Community Reach" action="View All Regions" to="#community-reach" />
+            <SectionHeading title="Our Community Reach" />
             <p className="mt-3 text-[14px] leading-relaxed text-[#5C6B7C]">
               From local neighborhoods to global communities.
             </p>
@@ -575,7 +597,7 @@ export default function OurImpact() {
           </div>
 
           <div id="impact-stories" className="scroll-mt-24 lg:col-span-7">
-            <SectionHeading title="Impact Stories" action="View More Stories" to="#impact-stories" />
+            <SectionHeading title="Impact Stories" />
             <p className="mt-3 text-[14px] leading-relaxed text-[#5C6B7C]">
               Real stories from the young people and communities we serve.
             </p>
@@ -651,7 +673,13 @@ export default function OurImpact() {
               <h2 className="font-sans text-[1.7rem] font-bold tracking-tight text-[#1B3A6B] sm:text-[1.85rem]">Impact in Action</h2>
               <p className="mt-1 text-[14px] text-[#5C6B7C]">Moments from our programs, workshops and community initiatives.</p>
             </div>
-            <ArrowLink to="#impact-action">View More Photos</ArrowLink>
+            <ComingSoonButton
+              message="Our photo gallery is coming soon."
+              className="inline-flex shrink-0 items-center gap-1.5 text-[12.5px] font-semibold text-[#1E5AAF] transition-colors hover:text-[#163E70]"
+            >
+              <span>View More Photos</span>
+              <HiArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+            </ComingSoonButton>
           </div>
           <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {actionPhotos.map((photo) => (

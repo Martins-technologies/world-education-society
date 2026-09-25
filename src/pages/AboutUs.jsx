@@ -347,9 +347,6 @@ export default function AboutUs() {
                 <item.icon className="h-7 w-7 text-[#1E4E8C]" aria-hidden="true" />
                 <h3 className="mt-3 font-sans text-[13px] font-bold leading-snug text-[#1B3A6B]">{item.title}</h3>
                 <p className="mt-2 flex-1 text-[12px] leading-relaxed text-[#5C6B7C]">{item.text}</p>
-                <div className="mt-3">
-                  <TextAction to="/programs">Learn More</TextAction>
-                </div>
               </li>
             ))}
           </ul>
@@ -422,7 +419,7 @@ export default function AboutUs() {
                 Guided by Experience. United by Purpose.
               </h2>
             </div>
-            <TextAction to="/governance">Our Governance</TextAction>
+            <TextAction to="/our-impact">Our Impact</TextAction>
           </div>
 
           <ul className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-5">
@@ -455,7 +452,6 @@ export default function AboutUs() {
                 Who We Serve Communities
               </h2>
             </div>
-            <TextAction to="#who-we-serve">Learn More About Who We Serve</TextAction>
           </div>
 
           <ul className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
