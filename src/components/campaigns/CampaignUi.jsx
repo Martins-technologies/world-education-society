@@ -219,9 +219,11 @@ export function CampaignHeroStat({ value, label, icon }) {
   )
 }
 
-export function StatusBadge({ children }) {
+export function StatusBadge({ children, className = '' }) {
   return (
-    <span className="inline-flex rounded-full bg-[#E5F6EA] px-4 py-1.5 text-[12px] font-semibold text-[#2E9A4A]">
+    <span
+      className={`inline-flex rounded-full bg-[#E5F6EA] px-4 py-1.5 text-[12px] font-semibold text-[#2E9A4A] ${className}`}
+    >
       {children}
     </span>
   )
@@ -258,29 +260,33 @@ export function CampaignOutlineButton({ to, children, className = '' }) {
 
 export function PastCampaignHighlightCard({ past }) {
   return (
-    <article className="flex flex-col overflow-hidden rounded-xl border border-[#E6EEF4] bg-white sm:flex-row sm:items-start">
-      <div className="flex w-full shrink-0 items-center justify-center bg-[#F6F9FB] p-3 sm:w-[300px] sm:p-4">
+    <article className="flex h-full flex-col overflow-hidden rounded-xl border border-[#E6EEF4] bg-white shadow-[0_8px_24px_-20px_rgba(27,58,107,0.35)]">
+      <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden bg-[#E7EEF2]">
         <ImagePlaceholder
           src={past.image}
           alt={past.imageAlt || past.title}
-          fit="contain"
-          className="!rounded-none block h-auto w-full object-contain object-center"
+          fit="cover"
+          className="!rounded-none absolute inset-0 h-full w-full"
         />
       </div>
-      <div className="flex min-w-0 flex-1 flex-col justify-center px-4 py-4 sm:px-5 sm:py-5">
-        <h3 className="font-display text-[1.05rem] font-bold leading-snug text-[#1B3A6B] sm:text-lg">{past.title}</h3>
-        <p className="mt-2 text-[12px] leading-relaxed text-[#1B3A6B] sm:text-[13px]">{past.description}</p>
+      <div className="flex min-w-0 flex-1 flex-col px-4 py-4 sm:px-5 sm:py-5">
+        <div className="flex flex-wrap items-start justify-between gap-2 gap-y-3">
+          <h3 className="min-w-0 flex-1 font-display text-[1.05rem] font-bold leading-snug text-[#1B3A6B] sm:text-lg">
+            {past.title}
+          </h3>
+          <StatusBadge className="shrink-0">{past.status}</StatusBadge>
+        </div>
+        <p className="mt-2 text-[13px] leading-relaxed text-[#5C6B7C]">{past.description}</p>
         <CampaignMeta
           dates={past.dates}
           reach={past.reach}
           className="mt-3 !space-y-1.5 [&_li]:text-[12px] [&_li]:text-[#1B3A6B] sm:[&_li]:text-[13px]"
         />
-      </div>
-      <div className="flex flex-row items-center justify-center gap-4 border-t border-[#E6EEF4] px-4 py-4 sm:w-[128px] sm:shrink-0 sm:flex-col sm:justify-center sm:border-t-0 sm:px-4 sm:py-5">
-        <StatusBadge>{past.status}</StatusBadge>
-        <CampaignOutlineButton to="/our-impact" className="w-full max-w-[140px] sm:w-full">
-          View Impact
-        </CampaignOutlineButton>
+        <div className="mt-4">
+          <CampaignOutlineButton to="/our-impact" className="w-full sm:w-auto">
+            View Impact
+          </CampaignOutlineButton>
+        </div>
       </div>
     </article>
   )
@@ -288,27 +294,27 @@ export function PastCampaignHighlightCard({ past }) {
 
 export function UpcomingEventHighlightCard({ event }) {
   return (
-    <article className="flex flex-col overflow-hidden rounded-xl border border-[#E6EEF4] bg-white sm:flex-row sm:items-start">
-      <div className="flex w-full shrink-0 items-center justify-center bg-[#F6F9FB] p-3 sm:w-[260px] sm:p-4">
+    <article className="flex h-full flex-col overflow-hidden rounded-xl border border-[#E6EEF4] bg-white shadow-[0_8px_24px_-20px_rgba(27,58,107,0.35)]">
+      <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden bg-[#E7EEF2]">
         <ImagePlaceholder
           src={event.image}
           alt={event.imageAlt || event.title}
-          fit="contain"
-          className="!rounded-none h-auto max-h-[280px] w-full object-contain object-center"
+          fit="cover"
+          className="!rounded-none absolute inset-0 h-full w-full"
         />
       </div>
-      <div className="flex min-w-0 flex-1 flex-col justify-center px-4 py-4 sm:px-5 sm:py-5">
+      <div className="flex min-w-0 flex-1 flex-col px-4 py-4 sm:px-5 sm:py-5">
         <h3 className="font-display text-[1.05rem] font-bold leading-snug text-[#1B3A6B] sm:text-lg">{event.title}</h3>
         <CampaignMeta
           dates={event.date}
           location={event.location}
           className="mt-3 !space-y-1.5 [&_li]:text-[12px] [&_li]:text-[#1B3A6B] sm:[&_li]:text-[13px]"
         />
-      </div>
-      <div className="flex items-center justify-center border-t border-[#E6EEF4] px-4 py-4 sm:w-[128px] sm:shrink-0 sm:border-t-0 sm:px-4 sm:py-5">
-        <CampaignOutlineButton to="/contact" className="w-full max-w-[140px]">
-          Join Us
-        </CampaignOutlineButton>
+        <div className="mt-4">
+          <CampaignOutlineButton to="/contact" className="w-full sm:w-auto">
+            Join Us
+          </CampaignOutlineButton>
+        </div>
       </div>
     </article>
   )
