@@ -80,7 +80,7 @@ export default function PageHero({
       <div className="pointer-events-none absolute -left-24 top-40 h-64 w-64 rounded-full bg-[#DDEEF9]/70 blur-3xl" />
 
       <div className={`relative z-10 grid w-full min-w-0 items-center gap-8 py-12 lg:min-h-[520px] lg:grid-cols-[minmax(0,540px)_1fr] lg:py-16 ${pageContainer}`}>
-        <div className={fullImage ? 'hero-copy relative z-20 min-w-0 max-w-full' : 'relative z-20 min-w-0 max-w-[540px]'}>
+        <div className={fullImage ? 'hero-copy relative z-20 min-w-0' : 'relative z-20 min-w-0 max-w-[540px]'}>
           {breadcrumb}
           {eyebrow ? (
             <p className="text-[12px] font-bold uppercase tracking-[0.16em] text-[#1E4E8C] sm:text-[13px]">{eyebrow}</p>
@@ -88,7 +88,7 @@ export default function PageHero({
           <h1
             className={
               fullImage
-                ? 'mt-4 font-display text-[2rem] font-bold leading-[1.1] tracking-tight text-[#1B3A6B] sm:text-[2.35rem] lg:text-[1.95rem] xl:text-[2.25rem] min-[1440px]:text-[2.45rem]'
+                ? 'mt-4 font-display text-[1.65rem] font-bold leading-[1.12] tracking-tight text-[#1B3A6B] sm:text-[1.85rem] lg:text-[1.55rem] xl:text-[1.7rem] min-[1440px]:text-[1.85rem]'
                 : 'mt-4 font-display text-[2.75rem] font-bold leading-[1.05] tracking-tight text-[#1B3A6B] sm:text-6xl lg:text-[4rem]'
             }
           >
@@ -97,7 +97,7 @@ export default function PageHero({
           <p
             className={
               fullImage
-                ? 'mt-4 max-w-full text-[15px] leading-relaxed text-[#3E5670]'
+                ? 'mt-4 max-w-full text-[13.5px] leading-relaxed text-[#3E5670] sm:text-[14px]'
                 : 'mt-5 max-w-[470px] text-base leading-relaxed text-[#3E5670] sm:text-[17px]'
             }
           >

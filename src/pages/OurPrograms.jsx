@@ -325,7 +325,7 @@ export default function OurPrograms() {
         title={
           <>
             Our Programs
-            <span className="mt-2 block text-[1.2rem] font-semibold leading-snug text-[#2E9A4A] sm:text-[1.45rem] lg:text-[1.35rem] xl:text-[1.5rem] min-[1440px]:text-[1.65rem]">
+            <span className="mt-2 block text-[1.05rem] font-semibold leading-snug text-[#2E9A4A] sm:text-[1.15rem] lg:text-[1.05rem] xl:text-[1.12rem] min-[1440px]:text-[1.22rem]">
               Education Creates Opportunity.
               <span className="mt-1 block">Programs for Brighter Futures.</span>
             </span>

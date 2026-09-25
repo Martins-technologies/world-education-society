@@ -36,12 +36,13 @@ html,body{
 
   .hero-copy {
     width: 100%;
-    max-width: 34rem;
+    max-width: 32rem;
   }
 
   @media (min-width: 1024px) {
     .hero-copy {
-      max-width: calc(100vw - min(58vw, 760px) - 6rem - 2.75rem);
+      /* Stay left of the curved photo. Utilities such as max-w-full must not override this. */
+      max-width: calc(100vw - min(58vw, 760px) - 6rem - 4.5rem) !important;
     }
   }
 
@@ -51,7 +52,7 @@ html,body{
     }
 
     .hero-copy {
-      max-width: calc(100vw - min(58vw, 760px) - 2 * max(4rem, (100vw - 1380px) / 2 + 4rem) - 2.75rem);
+      max-width: calc(100vw - min(58vw, 760px) - 2 * max(4rem, (100vw - 1380px) / 2 + 4rem) - 4.5rem) !important;
     }
   }
 

@@ -113,7 +113,7 @@ export default function TransportationAssistance() {
         title={
           <>
             Apply for
-            <span className="mt-1 block text-[#2E9A4A]">Transportation Assistance</span>
+            <span className="mt-1 block text-[0.78em] leading-[1.15] text-[#2E9A4A]">Transportation Assistance</span>
           </>
         }
         description="Helping remove transportation barriers so eligible students can access colleges, universities, libraries, and educational opportunities."
