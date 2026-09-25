@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
   HiOutlineAcademicCap,
@@ -42,6 +42,75 @@ const tints = {
   purple: 'bg-[#F3EEF8] text-[#7A62C4]',
 }
 
+const PROGRAM_LEARN_MORE = {
+  'education-guidance': {
+    overview:
+      'Support for students and learners in understanding education options, choosing suitable pathways, and planning their next academic steps with confidence.',
+    learn: [
+      'Education pathway options',
+      'Academic goal setting',
+      'Study planning',
+      'Decision-making skills',
+      'Future education planning',
+    ],
+    whoCanJoin: 'Students and learners seeking guidance with education choices and academic planning.',
+  },
+  'community-education': {
+    overview:
+      'Accessible learning programs designed to build practical knowledge, strengthen personal skills, and encourage positive community participation.',
+    learn: [
+      'Everyday practical skills',
+      'Communication skills',
+      'Community awareness',
+      'Personal development',
+      'Continued learning skills',
+    ],
+    whoCanJoin: 'Youth, adults, families, and community members interested in practical learning and personal growth.',
+  },
+  'study-opportunities': {
+    overview:
+      'Guidance to help learners explore study options, understand available pathways, and make informed decisions about further education.',
+    learn: [
+      'Study pathway options',
+      'Program selection',
+      'Education planning',
+      'Comparing learning opportunities',
+      'Academic decision-making',
+    ],
+    whoCanJoin: 'Students, graduates, and adult learners exploring further education opportunities.',
+  },
+  'career-skills': {
+    overview:
+      'Practical support for individuals preparing for employment, career changes, or professional growth through focused career-readiness skills.',
+    learn: [
+      'Career planning',
+      'Resume fundamentals',
+      'Interview preparation',
+      'Professional communication',
+      'Workplace readiness',
+    ],
+    whoCanJoin: 'Students, graduates, job seekers, and individuals planning their next career step.',
+  },
+  'skills-development': {
+    overview:
+      'A practical learning program focused on strengthening personal, professional, and transferable skills for education, employment, and everyday life.',
+    learn: ['Communication', 'Teamwork', 'Problem-solving', 'Time management', 'Workplace skills'],
+    whoCanJoin: 'Students, job seekers, professionals, and community members interested in building practical skills.',
+  },
+  'student-support': {
+    overview:
+      'Supportive learning opportunities that help youth and community members build confidence, communication skills, and positive life skills.',
+    learn: [
+      'Communication skills',
+      'Confidence building',
+      'Teamwork',
+      'Leadership basics',
+      'Goal setting',
+    ],
+    whoCanJoin: 'Youth, students, families, and community members interested in learning, participation, and personal development.',
+  },
+}
+
 const programs = [
   {
     id: 'education-guidance',
@@ -58,8 +127,8 @@ const programs = [
   },
   {
     id: 'student-support',
-    title: 'Student Support',
-    desc: 'Academic, social and wellness support to help youth succeed.',
+    title: 'Youth & Community Learning',
+    desc: 'Supportive learning opportunities that help youth and community members build confidence and life skills.',
     eligibility: 'Youth (ages 12–29)',
     delivery: 'In-person & virtual',
     image: '/programsupdated/03_Student_Support.webp',
@@ -99,8 +168,8 @@ const programs = [
   },
   {
     id: 'career-skills',
-    title: 'Career & Skills Development',
-    desc: 'Workshops, training and mentorship to build real-world skills.',
+    title: 'Career Development',
+    desc: 'Practical support for employment, career changes, and professional growth.',
     eligibility: 'Youth and emerging professionals',
     delivery: 'In-person & virtual',
     image: '/programsupdated/07_Career_and_Skills_Development.webp',
@@ -111,9 +180,22 @@ const programs = [
     Icon: HiOutlineChartBar,
   },
   {
+    id: 'skills-development',
+    title: 'Skills Development',
+    desc: 'Strengthen personal, professional, and transferable skills for education, work, and everyday life.',
+    eligibility: 'Students, job seekers, professionals, and community members',
+    delivery: 'In-person & virtual',
+    image: '/programsupdated/10_Digital_Skills_for_Tomorrow.webp',
+    alt: 'Learners building practical skills together',
+    audiences: ['youth', 'lifelong', 'students', 'communities'],
+    categories: ['skills'],
+    tint: 'blue',
+    Icon: HiOutlineChartBar,
+  },
+  {
     id: 'community-education',
-    title: 'Community Education',
-    desc: 'Programs and resources that strengthen communities through learning.',
+    title: 'Community Education Programs',
+    desc: 'Accessible learning that builds practical knowledge and encourages community participation.',
     eligibility: 'Community members of all ages',
     delivery: 'In-person & community partnerships',
     image: '/programsupdated/06_Community_Education.webp',
@@ -266,9 +348,10 @@ function BusIcon({ className }) {
   )
 }
 
+const learnMoreButtonClass =
+  'inline-flex items-center gap-1.5 rounded-lg border border-[#D5E4F7] bg-white px-3.5 py-1.5 text-[13px] font-semibold text-[#2F6FE4] transition-colors hover:border-[#2F6FE4] hover:bg-[#F4F8FE]'
+
 function LearnMore({ href, label = 'Learn More' }) {
-  const className =
-    'inline-flex items-center gap-1.5 rounded-lg border border-[#D5E4F7] bg-white px-3.5 py-1.5 text-[13px] font-semibold text-[#2F6FE4] transition-colors hover:border-[#2F6FE4] hover:bg-[#F4F8FE]'
   const content = (
     <>
       {label}
@@ -277,15 +360,89 @@ function LearnMore({ href, label = 'Learn More' }) {
   )
   if (href.startsWith('/')) {
     return (
-      <Link to={href} className={className}>
+      <Link to={href} className={learnMoreButtonClass}>
         {content}
       </Link>
     )
   }
   return (
-    <a href={href} className={className}>
+    <a href={href} className={learnMoreButtonClass}>
       {content}
     </a>
+  )
+}
+
+function LearnMoreTrigger({ onClick, label = 'Learn More' }) {
+  return (
+    <button type="button" onClick={onClick} className={learnMoreButtonClass}>
+      {label}
+      <HiArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+    </button>
+  )
+}
+
+function ProgramLearnMoreModal({ program, detail, onClose }) {
+  useEffect(() => {
+    if (!program) return undefined
+    const onKey = (event) => {
+      if (event.key === 'Escape') onClose()
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [program, onClose])
+
+  if (!program || !detail) return null
+
+  return (
+    <div
+      className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="program-learn-more-title"
+    >
+      <button
+        type="button"
+        className="absolute inset-0 bg-[#1B3A6B]/40 backdrop-blur-[2px]"
+        aria-label="Close dialog"
+        onClick={onClose}
+      />
+      <div className="relative flex max-h-[min(90vh,640px)] w-full max-w-lg flex-col overflow-hidden rounded-2xl border border-[#E6EEF4] bg-white shadow-[0_24px_60px_-20px_rgba(27,58,107,0.45)]">
+        <div className="border-b border-[#E7EEF5] px-5 py-4 sm:px-6">
+          <h2 id="program-learn-more-title" className="font-sans text-lg font-bold leading-snug text-[#1B3A6B] sm:text-xl">
+            {program.title}
+          </h2>
+        </div>
+        <div className="overflow-y-auto px-5 py-4 sm:px-6 sm:py-5">
+          <div className="space-y-5 text-[13px] leading-relaxed text-[#5C6B7C]">
+            <div>
+              <h3 className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#8A97A6]">Course Overview</h3>
+              <p className="mt-2 text-[#5C6B7C]">{detail.overview}</p>
+            </div>
+            <div>
+              <h3 className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#8A97A6]">What You Will Learn</h3>
+              <ul className="mt-2 list-disc space-y-1 pl-5 text-[#5C6B7C]">
+                {detail.learn.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#8A97A6]">Who Can Join</h3>
+              <p className="mt-2 text-[#5C6B7C]">{detail.whoCanJoin}</p>
+            </div>
+          </div>
+        </div>
+        <div className="border-t border-[#E7EEF5] px-5 py-4 sm:px-6">
+          <button
+            type="button"
+            onClick={onClose}
+            className="inline-flex w-full items-center justify-center rounded-lg bg-[#2F6FE4] px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#2563C7] sm:w-auto"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
   )
 }
 
@@ -303,6 +460,9 @@ export default function OurPrograms() {
   const [audience, setAudience] = useState('all')
   const [category, setCategory] = useState('all')
   const [query, setQuery] = useState('')
+  const [learnMoreProgram, setLearnMoreProgram] = useState(null)
+
+  const learnMoreDetail = learnMoreProgram ? PROGRAM_LEARN_MORE[learnMoreProgram.id] : null
 
   const visible = useMemo(() => {
     const needle = query.trim().toLowerCase()
@@ -321,6 +481,11 @@ export default function OurPrograms() {
 
   return (
     <div className="bg-[#F7FBFE] text-[#1B3A6B]">
+      <ProgramLearnMoreModal
+        program={learnMoreProgram}
+        detail={learnMoreDetail}
+        onClose={() => setLearnMoreProgram(null)}
+      />
       <PageHero
         title={
           <>
@@ -452,9 +617,14 @@ export default function OurPrograms() {
                         </span>
                       </li>
                     </ul>
-                    {program.href ? (
-                      <div className="mt-3.5">
-                        <LearnMore href={program.href} label={program.action || 'Learn More'} />
+                    {program.href || PROGRAM_LEARN_MORE[program.id] ? (
+                      <div className="mt-3.5 flex flex-wrap gap-2">
+                        {PROGRAM_LEARN_MORE[program.id] ? (
+                          <LearnMoreTrigger onClick={() => setLearnMoreProgram(program)} />
+                        ) : null}
+                        {program.href ? (
+                          <LearnMore href={program.href} label={program.action || 'Learn More'} />
+                        ) : null}
                       </div>
                     ) : null}
                   </div>

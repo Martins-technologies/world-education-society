@@ -1,467 +1,406 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { HiArrowRight, HiPhone, HiMail, HiLocationMarker } from 'react-icons/hi'
+import { HiChevronDown, HiChevronRight } from 'react-icons/hi'
+import {
+  HiOutlineClock,
+  HiOutlineEnvelope,
+  HiOutlineMapPin,
+  HiOutlinePaperAirplane,
+  HiOutlinePhone,
+} from 'react-icons/hi2'
+import PageHero, { heroPrimaryButton, pageContainer } from '../components/PageHero'
+import { ArrowLink, SectionHeading } from '../components/campaigns/CampaignUi'
+import { footerLinks } from '../data/content'
+import { submitFormEmail } from '../utils/submitFormEmail.js'
+
+const CONTACT_HERO_IMAGE = '/contacthero.jpeg'
+const { contactInfo } = footerLinks
+
+const contactingAsOptions = [
+  'Student',
+  'Parent or Guardian',
+  'Educator',
+  'Community Partner',
+  'Volunteer',
+  'Supporter',
+  'Other',
+]
+
+const faqQuestions = [
+  'How quickly will I receive a response?',
+  'Can I apply for support if I\'m not a student?',
+  'How can I become a volunteer?',
+]
+
+const labelClass = 'mb-1.5 block text-[12px] font-semibold text-[#1B3A6B]'
+const controlClass =
+  'w-full rounded-lg border border-[#E3EAF1] bg-white px-3 py-2.5 text-[13px] text-[#1B3A6B] placeholder:text-[#9AA8B5] focus:border-[#1E4E8C] focus:outline-none'
+
+function Required() {
+  return <span className="text-[#D14343]"> *</span>
+}
+
+function Field({ label, required, children }) {
+  return (
+    <label className="block">
+      <span className={labelClass}>
+        {label}
+        {required ? <Required /> : null}
+      </span>
+      {children}
+    </label>
+  )
+}
+
+function TextInput({ name, placeholder, required, type = 'text', value, onChange }) {
+  return (
+    <input
+      name={name}
+      type={type}
+      required={required}
+      placeholder={placeholder}
+      value={value}
+      onChange={onChange}
+      className={controlClass}
+    />
+  )
+}
+
+function SelectInput({ name, placeholder, options, required, value, onChange }) {
+  return (
+    <span className="relative block">
+      <select
+        name={name}
+        required={required}
+        value={value}
+        onChange={onChange}
+        className={`${controlClass} appearance-none pr-9 ${value ? 'text-[#1B3A6B]' : 'text-[#9AA8B5]'}`}
+      >
+        <option value="" disabled>
+          {placeholder}
+        </option>
+        {options.map((option) => (
+          <option key={option} value={option} className="text-[#1B3A6B]">
+            {option}
+          </option>
+        ))}
+      </select>
+      <HiChevronDown
+        className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#8A97A6]"
+        aria-hidden="true"
+      />
+    </span>
+  )
+}
+
+function ContactInfoRow({ icon: Icon, title, children }) {
+  return (
+    <div className="flex gap-3.5 border-b border-[#E6EEF4] py-4 last:border-b-0 sm:gap-4 sm:py-5">
+      <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#E8F2FC] text-[#1E4E8C]">
+        <Icon className="h-5 w-5" aria-hidden="true" />
+      </span>
+      <div className="min-w-0 pt-0.5">
+        <p className="font-sans text-[14px] font-bold text-[#1B3A6B]">{title}</p>
+        <div className="mt-1 text-[13px] leading-relaxed text-[#5C6B7C]">{children}</div>
+      </div>
+    </div>
+  )
+}
 
 export default function ContactUsPage() {
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
+    name: '',
     email: '',
     phone: '',
-    category: '',
+    contactingAs: '',
+    subject: '',
     message: '',
+    preferredContact: 'Email',
   })
-  const [errors, setErrors] = useState({})
-  const [status, setStatus] = useState('idle') // idle | submitting | success
-
-  const helpOptions = [
-    'General Inquiry',
-    'Education Guidance',
-    'Student Support',
-    'Study Opportunities',
-    'Scholarships & Funding',
-    'Volunteering & Get Involved',
-    'Community Partnerships',
-  ]
-
-  const validate = () => {
-    const errs = {}
-    if (!formData.firstName.trim()) errs.firstName = 'First Name is required'
-    if (!formData.lastName.trim()) errs.lastName = 'Last Name is required'
-    if (!formData.email.trim()) {
-      errs.email = 'Email Address is required'
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      errs.email = 'Please enter a valid email address'
-    }
-    if (!formData.category) errs.category = 'Please select how we can help you'
-    if (!formData.message.trim()) errs.message = 'Message is required'
-    setErrors(errs)
-    return Object.keys(errs).length === 0
-  }
+  const [status, setStatus] = useState('idle')
+  const [errorMessage, setErrorMessage] = useState('')
 
   const handleChange = (e) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
-    if (errors[name]) {
-      setErrors((prev) => ({ ...prev, [name]: null }))
-    }
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    if (!validate()) return
-
     setStatus('submitting')
-    // Simulate wired CRM submission
-    setTimeout(() => {
-      setStatus('success')
-    }, 600)
-  }
+    setErrorMessage('')
 
-  const scrollToForm = () => {
-    const formElement = document.getElementById('message-form')
-    if (formElement) {
-      formElement.scrollIntoView({ behavior: 'smooth' })
+    try {
+      await submitFormEmail({
+        subject: `Contact Us: ${formData.subject}`,
+        replyTo: formData.email,
+        sections: [
+          {
+            title: 'Contact message',
+            items: [
+              { label: 'Name', value: formData.name },
+              { label: 'Email', value: formData.email },
+              { label: 'Phone', value: formData.phone },
+              { label: 'Contacting as', value: formData.contactingAs },
+              { label: 'Subject', value: formData.subject },
+              { label: 'Preferred contact method', value: formData.preferredContact },
+              { label: 'Message', value: formData.message },
+            ],
+          },
+        ],
+      })
+      setStatus('success')
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        contactingAs: '',
+        subject: '',
+        message: '',
+        preferredContact: 'Email',
+      })
+    } catch {
+      setStatus('error')
+      setErrorMessage('Unable to send your message. Please try again or contact us directly.')
     }
   }
 
   return (
-    <div className="bg-[#FBF9F4] min-h-screen text-[#242A38]">
-      
-      {/* 1) HERO SECTION */}
-      <section className="relative overflow-hidden pt-24 pb-14 sm:pt-32 sm:pb-20 bg-[#FBF9F4]">
-        <div className="mx-auto w-full max-w-[1380px] px-6 sm:px-8 lg:px-12 xl:px-16">
-          <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-8">
-            
-            {/* Left Text Content */}
-            <div className="lg:col-span-6">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#0D90C4] mb-4">
-                CONTACT US
-              </p>
+    <div className="min-w-0 overflow-x-clip bg-[#F7FBFE] text-[#1B3A6B]">
+      <PageHero
+        title={
+          <>
+            Contact Us
+            <span className="mt-2 block text-[1.05rem] font-semibold leading-snug text-[#2E9A4A] sm:text-[1.15rem] lg:text-[1.02rem] xl:text-[1.1rem] min-[1440px]:text-[1.2rem]">
+              We&apos;re Here to Help.
+            </span>
+          </>
+        }
+        description="Students, families, volunteers, and partners are welcome to reach out. Together, we can create brighter futures and stronger communities."
+        image={CONTACT_HERO_IMAGE}
+        imageAlt="Three students smiling together outdoors with laptops and notebooks"
+        imageLayout="full"
+        imagePosition="center center"
+        breadcrumb={
+          <nav aria-label="Breadcrumb" className="mb-4 max-w-full text-[13px] leading-relaxed text-[#8A97A6]">
+            <Link to="/" className="transition-colors hover:text-[#1E4E8C]">
+              Home
+            </Link>
+            <span className="mx-1.5" aria-hidden="true">
+              ›
+            </span>
+            <span className="text-[#5C6B7C]">Contact Us</span>
+          </nav>
+        }
+      />
 
-              <h1 className="text-4xl font-bold leading-[1.1] text-[#242A38] sm:text-5xl lg:text-[3.6rem] font-sans">
-                We&apos;re here<br />
-                to <span className="text-[#0D90C4]">help.</span>
-              </h1>
-
-              <p className="mt-6 max-w-lg text-base leading-relaxed text-[#5B6478] sm:text-lg">
-                Have a question, need guidance or want to learn more about our programs? We&apos;d love to hear from you. Our team is here to support you.
-              </p>
-
-              <div className="mt-8 flex flex-wrap items-center gap-4">
-                <button
-                  onClick={scrollToForm}
-                  className="inline-flex items-center justify-center rounded-full bg-[#0D90C4] px-7 py-3.5 text-sm font-semibold text-white shadow-xs transition-colors hover:bg-[#0B76A3] cursor-pointer"
-                >
-                  Get in Touch
-                </button>
-                <Link
-                  to="/programs"
-                  className="inline-flex items-center justify-center rounded-full border border-[#242A38] px-7 py-3.5 text-sm font-semibold text-[#242A38] transition-colors hover:bg-[#242A38] hover:text-white"
-                >
-                  Explore Programs
-                </Link>
-              </div>
-
-              <p className="mt-8 text-xs font-medium text-[#5B6478]/80 sm:text-sm">
-                For students. For communities. For a fairer future.
-              </p>
-            </div>
-
-            {/* Right Hero Image */}
-            <div className="lg:col-span-6">
-              <div className="relative mx-auto max-w-xl lg:max-w-none">
-                <div className="relative overflow-hidden rounded-[28px] bg-[#EFECE4] aspect-[4/3] shadow-xs">
-                  <img
-                    src="/contact-us/hero.webp"
-                    alt="Advisor speaking warmly with student"
-                    className="h-full w-full object-cover object-top absolute inset-0 rounded-[28px]"
-                  />
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-
-      {/* 2) REACH OUT TO OUR TEAM & 3) CONTACT DETAILS */}
-      <section className="py-16 sm:py-24 border-t border-[#242A38]/5">
-        <div className="mx-auto w-full max-w-[1380px] px-6 sm:px-8 lg:px-12 xl:px-16">
-          
-          <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-12 mb-16">
-            
-            {/* Left Supporting Image */}
-            <div className="lg:col-span-6">
-              <div className="overflow-hidden rounded-[28px] bg-gray-100 aspect-[1.33/1] shadow-xs">
-                <img
-                  src="/contact-us/team.webp"
-                  alt="Team members discussing ideas around laptop"
-                  className="h-full w-full object-cover"
-                />
-              </div>
-            </div>
-
-            {/* Right Text Content */}
-            <div className="lg:col-span-6">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#0D90C4] mb-3">
-                LET&apos;S CONNECT
-              </p>
-
-              <h2 className="text-3xl font-bold leading-tight text-[#242A38] sm:text-4xl font-sans mb-3">
-                Reach out to<br />
-                <span className="text-[#0D90C4]">our team.</span>
+      <section className="border-t border-[#E6EEF4] bg-[#F7FBFE] py-12 sm:py-16">
+        <div className={pageContainer}>
+          <div className="grid gap-8 lg:grid-cols-2 lg:gap-10 xl:gap-12">
+            {/* Send Us a Message */}
+            <div className="rounded-2xl border border-[#E6EEF4] bg-[#EAF4FB]/60 p-6 shadow-[0_12px_30px_-24px_rgba(27,58,107,0.35)] sm:p-8">
+              <h2 className="font-display text-[1.5rem] font-bold leading-tight text-[#1B3A6B] sm:text-[1.65rem]">
+                Send Us a Message
               </h2>
-
-              <div className="h-1 w-10 rounded-full bg-[#EC9136] mb-5" />
-
-              <p className="max-w-lg text-base leading-relaxed text-[#5B6478]">
-                Whether you&apos;re a student, parent, educator, community partner or supporter, we&apos;re here to answer your questions and help you find the right next step.
+              <p className="mt-2 text-[14px] leading-relaxed text-[#5C6B7C]">
+                Tell us how we can help. We&apos;ll get back to you as soon as possible.
               </p>
-            </div>
-
-          </div>
-
-          {/* 3) Contact Details 3-Column Row */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-[#242A38]/10 gap-6 sm:gap-0 pt-8 border-t border-[#242A38]/10">
-            
-            {/* Phone */}
-            <div className="flex items-center gap-4 sm:justify-center sm:px-4 py-4 sm:py-0">
-              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#E5F5FC] text-[#0D90C4]">
-                <HiPhone className="h-6 w-6" />
-              </div>
-              <div>
-                <h3 className="text-sm font-bold text-[#242A38]">Phone</h3>
-                <a href="tel:+15874384634" className="text-sm text-[#5B6478] hover:text-[#0D90C4] transition-colors">
-                  +1 587-438-4634
-                </a>
-              </div>
-            </div>
-
-            {/* Email */}
-            <div className="flex items-center gap-4 sm:justify-center sm:px-4 py-4 sm:py-0">
-              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#E5F5FC] text-[#0D90C4]">
-                <HiMail className="h-6 w-6" />
-              </div>
-              <div>
-                <h3 className="text-sm font-bold text-[#242A38]">Email</h3>
-                <a href="mailto:info@worldeducationsociety.com" className="text-sm text-[#5B6478] hover:text-[#0D90C4] transition-colors">
-                  info@worldeducationsociety.com
-                </a>
-              </div>
-            </div>
-
-            {/* Address */}
-            <div className="flex items-center gap-4 sm:justify-center sm:px-4 py-4 sm:py-0">
-              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#E5F5FC] text-[#0D90C4]">
-                <HiLocationMarker className="h-6 w-6" />
-              </div>
-              <div>
-                <h3 className="text-sm font-bold text-[#242A38]">Address</h3>
-                <p className="text-sm text-[#5B6478] leading-snug">
-                  345, 3016 5th Ave NE<br />Calgary, AB T2A 5L7
-                </p>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-      </section>
-
-
-      {/* 4) SEND US A MESSAGE SECTION */}
-      <section id="message-form" className="py-16 sm:py-24 border-t border-[#242A38]/5 bg-[#FBF9F4]">
-        <div className="mx-auto w-full max-w-[1380px] px-6 sm:px-8 lg:px-12 xl:px-16">
-          <div className="grid gap-12 lg:grid-cols-12 lg:gap-12 items-start">
-            
-            {/* Left Column: Form */}
-            <div className="lg:col-span-7">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#0D90C4] mb-3">
-                SEND US A MESSAGE
-              </p>
-              <h2 className="text-3xl font-bold text-[#242A38] sm:text-4xl font-sans mb-3">
-                We&apos;d love to<br />
-                <span className="text-[#0D90C4]">hear from you.</span>
-              </h2>
-
-              <div className="h-1 w-10 rounded-full bg-[#EC9136] mb-8" />
 
               {status === 'success' ? (
-                <div className="rounded-2xl bg-[#E8F8EE] border border-[#4FAA4A]/30 p-8 text-center">
-                  <h3 className="text-xl font-bold text-[#242A38] mb-2">
-                    Thank you! Your message has been sent.
-                  </h3>
-                  <p className="text-sm text-[#5B6478] max-w-md mx-auto">
-                    We have received your details and our team will get back to you within one business day.
+                <div
+                  className="mt-6 rounded-xl border border-[#C5E8CE] bg-[#F3FBF5] px-4 py-5 sm:px-5"
+                  role="status"
+                >
+                  <p className="font-sans text-[15px] font-bold text-[#1B3A6B]">Thank you — your message has been sent.</p>
+                  <p className="mt-2 text-[13px] leading-relaxed text-[#5C6B7C]">
+                    We typically respond within 1–2 business days.
                   </p>
                   <button
-                    onClick={() => {
-                      setStatus('idle')
-                      setFormData({ firstName: '', lastName: '', email: '', phone: '', category: '', message: '' })
-                    }}
-                    className="mt-6 inline-flex items-center justify-center rounded-full bg-[#0D90C4] px-6 py-2.5 text-xs font-semibold text-white shadow-xs hover:bg-[#0B76A3]"
+                    type="button"
+                    onClick={() => setStatus('idle')}
+                    className={`${heroPrimaryButton} mt-4 !px-5 !py-2.5 !text-[13px]`}
                   >
-                    Send Another Message
+                    Send another message
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="flex flex-col space-y-5" noValidate>
-                  
-                  {/* First Name & Last Name */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div>
-                      <input
-                        type="text"
-                        name="firstName"
-                        value={formData.firstName}
-                        onChange={handleChange}
-                        placeholder="First Name*"
-                        className={`w-full rounded-2xl border bg-white px-4 py-3.5 text-sm text-[#242A38] placeholder:text-[#5B6478]/60 focus:outline-none transition-colors ${
-                          errors.firstName ? 'border-red-500 focus:border-red-500' : 'border-[#242A38]/15 focus:border-[#0D90C4]'
-                        }`}
-                      />
-                      {errors.firstName && <span className="text-xs text-red-500 mt-1 block pl-1">{errors.firstName}</span>}
-                    </div>
+                <form className="mt-6 space-y-4" onSubmit={handleSubmit} noValidate>
+                  {status === 'error' && errorMessage ? (
+                    <p className="rounded-lg border border-[#F0C9C9] bg-[#FEF6F6] px-3 py-2.5 text-[13px] text-[#8B3A3A]" role="alert">
+                      {errorMessage}
+                    </p>
+                  ) : null}
 
-                    <div>
-                      <input
-                        type="text"
-                        name="lastName"
-                        value={formData.lastName}
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <Field label="Name" required>
+                      <TextInput
+                        name="name"
+                        placeholder="Your full name"
+                        required
+                        value={formData.name}
                         onChange={handleChange}
-                        placeholder="Last Name*"
-                        className={`w-full rounded-2xl border bg-white px-4 py-3.5 text-sm text-[#242A38] placeholder:text-[#5B6478]/60 focus:outline-none transition-colors ${
-                          errors.lastName ? 'border-red-500 focus:border-red-500' : 'border-[#242A38]/15 focus:border-[#0D90C4]'
-                        }`}
                       />
-                      {errors.lastName && <span className="text-xs text-red-500 mt-1 block pl-1">{errors.lastName}</span>}
-                    </div>
-                  </div>
-
-                  {/* Email & Phone */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div>
-                      <input
-                        type="email"
+                    </Field>
+                    <Field label="Email" required>
+                      <TextInput
                         name="email"
+                        type="email"
+                        placeholder="you@example.com"
+                        required
                         value={formData.email}
                         onChange={handleChange}
-                        placeholder="Email Address*"
-                        className={`w-full rounded-2xl border bg-white px-4 py-3.5 text-sm text-[#242A38] placeholder:text-[#5B6478]/60 focus:outline-none transition-colors ${
-                          errors.email ? 'border-red-500 focus:border-red-500' : 'border-[#242A38]/15 focus:border-[#0D90C4]'
-                        }`}
                       />
-                      {errors.email && <span className="text-xs text-red-500 mt-1 block pl-1">{errors.email}</span>}
-                    </div>
+                    </Field>
+                  </div>
 
-                    <div>
-                      <input
-                        type="tel"
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <Field label="Phone" required>
+                      <TextInput
                         name="phone"
+                        type="tel"
+                        placeholder="e.g. +1 587-438-4634"
+                        required
                         value={formData.phone}
                         onChange={handleChange}
-                        placeholder="Phone Number"
-                        className="w-full rounded-2xl border border-[#242A38]/15 bg-white px-4 py-3.5 text-sm text-[#242A38] placeholder:text-[#5B6478]/60 focus:border-[#0D90C4] focus:outline-none transition-colors"
                       />
-                    </div>
+                    </Field>
+                    <Field label="I am contacting you as" required>
+                      <SelectInput
+                        name="contactingAs"
+                        placeholder="Select an option"
+                        options={contactingAsOptions}
+                        required
+                        value={formData.contactingAs}
+                        onChange={handleChange}
+                      />
+                    </Field>
                   </div>
 
-                  {/* How can we help you? */}
-                  <div>
-                    <select
-                      name="category"
-                      value={formData.category}
+                  <Field label="Subject" required>
+                    <TextInput
+                      name="subject"
+                      placeholder="How can we help?"
+                      required
+                      value={formData.subject}
                       onChange={handleChange}
-                      className={`w-full rounded-2xl border bg-white px-4 py-3.5 text-sm text-[#242A38] focus:outline-none transition-colors appearance-none ${
-                        errors.category ? 'border-red-500 focus:border-red-500' : 'border-[#242A38]/15 focus:border-[#0D90C4]'
-                      } ${!formData.category ? 'text-[#5B6478]/60' : 'text-[#242A38]'}`}
-                    >
-                      <option value="" disabled>How can we help you?*</option>
-                      {helpOptions.map((opt) => (
-                        <option key={opt} value={opt} className="text-[#242A38]">{opt}</option>
-                      ))}
-                    </select>
-                    {errors.category && <span className="text-xs text-red-500 mt-1 block pl-1">{errors.category}</span>}
-                  </div>
+                    />
+                  </Field>
 
-                  {/* Your Message */}
-                  <div>
+                  <Field label="Message" required>
                     <textarea
                       name="message"
                       rows={5}
+                      required
+                      placeholder="Please share your question, request or message..."
                       value={formData.message}
                       onChange={handleChange}
-                      placeholder="Your Message*"
-                      className={`w-full rounded-2xl border bg-white px-4 py-3.5 text-sm text-[#242A38] placeholder:text-[#5B6478]/60 focus:outline-none transition-colors ${
-                        errors.message ? 'border-red-500 focus:border-red-500' : 'border-[#242A38]/15 focus:border-[#0D90C4]'
-                      }`}
+                      className={`${controlClass} resize-y min-h-[120px]`}
                     />
-                    {errors.message && <span className="text-xs text-red-500 mt-1 block pl-1">{errors.message}</span>}
-                  </div>
+                  </Field>
 
-                  {/* Submit Button */}
-                  <div>
-                    <button
-                      type="submit"
-                      disabled={status === 'submitting'}
-                      className="inline-flex items-center gap-2 justify-center rounded-full bg-[#0D90C4] px-8 py-3.5 text-sm font-semibold text-white shadow-xs transition-colors hover:bg-[#0B76A3] disabled:opacity-50 cursor-pointer"
-                    >
-                      <span>{status === 'submitting' ? 'Sending...' : 'Send Message'}</span>
-                      <HiArrowRight className="h-4 w-4" />
-                    </button>
-                  </div>
+                  <fieldset>
+                    <legend className={labelClass}>Preferred contact method</legend>
+                    <div className="mt-1 flex flex-wrap gap-4 sm:gap-6">
+                      {['Email', 'Phone', 'Either is fine'].map((option) => (
+                        <label key={option} className="inline-flex cursor-pointer items-center gap-2 text-[13px] text-[#1B3A6B]">
+                          <input
+                            type="radio"
+                            name="preferredContact"
+                            value={option}
+                            checked={formData.preferredContact === option}
+                            onChange={handleChange}
+                            className="h-4 w-4 border-[#C5D4E0] text-[#1E4E8C] focus:ring-[#1E4E8C]"
+                          />
+                          {option}
+                        </label>
+                      ))}
+                    </div>
+                  </fieldset>
 
+                  <button
+                    type="submit"
+                    disabled={status === 'submitting'}
+                    className={`${heroPrimaryButton} w-full justify-center !py-3.5 disabled:opacity-60`}
+                  >
+                    <HiOutlinePaperAirplane className="h-4 w-4" aria-hidden="true" />
+                    {status === 'submitting' ? 'Sending...' : 'Send Message'}
+                  </button>
+
+                  <p className="text-center text-[12px] text-[#8A97A6]">We typically respond within 1–2 business days.</p>
                 </form>
               )}
             </div>
 
-            {/* Right Column: Supporting Image & Map Panel */}
-            <div className="lg:col-span-5 flex flex-col space-y-6">
-              
-              {/* Supporting Image */}
-              <div className="overflow-hidden rounded-[28px] bg-gray-100 aspect-[1.2/1] shadow-xs relative">
-                <img
-                  src="/contact-us/message_side.webp"
-                  alt="Students interacting warmly in learning hub"
-                  className="h-full w-full object-cover"
+            {/* Our Contact Information */}
+            <div className="rounded-2xl border border-[#E6EEF4] bg-white p-6 shadow-[0_12px_30px_-24px_rgba(27,58,107,0.35)] sm:p-8">
+              <h2 className="font-display text-[1.5rem] font-bold leading-tight text-[#1B3A6B] sm:text-[1.65rem]">
+                Our Contact Information
+              </h2>
+              <p className="mt-2 text-[14px] leading-relaxed text-[#5C6B7C]">
+                Get in touch with our team. We&apos;re here to support you.
+              </p>
+
+              <div className="mt-4">
+                <ContactInfoRow icon={HiOutlineEnvelope} title="Email">
+                  <a href={`mailto:${contactInfo.email}`} className="transition-colors hover:text-[#1E4E8C]">
+                    {contactInfo.email}
+                  </a>
+                </ContactInfoRow>
+                <ContactInfoRow icon={HiOutlinePhone} title="Phone">
+                  <a href={`tel:${contactInfo.phone.replace(/\s/g, '')}`} className="transition-colors hover:text-[#1E4E8C]">
+                    {contactInfo.phone}
+                  </a>
+                </ContactInfoRow>
+                <ContactInfoRow icon={HiOutlineMapPin} title="Address">
+                  <address className="not-italic">{contactInfo.address}</address>
+                </ContactInfoRow>
+                <ContactInfoRow icon={HiOutlineClock} title="Office Hours">
+                  <p>Monday – Friday, 9:00 AM – 5:00 PM (MST)</p>
+                  <p className="mt-1 text-[12px] text-[#8A97A6]">We are closed on weekends and statutory holidays.</p>
+                </ContactInfoRow>
+              </div>
+
+              <div className="mt-5 overflow-hidden rounded-xl border border-[#E6EEF4] bg-[#E7EEF2]">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2507.7738508032944!2d-113.99268432446563!3d51.05726344348883!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x53717b2a601dbaed%3A0xe3863f2a191ab3a8!2s3016%205%20Ave%20NE%20%23345%2C%20Calgary%2C%20AB%20T2A%206K4%2C%20Canada!5e0!3m2!1sen!2s!4v1789857747649!5m2!1sen!2s"
+                  width="100%"
+                  height="220"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  title="World Education Society office location"
+                  className="block w-full"
                 />
               </div>
-
-              {/* Map Panel: Find Us Here */}
-              <div className="rounded-[28px] bg-white border border-[#242A38]/10 p-5 shadow-xs">
-                <div className="flex items-center justify-between mb-3">
-                  <h3 className="text-base font-bold text-[#242A38]">
-                    Find Us Here
-                  </h3>
-                  <a
-                    href="https://maps.google.com/?q=345,+3016+5th+Ave+NE,+Calgary,+AB+T2A+5L7"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-xs font-semibold text-[#0D90C4] hover:underline"
-                  >
-                    <span>Open Live Map</span>
-                    <HiArrowRight className="h-3.5 w-3.5" />
-                  </a>
-                </div>
-                
-                {/* Embedded Live Google Map */}
-                <div className="relative overflow-hidden rounded-2xl aspect-[1.6/1] w-full border border-[#242A38]/10 shadow-xs bg-gray-100">
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2507.7738508032944!2d-113.99268432446563!3d51.05726344348883!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x53717b2a601dbaed%3A0xe3863f2a191ab3a8!2s3016%205%20Ave%20NE%20%23345%2C%20Calgary%2C%20AB%20T2A%206K4%2C%20Canada!5e0!3m2!1sen!2s!4v1789857747649!5m2!1sen!2s"
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0 }}
-                    allowFullScreen=""
-                    loading="lazy"
-                    referrerPolicy="strict-origin-when-cross-origin"
-                    title="World Education Society Location Map"
-                    className="absolute inset-0 h-full w-full"
-                  />
-                </div>
-
-                {/* Address Info & Open in Google Maps link below map */}
-                <div className="mt-3.5 flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-[#242A38]/10 text-xs">
-                  <div className="flex items-center gap-2 text-[#5B6478]">
-                    <HiLocationMarker className="h-4 w-4 text-red-600 shrink-0" />
-                    <span>345, 3016 5th Ave NE, Calgary, AB T2A 5L7</span>
-                  </div>
-                  <a
-                    href="https://maps.google.com/?q=345,+3016+5th+Ave+NE,+Calgary,+AB+T2A+5L7"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 font-semibold text-[#0D90C4] hover:underline"
-                  >
-                    <span>Open in Google Maps</span>
-                    <HiArrowRight className="h-3 w-3" />
-                  </a>
-                </div>
-
-              </div>
-
             </div>
-
           </div>
         </div>
       </section>
 
-
-      {/* 5) BOTTOM CTA BAND (Soft Light-Blue Treatment) */}
-      <section className="py-12 sm:py-16">
-        <div className="mx-auto w-full max-w-[1380px] px-6 sm:px-8 lg:px-12 xl:px-16">
-          <div className="overflow-hidden rounded-[32px] bg-[#E5F5FC] px-8 sm:px-12 py-12 sm:py-16">
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
-              
-              {/* Left Text Block */}
-              <div className="max-w-xl">
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#0D90C4] mb-3">
-                  TOGETHER WE CAN
-                </p>
-                <h2 className="text-3xl font-bold leading-tight sm:text-4xl font-sans text-[#242A38]">
-                  Create more opportunities.
-                </h2>
-                <p className="mt-2 text-base text-[#5B6478] font-normal">
-                  Get in touch to learn how you can support, partner or get involved.
-                </p>
-              </div>
-
-              {/* Right Button */}
-              <div className="flex items-center md:justify-end">
+      <section className="border-t border-[#E6EEF4] bg-white py-12 sm:py-16">
+        <div className={pageContainer}>
+          <div className="flex flex-wrap items-end justify-between gap-3">
+            <SectionHeading className="!text-[1.65rem] sm:!text-[1.85rem]">Frequently Asked Questions</SectionHeading>
+            <ArrowLink to="/resources" className="shrink-0 text-[13px]">
+              View All FAQs
+            </ArrowLink>
+          </div>
+          <ul className="mt-6 space-y-2.5">
+            {faqQuestions.map((question) => (
+              <li key={question}>
                 <Link
-                  to="/get-involved"
-                  className="inline-flex items-center gap-2 justify-center rounded-full bg-[#0D90C4] px-8 py-3.5 text-sm font-semibold text-white shadow-xs transition-colors hover:bg-[#0B76A3]"
+                  to="/resources"
+                  className="flex items-center justify-between gap-4 rounded-lg bg-[#EAF4FB] px-4 py-3.5 font-sans text-[13px] font-semibold text-[#1B3A6B] transition-colors hover:bg-[#DCEEF9] sm:px-5 sm:py-4 sm:text-[14px]"
                 >
-                  <span>Get Involved</span>
-                  <HiArrowRight className="h-4 w-4" />
+                  <span>{question}</span>
+                  <HiChevronRight className="h-5 w-5 shrink-0 text-[#1E4E8C]" aria-hidden="true" />
                 </Link>
-              </div>
-
-            </div>
-          </div>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
-
     </div>
   )
 }
