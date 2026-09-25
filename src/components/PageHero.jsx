@@ -8,6 +8,21 @@ export const heroOutlineButton =
 export const heroGreenButton =
   'inline-flex items-center gap-2 rounded-full bg-[#2E9A4A] px-5 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#267F3C] sm:text-[15px]'
 
+function HeroImage({ src, alt, className, style }) {
+  if (!src) {
+    return (
+      <div
+        className={`flex items-center justify-center bg-[#E7EEF2] text-[#8AA0B5] ${className || ''}`}
+        role="img"
+        aria-label={alt || 'Image placeholder'}
+      >
+        <span className="px-4 text-center text-[11px] font-semibold uppercase tracking-[0.14em]">Image placeholder</span>
+      </div>
+    )
+  }
+  return <img src={src} alt={alt} className={className} style={style} />
+}
+
 export default function PageHero({
   eyebrow,
   title,
@@ -42,7 +57,7 @@ export default function PageHero({
     <section className="relative overflow-hidden bg-[#F7FBFE] pt-[74px]">
       {fullImage ? (
         <div className={`${heroFrame} ${imageFit === 'contain' ? 'bg-[#F7FBFE]' : ''}`} style={{ clipPath: 'url(#heroCurveClip)' }}>
-          <img
+          <HeroImage
             src={image}
             alt={imageAlt}
             className={imageFit === 'contain' ? 'h-full w-full object-contain' : 'h-full w-full object-cover'}
@@ -51,7 +66,7 @@ export default function PageHero({
         </div>
       ) : (
         <div className={`${heroFrame} !max-w-none lg:!left-[36%] lg:!w-auto`}>
-          <img
+          <HeroImage
             src={image}
             alt={imageAlt}
             className="h-full w-full object-cover"
@@ -108,17 +123,19 @@ export default function PageHero({
         </div>
 
         <div className="relative min-w-0 overflow-hidden rounded-[28px] bg-[#E7EEF2] lg:hidden">
-          <img
+          <HeroImage
             src={image}
             alt={imageAlt}
             className={
               fullImage
                 ? zoomed
                   ? 'h-[460px] w-full rounded-[28px] object-cover sm:h-[520px]'
-                  : 'h-auto w-full max-w-full rounded-[28px] object-contain'
+                  : !image
+                    ? 'h-[300px] w-full rounded-[28px] sm:h-[400px]'
+                    : 'h-auto w-full max-w-full rounded-[28px] object-contain'
                 : 'h-[300px] w-full object-cover sm:h-[400px]'
             }
-            style={fullImage && !zoomed ? { objectPosition: imagePosition } : framedImageStyle}
+            style={fullImage && !zoomed && image ? { objectPosition: imagePosition } : framedImageStyle}
           />
           {fullImage && imageNotes ? (
             <div className="pointer-events-none absolute inset-0 z-10 overflow-hidden rounded-[28px]">{imageNotes}</div>

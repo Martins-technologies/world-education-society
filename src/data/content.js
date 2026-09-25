@@ -78,7 +78,7 @@ export const navMenus = {
     { label: 'Transportation Assistance', href: '/programs/transportation-assistance' },
   ],
   'Get Involved': [
-    { label: 'Volunteer With Us', href: '/get-involved' },
+    { label: 'Volunteer With Us', href: '/get-involved/volunteer-with-us' },
     { label: 'Partner With Us', href: '/get-involved' },
     { label: 'Support Our Programs', href: '/get-involved' },
     { label: 'Current Campaigns', href: '/campaigns' },
@@ -101,9 +101,9 @@ export const footerLinks = {
     { label: 'Get Support', href: '/get-support' },
   ],
   involved: [
-    { label: 'Volunteer With Us', href: '/get-involved' },
+    { label: 'Volunteer With Us', href: '/get-involved/volunteer-with-us' },
     { label: 'Partner With Us', href: '/get-involved' },
-    { label: 'Donate', href: '/donate' },
+    { label: 'Donate', href: '/get-involved' },
     { label: 'Current Campaigns', href: '/campaigns' },
     { label: 'Host a Workshop', href: '/get-involved' },
   ],

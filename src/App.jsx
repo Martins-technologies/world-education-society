@@ -7,6 +7,7 @@ import Home from './pages/Home'
 import AboutUs from './pages/AboutUs'
 import OurPrograms from './pages/OurPrograms'
 import GetInvolvedPage from './pages/GetInvolvedPage'
+import VolunteerWithUsPage from './pages/VolunteerWithUsPage'
 import ContactUsPage from './pages/ContactUsPage'
 import OurImpact from './pages/OurImpact'
 import Resources from './pages/Resources'
@@ -35,6 +36,7 @@ export default function App() {
           <Route path="/our-programs" element={<OurPrograms />} />
           <Route path="/programs/transportation-assistance" element={<TransportationAssistance />} />
           <Route path="/get-involved" element={<GetInvolvedPage />} />
+          <Route path="/get-involved/volunteer-with-us" element={<VolunteerWithUsPage />} />
           <Route path="/getinvolved" element={<GetInvolvedPage />} />
           <Route path="/contact" element={<ContactUsPage />} />
           <Route path="/contact-us" element={<ContactUsPage />} />

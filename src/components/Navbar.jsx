@@ -4,13 +4,14 @@ import { Link, useLocation } from 'react-router-dom'
 import { HiChevronDown, HiOutlineMagnifyingGlass } from 'react-icons/hi2'
 import { nav, navMenus } from '../data/content'
 import { pageContainer } from './PageHero'
+import ComingSoonButton from './ComingSoonButton'
 import logo from '../assets/logo.png'
 
 function isActivePath(href, pathname) {
   if (href === '/') return pathname === '/'
   if (href === '/about-us') return pathname === '/about-us' || pathname === '/about'
   if (href === '/programs') return pathname === '/programs' || pathname === '/our-programs' || pathname.startsWith('/programs/')
-  if (href === '/get-involved') return pathname === '/get-involved' || pathname === '/getinvolved'
+  if (href === '/get-involved') return pathname === '/get-involved' || pathname === '/getinvolved' || pathname.startsWith('/get-involved/')
   if (href === '/contact') return pathname === '/contact' || pathname === '/contact-us'
   if (href === '/campaigns') return pathname === '/campaigns' || pathname.startsWith('/campaigns/')
   return pathname === href
@@ -82,12 +83,12 @@ export default function Navbar() {
           >
             Get Support
           </Link>
-          <Link
-            to="/donate"
+          <ComingSoonButton
+            message="Online donations will be available soon. Thank you for your interest in supporting our work."
             className="inline-flex items-center justify-center rounded-full bg-[#E2A52E] px-3 py-2 text-[13px] font-semibold text-white shadow-sm transition-colors hover:bg-[#d1961f] sm:px-5"
           >
             Donate
-          </Link>
+          </ComingSoonButton>
           <button
             onClick={() => setOpen((v) => !v)}
             aria-label={open ? 'Close menu' : 'Open menu'}

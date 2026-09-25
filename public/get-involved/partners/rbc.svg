@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72" role="img" aria-label="RBC">
+  <rect width="72" height="72" rx="6" fill="#0051A5"/>
+  <path fill="#FEDF00" d="M36 14c-8 0-14 6-14 14 0 5 2 9 6 12-4 3-6 7-6 12 0 8 6 14 14 14s14-6 14-14c0-5-2-9-6-12 4-3 6-7 6-12 0-8-6-14-14-14Zm0 6c4.4 0 8 3.6 8 8s-3.6 8-8 8-8-3.6-8-8 3.6-8 8-8Zm0 22c4.4 0 8 3.6 8 8s-3.6 8-8 8-8-3.6-8-8 3.6-8 8-8Z"/>
+  <text x="36" y="68" text-anchor="middle" fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700">RBC</text>
+</svg>

@@ -21,6 +21,19 @@ export const campaignImages = {
   organizeDrivePage: 'https://cdn.pixabay.com/photo/2014/07/06/09/37/lecture-385357_1280.jpg',
 }
 
+/** Get Involved page — pathway card photos (Pixabay CDN) */
+export const getInvolvedPathwayImages = {
+  // Pixabay illustration 9043372 — replace with CDN from “Free download” when you have it:
+  // https://pixabay.com/illustrations/ai-generated-teacher-classroom-9043372/
+  volunteerWithUs: '/homeupdated/07_Get_Involved_Volunteering.webp',
+  becomeAMentor: 'https://cdn.pixabay.com/photo/2020/01/22/09/40/teacher-4784917_1280.jpg',
+  partnerWithUs: 'https://cdn.pixabay.com/photo/2017/01/14/10/56/people-1979261_1280.jpg',
+  supportOurPrograms: '/suportourprograms.webp',
+  donateResources: 'https://cdn.pixabay.com/photo/2015/10/29/09/46/books-1012088_1280.jpg',
+  hostAWorkshop: 'https://cdn.pixabay.com/photo/2023/08/21/08/36/children-8203962_1280.jpg',
+  employerPartnerships: 'https://cdn.pixabay.com/photo/2026/07/05/11/18/11-18-26-903_1280.jpg',
+}
+
 export const campaignHeroStats = [
   { value: '12,500+', label: 'Youth Supported Through Campaigns', icon: 'users' },
   { value: '45,000+', label: 'Educational Resources Distributed', icon: 'book' },
@@ -59,7 +72,7 @@ export const currentCampaigns = [
     progressLabel: '70% of goal',
     image: campaignImages.backToLearningCard,
     imageAlt: 'Young student studying and writing at home',
-    primaryCta: { label: 'Donate', href: '/donate' },
+    primaryCta: { label: 'Donate', href: '/contact' },
     secondaryCta: { label: 'Learn More', href: '/campaigns/back-to-learning-drive' },
     showOnMain: true,
   },
@@ -89,7 +102,7 @@ export const currentCampaigns = [
     progressLabel: '60% of goal',
     image: campaignImages.libraryAccess,
     imageAlt: 'Grand library interior with bookshelves and reading spaces',
-    primaryCta: { label: 'Donate', href: '/donate' },
+    primaryCta: { label: 'Donate', href: '/contact' },
     secondaryCta: { label: 'Learn More', href: '/campaigns/library-access-support' },
     showOnMain: true,
   },
@@ -124,7 +137,7 @@ export const campaignDetails = {
     image: campaignImages.backToLearningDetail,
     imageAlt: 'Student reading a book with focus and concentration',
     actions: [
-      { label: 'Donate', href: '/donate', variant: 'green' },
+      { label: 'Donate', href: '/contact', variant: 'green' },
       { label: 'Get Involved', href: '/get-involved', variant: 'outline' },
     ],
   },
@@ -150,7 +163,7 @@ export const campaignDetails = {
     progressLabel: '60% of goal',
     image: campaignImages.libraryAccess,
     imageAlt: 'Grand library interior with bookshelves and reading spaces',
-    actions: [{ label: 'Donate', href: '/donate', variant: 'green' }],
+    actions: [{ label: 'Donate', href: '/contact', variant: 'green' }],
   },
   'youth-internship-initiative': {
     title: 'Youth Internship Initiative',

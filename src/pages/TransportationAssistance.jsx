@@ -170,33 +170,58 @@ export default function TransportationAssistance() {
     setSubmitError('')
 
     const data = new FormData(form)
-    const fields = {
-      'Full Name': data.get('fullName'),
-      Email: data.get('email'),
-      Phone: data.get('phone'),
-      'Home Address': data.get('homeAddress'),
-      City: data.get('city'),
-      'Postal Code': data.get('postalCode'),
-      'Date of Birth': data.get('dateOfBirth'),
-      Institution: data.get('institution'),
-      'Student ID': data.get('studentId'),
-      'Destination Address': data.get('destination'),
-      'Days Needed': data.get('days'),
-      'Pickup Time': data.get('pickup'),
-      'Return Time': data.get('returnTime'),
-      'Accessibility Needs': data.get('accessibility'),
-      'Reason for Assistance': data.get('reason'),
-      'Emergency Contact': data.get('emergencyContact'),
-      'Additional Information': data.get('additional'),
-      'Fee Acknowledged': data.get('feeAcknowledgement') ? 'Yes' : 'No',
-      Consent: data.get('consent') ? 'Yes' : 'No',
-    }
-
+    const text = (name) => String(data.get(name) ?? '').trim()
+    const sections = [
+      {
+        title: 'Applicant Information',
+        items: [
+          { label: 'Full Name', value: text('fullName') },
+          { label: 'Email', value: text('email') },
+          { label: 'Phone', value: text('phone') },
+          { label: 'Home Address', value: text('homeAddress') },
+          { label: 'City', value: text('city') },
+          { label: 'Postal Code', value: text('postalCode') },
+          { label: 'Date of Birth', value: text('dateOfBirth') },
+        ],
+      },
+      {
+        title: 'Education',
+        items: [
+          { label: 'Institution / Library Name', value: text('institution') },
+          { label: 'Student ID or Learner ID', value: text('studentId') },
+        ],
+      },
+      {
+        title: 'Transportation Request',
+        items: [
+          { label: 'Destination Address', value: text('destination') },
+          { label: 'Days Needed', value: text('days') },
+          { label: 'Preferred Pickup Time', value: text('pickup') },
+          { label: 'Preferred Return Time', value: text('returnTime') },
+          { label: 'Accessibility Needs', value: text('accessibility') || 'None' },
+          { label: 'Reason for Assistance', value: text('reason') },
+        ],
+      },
+      {
+        title: 'Emergency & Additional',
+        items: [
+          { label: 'Emergency Contact', value: text('emergencyContact') },
+          { label: 'Additional Information', value: text('additional') || 'Not provided' },
+        ],
+      },
+      {
+        title: 'Acknowledgements',
+        items: [
+          { label: 'Monthly admin fee acknowledged', value: data.get('feeAcknowledgement') ? 'Yes' : 'No' },
+          { label: 'Privacy consent', value: data.get('consent') ? 'Yes' : 'No' },
+        ],
+      },
+    ]
     try {
       await submitFormEmail({
         subject: 'Transportation Assistance Application — World Education Society',
-        fields,
-        replyTo: String(data.get('email') || ''),
+        sections,
+        replyTo: text('email'),
       })
       setSubmitStatus('success')
       form.reset()
