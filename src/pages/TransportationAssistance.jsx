@@ -16,7 +16,8 @@ import {
   HiOutlineUserGroup,
   HiOutlineUsers,
 } from 'react-icons/hi2'
-import PageHero, { heroOutlineButton, heroPrimaryButton, pageContainer } from '../components/PageHero'
+import PageHero, { heroPrimaryButton, pageContainer } from '../components/PageHero'
+import { submitFormEmail } from '../utils/submitFormEmail.js'
 
 const destinations = [
   { label: 'College', Icon: HiOutlineAcademicCap },
@@ -106,7 +107,111 @@ function BusIcon({ className }) {
   )
 }
 
+function FormFeedback({ status, errorMessage, onReset }) {
+  if (status === 'idle' || status === 'submitting') return null
+
+  const isSuccess = status === 'success'
+
+  return (
+    <div
+      className={`mb-5 rounded-xl border px-4 py-4 sm:px-5 ${
+        isSuccess ? 'border-[#C5E8CE] bg-[#F3FBF5]' : 'border-[#F0C9C9] bg-[#FEF6F6]'
+      }`}
+      role="status"
+      aria-live="polite"
+    >
+      <div className="flex items-start gap-3">
+        <span
+          className={`mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full ${
+            isSuccess ? 'bg-[#E7F6EC] text-[#2E9A4A]' : 'bg-[#FCE8E8] text-[#C44D4D]'
+          }`}
+        >
+          {isSuccess ? (
+            <HiOutlineCheck className="h-5 w-5" aria-hidden="true" />
+          ) : (
+            <HiOutlineEnvelope className="h-5 w-5" aria-hidden="true" />
+          )}
+        </span>
+        <div className="min-w-0 flex-1">
+          <p className="font-sans text-[15px] font-bold text-[#1B3A6B]">
+            {isSuccess ? 'Application submitted' : 'Something went wrong'}
+          </p>
+          <p className="mt-1 text-[13px] leading-relaxed text-[#5C6B7C]">
+            {isSuccess
+              ? 'Thank you. We received your transportation assistance application and will review it shortly. A confirmation has been sent to our team.'
+              : errorMessage || 'Please try again in a moment or email us at info@worldeducationsociety.com.'}
+          </p>
+          {isSuccess ? (
+            <button
+              type="button"
+              onClick={onReset}
+              className="mt-3 text-[13px] font-semibold text-[#1E4E8C] transition-colors hover:text-[#163E70]"
+            >
+              Submit another application
+            </button>
+          ) : null}
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function TransportationAssistance() {
+  const [submitStatus, setSubmitStatus] = useState('idle')
+  const [submitError, setSubmitError] = useState('')
+  const [formKey, setFormKey] = useState(0)
+
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    const form = event.currentTarget
+    if (!form.reportValidity()) return
+
+    setSubmitStatus('submitting')
+    setSubmitError('')
+
+    const data = new FormData(form)
+    const fields = {
+      'Full Name': data.get('fullName'),
+      Email: data.get('email'),
+      Phone: data.get('phone'),
+      'Home Address': data.get('homeAddress'),
+      City: data.get('city'),
+      'Postal Code': data.get('postalCode'),
+      'Date of Birth': data.get('dateOfBirth'),
+      Institution: data.get('institution'),
+      'Student ID': data.get('studentId'),
+      'Destination Address': data.get('destination'),
+      'Days Needed': data.get('days'),
+      'Pickup Time': data.get('pickup'),
+      'Return Time': data.get('returnTime'),
+      'Accessibility Needs': data.get('accessibility'),
+      'Reason for Assistance': data.get('reason'),
+      'Emergency Contact': data.get('emergencyContact'),
+      'Additional Information': data.get('additional'),
+      'Fee Acknowledged': data.get('feeAcknowledgement') ? 'Yes' : 'No',
+      Consent: data.get('consent') ? 'Yes' : 'No',
+    }
+
+    try {
+      await submitFormEmail({
+        subject: 'Transportation Assistance Application — World Education Society',
+        fields,
+        replyTo: String(data.get('email') || ''),
+      })
+      setSubmitStatus('success')
+      form.reset()
+    } catch (error) {
+      setSubmitStatus('error')
+      setSubmitError(error.message)
+    }
+  }
+
+  const resetForm = () => {
+    setSubmitStatus('idle')
+    setSubmitError('')
+    setFormKey((key) => key + 1)
+  }
+
   return (
     <div className="bg-[#F7FBFE] text-[#1B3A6B]">
       <PageHero
@@ -141,9 +246,6 @@ export default function TransportationAssistance() {
       >
         <Link to="/programs" className={`${heroPrimaryButton} px-4 sm:px-5`}>
           Learn About Our Programs
-        </Link>
-        <Link to="/programs" className={`${heroOutlineButton} px-4 sm:px-5`}>
-          Back to Programs
         </Link>
       </PageHero>
 
@@ -190,8 +292,9 @@ export default function TransportationAssistance() {
       <section className="bg-[#F4F8FC]">
         <div className={`${pageContainer} grid items-start gap-5 py-8 lg:grid-cols-[minmax(0,1fr)_300px] lg:gap-6 lg:py-10 xl:grid-cols-[minmax(0,1fr)_320px]`}>
           <form
+            key={formKey}
             className="rounded-2xl border border-[#E6EEF4] bg-white p-5 shadow-[0_10px_28px_-24px_rgba(27,58,107,0.45)] sm:p-6"
-            onSubmit={(event) => event.preventDefault()}
+            onSubmit={handleSubmit}
           >
             <h2 className="font-display text-[1.35rem] font-bold tracking-tight text-[#1B3A6B] sm:text-[1.5rem]">
               Transportation Assistance Application
@@ -199,6 +302,8 @@ export default function TransportationAssistance() {
             <p className="mt-1.5 text-[13px] text-[#5C6B7C]">
               Please complete all fields. We’ll review your application and be in touch soon.
             </p>
+
+            <FormFeedback status={submitStatus} errorMessage={submitError} onReset={resetForm} />
 
             <div className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
               <Field label="Full Name" required>
@@ -308,9 +413,10 @@ export default function TransportationAssistance() {
             <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <button
                 type="submit"
-                className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#2E9A4A] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#267F3C]"
+                disabled={submitStatus === 'submitting'}
+                className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#2E9A4A] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#267F3C] disabled:cursor-not-allowed disabled:opacity-70"
               >
-                Submit Application
+                {submitStatus === 'submitting' ? 'Sending…' : 'Submit Application'}
                 <HiArrowRight className="h-4 w-4" aria-hidden="true" />
               </button>
               <p className="flex items-center gap-2 text-[12px] text-[#7B8B9A]">

@@ -12,6 +12,7 @@ function isActivePath(href, pathname) {
   if (href === '/programs') return pathname === '/programs' || pathname === '/our-programs' || pathname.startsWith('/programs/')
   if (href === '/get-involved') return pathname === '/get-involved' || pathname === '/getinvolved'
   if (href === '/contact') return pathname === '/contact' || pathname === '/contact-us'
+  if (href === '/campaigns') return pathname === '/campaigns' || pathname.startsWith('/campaigns/')
   return pathname === href
 }
 

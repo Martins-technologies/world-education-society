@@ -23,6 +23,8 @@ import {
   HiOutlineUsers,
 } from 'react-icons/hi2'
 import PageHero, { pageContainer } from '../components/PageHero'
+import ComingSoonButton from '../components/ComingSoonButton'
+import { useComingSoon } from '../components/ComingSoonProvider'
 
 const topics = [
   'Scholarships',
@@ -161,8 +163,10 @@ function MetaIcon({ type }) {
 }
 
 export default function Resources() {
+  const showComingSoon = useComingSoon()
   const [query, setQuery] = useState('')
   const [filter, setFilter] = useState('All Resources')
+  const resourceSoonMessage = 'This resource will be available soon. We are preparing downloads and articles for you.'
   const groupByFilter = {
     Guides: 'guide',
     Articles: 'article',
@@ -236,10 +240,14 @@ export default function Resources() {
             <h2 className="max-w-full font-display text-[1.55rem] font-bold tracking-tight text-[#1B3A6B] sm:text-[2.05rem]">
               Browse Resources by Category
             </h2>
-            <span className="inline-flex items-center gap-1 text-[14px] font-semibold text-[#1E6FBF]">
+            <button
+              type="button"
+              onClick={() => showComingSoon(resourceSoonMessage)}
+              className="inline-flex items-center gap-1 text-[14px] font-semibold text-[#1E6FBF] transition-colors hover:text-[#163E70]"
+            >
               View All Resources
               <HiArrowRight className="h-4 w-4" aria-hidden="true" />
-            </span>
+            </button>
           </div>
 
           <div className="mt-8 grid grid-cols-2 gap-4 sm:gap-5 md:grid-cols-3 xl:grid-cols-6">
@@ -270,13 +278,13 @@ export default function Resources() {
                 A comprehensive guide to help students explore their options, understand application processes, and prepare for a successful transition to college, university or skilled trades.
               </p>
               <div className="mt-6 flex flex-wrap items-center gap-4">
-                <button
-                  type="button"
+                <ComingSoonButton
+                  message="The Post-Secondary Planning Guide PDF is coming soon."
                   className="inline-flex items-center gap-2 rounded-lg bg-[#1B3A6B] px-4 py-2.5 text-[14px] font-semibold text-white transition-colors hover:bg-[#152E56]"
                 >
                   <HiOutlineArrowDownTray className="h-4 w-4" aria-hidden="true" />
                   Download Guide (PDF)
-                </button>
+                </ComingSoonButton>
                 <span className="text-[13px] text-[#6B7C8D]">2.4 MB</span>
               </div>
             </div>
@@ -314,10 +322,14 @@ export default function Resources() {
                 </button>
               ))}
             </div>
-            <span className="inline-flex items-center gap-1 text-[14px] font-semibold text-[#1E6FBF]">
+            <button
+              type="button"
+              onClick={() => showComingSoon(resourceSoonMessage)}
+              className="inline-flex items-center gap-1 text-[14px] font-semibold text-[#1E6FBF] transition-colors hover:text-[#163E70]"
+            >
               View All Resources
               <HiArrowRight className="h-4 w-4" aria-hidden="true" />
-            </span>
+            </button>
           </div>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
             {visibleLatest.map((item) => (
@@ -343,12 +355,12 @@ export default function Resources() {
                       </span>
                     ))}
                   </div>
-                  <button
-                    type="button"
+                  <ComingSoonButton
+                    message={resourceSoonMessage}
                     className="mt-5 inline-flex w-fit items-center rounded-lg border border-[#D5DEE8] px-4 py-2 text-[13px] font-semibold text-[#1B3A6B] transition-colors hover:bg-[#F4F8FC]"
                   >
                     {item.action}
-                  </button>
+                  </ComingSoonButton>
                 </div>
               </article>
             ))}
@@ -364,10 +376,16 @@ export default function Resources() {
             </h2>
             <ul className="mt-4">
               {popular.map(({ title, Icon }) => (
-                <li key={title} className="flex items-center gap-3 border-b border-[#E6EEF4] py-3.5">
-                  <Icon className="h-5 w-5 shrink-0 text-[#1E6FBF]" aria-hidden="true" />
-                  <span className="flex-1 text-[14px] font-medium text-[#1B3A6B]">{title}</span>
-                  <HiChevronRight className="h-4 w-4 shrink-0 text-[#8AA0B5]" aria-hidden="true" />
+                <li key={title}>
+                  <button
+                    type="button"
+                    onClick={() => showComingSoon(resourceSoonMessage)}
+                    className="flex w-full items-center gap-3 border-b border-[#E6EEF4] py-3.5 text-left transition-colors hover:bg-[#F7FBFE]"
+                  >
+                    <Icon className="h-5 w-5 shrink-0 text-[#1E6FBF]" aria-hidden="true" />
+                    <span className="flex-1 text-[14px] font-medium text-[#1B3A6B]">{title}</span>
+                    <HiChevronRight className="h-4 w-4 shrink-0 text-[#8AA0B5]" aria-hidden="true" />
+                  </button>
                 </li>
               ))}
             </ul>
@@ -387,10 +405,13 @@ export default function Resources() {
             <p className="mt-2 text-[14px] leading-relaxed text-[#5C6E80]">
               Resources for community organizations to support local learning initiatives and youth programs.
             </p>
-            <span className="mt-4 inline-flex items-center gap-1 text-[14px] font-semibold text-[#1E6FBF]">
+            <ComingSoonButton
+              message="The Community Education Toolkit download is coming soon."
+              className="mt-4 inline-flex items-center gap-1 text-[14px] font-semibold text-[#1E6FBF] transition-colors hover:text-[#163E70]"
+            >
               Download Toolkit
               <HiArrowRight className="h-4 w-4" aria-hidden="true" />
-            </span>
+            </ComingSoonButton>
           </div>
 
           <div>
@@ -405,7 +426,7 @@ export default function Resources() {
                 Our team is here to help you find the right resources, answer your questions, and connect you with support services.
               </p>
               <Link
-                to="/get-support"
+                to="/contact"
                 className="mt-6 inline-flex items-center gap-2 rounded-full border border-[#C5D7E8] bg-white px-5 py-2.5 text-[14px] font-semibold text-[#1B3A6B] transition-colors hover:bg-[#F7FBFE]"
               >
                 Get Support

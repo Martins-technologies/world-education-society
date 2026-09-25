@@ -13,6 +13,7 @@ import {
   HiUsers,
 } from 'react-icons/hi2'
 import PageHero, { heroOutlineButton, heroPrimaryButton } from '../components/PageHero'
+import ComingSoonButton from '../components/ComingSoonButton'
 
 const photos = {
   hero: '/homeupdated/01_Hero_Students.webp',
@@ -292,9 +293,6 @@ export default function Home() {
                 <div className="px-5 py-5">
                   <h3 className="font-sans text-lg font-semibold text-[#1B3A6B]">{program.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-[#5C6B7C]">{program.text}</p>
-                  <div className="mt-4">
-                    <ArrowLink to="/programs">Learn More</ArrowLink>
-                  </div>
                 </div>
               </article>
             ))}
@@ -361,7 +359,13 @@ export default function Home() {
                   Help us provide school supplies, learning resources and support for students in need.
                 </p>
                 <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
-                  <Pill to="/donate" tone="green">Donate Now</Pill>
+                  <ComingSoonButton
+                    message="Online donations will be available soon. Thank you for your interest in supporting our work."
+                    className="inline-flex items-center gap-2 rounded-full bg-[#2E9A4A] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#267F3C]"
+                  >
+                    Donate Now
+                    <HiArrowRight className="h-4 w-4" aria-hidden="true" />
+                  </ComingSoonButton>
                   <p className="text-sm font-semibold text-[#2E9A4A]">70% of goal</p>
                 </div>
                 <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-[#E5F2E8]" aria-hidden="true">
@@ -443,7 +447,13 @@ export default function Home() {
                   <h3 className="font-sans text-[15px] font-semibold leading-snug text-[#1B3A6B]">{item.title}</h3>
                   <p className="mt-2 text-[12px] text-[#7A8794]">{item.date}</p>
                   <div className="mt-3">
-                    <ArrowLink to="/campaigns">Read More</ArrowLink>
+                    <ComingSoonButton
+                      message="Full news articles are coming soon."
+                      className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#1E4E8C] transition-colors hover:text-[#163E70]"
+                    >
+                      <span>Read More</span>
+                      <HiArrowRight className="h-4 w-4" aria-hidden="true" />
+                    </ComingSoonButton>
                   </div>
                 </div>
               ))}
@@ -456,7 +466,13 @@ export default function Home() {
               We’re here to help. Tell us what you’re trying to achieve and how we can support you.
             </p>
             <div className="mt-5">
-              <Pill to="/get-support">Request Support</Pill>
+              <ComingSoonButton
+                message="Our support request portal is coming soon. Please contact us in the meantime."
+                className="inline-flex items-center gap-2 rounded-full bg-[#1E4E8C] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#183E72]"
+              >
+                Request Support
+                <HiArrowRight className="h-4 w-4" aria-hidden="true" />
+              </ComingSoonButton>
             </div>
           </article>
         </div>

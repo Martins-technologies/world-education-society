@@ -452,9 +452,11 @@ export default function OurPrograms() {
                         </span>
                       </li>
                     </ul>
-                    <div className="mt-3.5">
-                      <LearnMore href={program.href || `#${program.id}`} label={program.action || 'Learn More'} />
-                    </div>
+                    {program.href ? (
+                      <div className="mt-3.5">
+                        <LearnMore href={program.href} label={program.action || 'Learn More'} />
+                      </div>
+                    ) : null}
                   </div>
                 </article>
               ))}
