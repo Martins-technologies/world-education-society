@@ -74,7 +74,7 @@ const programs = [
     title: 'Study Opportunities',
     desc: 'Information and support for international and domestic study options (including study abroad).',
     eligibility: 'High school & post-secondary students',
-    delivery: 'Online & in-person',
+    delivery: 'Online & In-person',
     image: '/programsupdated/04_Study_Opportunities.webp',
     alt: 'A student with a backpack looking toward a city skyline',
     audiences: ['students', 'youth', 'lifelong'],
@@ -94,8 +94,6 @@ const programs = [
     categories: ['funding'],
     tint: 'blue',
     Icon: HiOutlineAcademicCap,
-    action: 'Apply Now',
-    href: '/get-involved',
   },
   {
     id: 'career-skills',
@@ -144,7 +142,6 @@ const programs = [
     delivery: 'Support programs & partnerships',
     image: '/programsupdated/09_Transportation_Assistance.webp',
     alt: 'Students riding public transit together',
-    href: '/programs/transportation-assistance',
     audiences: ['students', 'communities'],
     categories: ['other'],
     tint: 'blue',
@@ -266,9 +263,10 @@ function BusIcon({ className }) {
   )
 }
 
+const learnMoreButtonClass =
+  'inline-flex items-center gap-1.5 rounded-lg border border-[#D5E4F7] bg-white px-3.5 py-1.5 text-[13px] font-semibold text-[#2F6FE4] transition-colors hover:border-[#2F6FE4] hover:bg-[#F4F8FE]'
+
 function LearnMore({ href, label = 'Learn More' }) {
-  const className =
-    'inline-flex items-center gap-1.5 rounded-lg border border-[#D5E4F7] bg-white px-3.5 py-1.5 text-[13px] font-semibold text-[#2F6FE4] transition-colors hover:border-[#2F6FE4] hover:bg-[#F4F8FE]'
   const content = (
     <>
       {label}
@@ -277,13 +275,13 @@ function LearnMore({ href, label = 'Learn More' }) {
   )
   if (href.startsWith('/')) {
     return (
-      <Link to={href} className={className}>
+      <Link to={href} className={learnMoreButtonClass}>
         {content}
       </Link>
     )
   }
   return (
-    <a href={href} className={className}>
+    <a href={href} className={learnMoreButtonClass}>
       {content}
     </a>
   )
@@ -342,7 +340,8 @@ export default function OurPrograms() {
               Home
             </Link>
             <span className="mx-1.5" aria-hidden="true">
-              ›
+              {' '}
+              &gt;{' '}
             </span>
             <span className="text-[#5C6B7C]">Our Programs</span>
           </nav>
@@ -350,7 +349,7 @@ export default function OurPrograms() {
       />
 
       <section className="border-y border-[#E6EEF4] bg-white">
-        <div className="mx-auto flex max-w-[1380px] gap-1 overflow-x-auto px-6 sm:px-8 lg:px-12 xl:px-16">
+        <div className="mx-auto grid max-w-[1380px] grid-cols-2 sm:grid-cols-3 lg:flex lg:px-12 xl:px-16 px-4 sm:px-8">
           {audiences.map(({ id, label, Icon }) => {
             const active = audience === id
             return (
@@ -358,27 +357,29 @@ export default function OurPrograms() {
                 key={id}
                 type="button"
                 onClick={() => setAudience(id)}
-                className={`flex min-w-[148px] flex-1 flex-col items-center gap-2 border-b-[3px] px-3 py-4 text-[13px] font-semibold transition-colors ${
+                className={`flex min-w-0 flex-col items-center gap-2 border-b-[3px] px-2 py-3 text-center text-[13px] font-semibold transition-colors sm:px-3 sm:py-4 lg:min-w-[148px] lg:flex-1 ${
+                  id === 'lifelong' ? 'col-span-2 sm:col-span-1 ' : ''
+                }${
                   active
                     ? 'border-[#2F6FE4] text-[#2F6FE4]'
                     : 'border-transparent text-[#7B8B9A] hover:text-[#1B3A6B]'
                 }`}
               >
-                <Icon className="h-5 w-5" aria-hidden="true" />
-                <span className="whitespace-nowrap">{label}</span>
+                <Icon className="h-5 w-5 shrink-0" aria-hidden="true" />
+                <span className="leading-snug">{label}</span>
               </button>
             )
           })}
         </div>
       </section>
 
-      <section className="relative scroll-mt-24 overflow-hidden bg-[#F7FBFE] py-12 sm:py-14">
+      <section id="explore-programs" className="relative scroll-mt-24 overflow-hidden bg-[#F7FBFE] py-12 sm:py-14">
         <SoftBlobs />
         <div className="relative mx-auto max-w-[1380px] px-6 sm:px-8 lg:px-12 xl:px-16">
           <div className="grid items-center gap-5 lg:grid-cols-[auto_minmax(0,1fr)_260px] lg:gap-10">
             <div>
               <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#8A97A6]">Programs</p>
-              <h2 className="mt-1.5 whitespace-nowrap font-display text-[2rem] font-bold leading-none tracking-tight text-[#1B3A6B] sm:text-[2.15rem]">
+              <h2 className="mt-1.5 font-display text-[1.75rem] font-bold leading-tight tracking-tight text-[#1B3A6B] sm:text-[2.15rem]">
                 Explore Our Programs
               </h2>
             </div>
@@ -452,41 +453,12 @@ export default function OurPrograms() {
                         </span>
                       </li>
                     </ul>
-                    {program.href ? (
-                      <div className="mt-3.5">
-                        <LearnMore href={program.href} label={program.action || 'Learn More'} />
-                      </div>
-                    ) : null}
+                    <div className="mt-3.5">
+                      <LearnMore href="/contact" />
+                    </div>
                   </div>
                 </article>
               ))}
-              {audience === 'all' && category === 'all' && !query.trim() ? (
-                <article className="flex flex-col justify-between rounded-2xl border border-[#D5EDDC] bg-[#F3FBF4] p-6 shadow-[0_12px_32px_-22px_rgba(27,58,107,0.45)]">
-                  <div>
-                    <h3 className="font-display text-[1.65rem] font-bold italic leading-tight tracking-tight text-[#1B3A6B]">
-                      More Than Programs.
-                      <span className="mt-1 block text-[#1F8A4C] underline decoration-[#1F8A4C] decoration-2 underline-offset-4">
-                        Brighter Futures.
-                      </span>
-                    </h3>
-                    <div className="mt-5 flex items-start gap-3">
-                      <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#E7F3FB] text-[#2F6FE4]">
-                        <HiOutlineUserGroup className="h-5 w-5" aria-hidden="true" />
-                      </span>
-                      <p className="text-[13px] leading-relaxed text-[#5C6B7C]">
-                        Every program is part of our larger mission to make education accessible for all. Explore, get involved, or reach out to learn how we can support you.
-                      </p>
-                    </div>
-                  </div>
-                  <Link
-                    to="/get-involved"
-                    className="mt-6 inline-flex w-fit items-center gap-2 rounded-lg bg-[#2E9A4A] px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#267F3C]"
-                  >
-                    Get Support
-                    <HiArrowRight className="h-4 w-4" aria-hidden="true" />
-                  </Link>
-                </article>
-              ) : null}
             </div>
           )}
         </div>

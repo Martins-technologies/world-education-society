@@ -8,6 +8,34 @@ export const heroOutlineButton =
 export const heroGreenButton =
   'inline-flex items-center gap-2 rounded-full bg-[#2E9A4A] px-5 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#267F3C] sm:text-[15px]'
 
+function HeroImage({ src, alt, className, style, width, height, decoding = 'async', srcSet, sizes, fetchPriority }) {
+  if (!src) {
+    return (
+      <div
+        className={`flex items-center justify-center bg-[#E7EEF2] text-[#8AA0B5] ${className || ''}`}
+        role="img"
+        aria-label={alt || 'Image placeholder'}
+      >
+        <span className="px-4 text-center text-[11px] font-semibold uppercase tracking-[0.14em]">Image placeholder</span>
+      </div>
+    )
+  }
+  return (
+    <img
+      src={src}
+      alt={alt}
+      className={className}
+      style={style}
+      width={width}
+      height={height}
+      decoding={decoding}
+      srcSet={srcSet}
+      sizes={sizes}
+      fetchPriority={fetchPriority}
+    />
+  )
+}
+
 export default function PageHero({
   eyebrow,
   title,
@@ -23,11 +51,27 @@ export default function PageHero({
   footnote,
   breadcrumb,
   children,
+  clipHeroImage = true,
+  imageIntrinsicWidth,
+  imageIntrinsicHeight,
+  heroImageFrameClassName = '',
+  imageSrcSet,
+  imageSizes,
+  imageFetchPriority,
 }) {
   const fullImage = imageLayout === 'full'
   const zoomed = Number(imageScale) !== 1
+  const containSharp = imageFit === 'contain' && (imageIntrinsicWidth || imageIntrinsicHeight)
   const framedImageStyle = {
     objectPosition: imagePosition,
+    ...(containSharp
+      ? {
+          maxWidth: imageIntrinsicWidth ? `min(100%, ${imageIntrinsicWidth}px)` : undefined,
+          maxHeight: imageIntrinsicHeight ? `min(100%, ${imageIntrinsicHeight}px)` : undefined,
+          width: 'auto',
+          height: 'auto',
+        }
+      : {}),
     ...(zoomed
       ? {
           transform: `scale(${imageScale})`,
@@ -36,22 +80,44 @@ export default function PageHero({
       : {}),
   }
   const heroFrame =
-    'hero-frame pointer-events-none absolute bottom-0 top-[74px] z-0 hidden w-[58%] max-w-[760px] overflow-hidden lg:block'
+    'hero-frame pointer-events-none absolute bottom-0 top-[74px] z-0 hidden w-[58%] max-w-[760px] lg:block'
+  const heroFrameOverflow = clipHeroImage ? 'overflow-hidden' : 'overflow-visible'
+
+  const desktopHeroImageClass =
+    imageFit === 'contain'
+      ? containSharp
+        ? 'max-h-full max-w-full object-contain'
+        : 'h-full w-full object-contain'
+      : 'h-full w-full object-cover'
 
   return (
     <section className="relative overflow-hidden bg-[#F7FBFE] pt-[74px]">
       {fullImage ? (
-        <div className={`${heroFrame} ${imageFit === 'contain' ? 'bg-[#F7FBFE]' : ''}`} style={{ clipPath: 'url(#heroCurveClip)' }}>
-          <img
-            src={image}
-            alt={imageAlt}
-            className={imageFit === 'contain' ? 'h-full w-full object-contain' : 'h-full w-full object-cover'}
-            style={framedImageStyle}
-          />
+        <div
+          className={`${heroFrame} ${heroFrameOverflow} ${imageFit === 'contain' ? 'bg-[#F7FBFE]' : ''} ${heroImageFrameClassName}`}
+          style={clipHeroImage ? { clipPath: 'url(#heroCurveClip)' } : undefined}
+        >
+          <div
+            className={`flex h-full w-full items-center ${
+              clipHeroImage || imageFit === 'contain' ? 'justify-center' : 'justify-end pr-0'
+            }`}
+          >
+            <HeroImage
+              src={image}
+              alt={imageAlt}
+              className={desktopHeroImageClass}
+              style={framedImageStyle}
+              width={imageIntrinsicWidth}
+              height={imageIntrinsicHeight}
+              srcSet={imageSrcSet}
+              sizes={imageSizes}
+              fetchPriority={imageFetchPriority}
+            />
+          </div>
         </div>
       ) : (
         <div className={`${heroFrame} !max-w-none lg:!left-[36%] lg:!w-auto`}>
-          <img
+          <HeroImage
             src={image}
             alt={imageAlt}
             className="h-full w-full object-cover"
@@ -107,18 +173,25 @@ export default function PageHero({
           {footnote && <div className="mt-7">{footnote}</div>}
         </div>
 
-        <div className="relative min-w-0 overflow-hidden rounded-[28px] bg-[#E7EEF2] lg:hidden">
-          <img
+        <div className="relative min-w-0 max-lg:overflow-visible overflow-hidden rounded-[28px] bg-[#F7FBFE] lg:hidden">
+          <HeroImage
             src={image}
             alt={imageAlt}
             className={
               fullImage
                 ? zoomed
                   ? 'h-[460px] w-full rounded-[28px] object-cover sm:h-[520px]'
-                  : 'h-auto w-full max-w-full rounded-[28px] object-contain'
+                  : !image
+                    ? 'h-[300px] w-full rounded-[28px] sm:h-[400px]'
+                    : 'mx-auto h-auto w-full max-w-full rounded-[28px] object-contain object-center'
                 : 'h-[300px] w-full object-cover sm:h-[400px]'
             }
-            style={fullImage && !zoomed ? { objectPosition: imagePosition } : framedImageStyle}
+            style={fullImage && !zoomed && image ? { ...framedImageStyle, objectPosition: imagePosition } : framedImageStyle}
+            width={imageIntrinsicWidth}
+            height={imageIntrinsicHeight}
+            srcSet={imageSrcSet}
+            sizes={imageSizes}
+            fetchPriority={imageFetchPriority}
           />
           {fullImage && imageNotes ? (
             <div className="pointer-events-none absolute inset-0 z-10 overflow-hidden rounded-[28px]">{imageNotes}</div>

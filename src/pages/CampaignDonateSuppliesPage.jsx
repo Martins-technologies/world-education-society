@@ -24,7 +24,6 @@ export default function CampaignDonateSuppliesPage() {
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <ActionButton to="/contact" variant="primary">Contact Us</ActionButton>
-              <ActionButton to="/donate" variant="green">Donate</ActionButton>
             </div>
           </div>
           <div className="lg:col-span-6">

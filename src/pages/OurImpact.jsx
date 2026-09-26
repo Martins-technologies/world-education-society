@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import { HiArrowRight } from 'react-icons/hi2'
-import PageHero, { heroPrimaryButton } from '../components/PageHero'
-import ComingSoonButton from '../components/ComingSoonButton'
+import PageHero from '../components/PageHero'
 import { useComingSoon } from '../components/ComingSoonProvider'
 
 const photos = {
@@ -347,8 +346,8 @@ function SectionHeading({ title, action, to, comingSoonMessage }) {
     'inline-flex shrink-0 items-center gap-1.5 text-[12.5px] font-semibold text-[#1E5AAF] transition-colors hover:text-[#163E70]'
 
   return (
-    <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 lg:flex-nowrap">
-      <h2 className="font-sans text-[1.35rem] font-bold leading-tight tracking-tight text-[#1B3A6B] sm:text-[1.45rem] lg:whitespace-nowrap lg:text-[1.4rem]">
+    <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+      <h2 className="min-w-0 font-sans text-[1.35rem] font-bold leading-tight tracking-tight text-[#1B3A6B] sm:text-[1.45rem]">
         {title}
       </h2>
       {action ? (
@@ -468,19 +467,11 @@ export default function OurImpact() {
         imageAlt="Students smiling together outdoors"
         imageLayout="full"
         imagePosition="68% 42%"
-      >
-        <ComingSoonButton
-          message="Our annual report will be available for download soon."
-          className={heroPrimaryButton}
-        >
-          Read Our Annual Report
-          <HiArrowRight className="h-4 w-4" aria-hidden="true" />
-        </ComingSoonButton>
-      </PageHero>
+      />
 
       <section className="bg-white">
         <div className="mx-auto max-w-[1380px] px-6 py-12 sm:px-8 lg:px-12 xl:px-16 lg:py-14">
-          <SectionHeading title="Our Impact at a Glance" action="All Impact Metrics" to="/resources" />
+          <SectionHeading title="Our Impact at a Glance" />
           <div className="mt-8 grid grid-cols-2 gap-x-4 gap-y-8 md:grid-cols-3 xl:grid-cols-6">
             {glance.map((item, index) => (
               <div
@@ -502,11 +493,7 @@ export default function OurImpact() {
       <section className="bg-[#FBF9F4]">
         <div className="mx-auto grid max-w-[1380px] gap-10 px-6 py-12 sm:px-8 lg:grid-cols-12 lg:px-12 xl:px-16 lg:py-14">
           <div className="lg:col-span-5">
-            <SectionHeading
-              title="2024 Annual Highlights"
-              action="View Full Annual Report"
-              comingSoonMessage="The full annual report is coming soon."
-            />
+            <SectionHeading title="2024 Annual Highlights" />
             <p className="mt-3 text-[14px] leading-relaxed text-[#5C6B7C]">
               Together, we made significant progress in expanding educational opportunities and building stronger, more inclusive communities.
             </p>
@@ -526,15 +513,19 @@ export default function OurImpact() {
           </div>
 
           <div className="lg:col-span-7">
-            <SectionHeading title="Program Outcomes" action="View All Program Outcomes" to="/programs" />
+            <SectionHeading title="Program Outcomes" />
             <p className="mt-3 text-[14px] leading-relaxed text-[#5C6B7C]">
               Our programs create real, measurable change in the lives of young people.
             </p>
             <div className="mt-6 grid grid-cols-2 gap-4 lg:grid-cols-4">
               {outcomes.map((item) => (
                 <article key={item.value}>
-                  <div className="h-[132px] overflow-hidden rounded-2xl bg-[#E7EEF2] sm:h-[148px]">
-                    <img src={item.image} alt={item.alt} className="h-full w-full object-cover object-[center_18%]" />
+                  <div className="overflow-hidden rounded-2xl bg-[#E7EEF2] lg:h-[148px]">
+                    <img
+                      src={item.image}
+                      alt={item.alt}
+                      className="block h-auto w-full lg:h-full lg:object-cover lg:object-[center_18%]"
+                    />
                   </div>
                   <p className="mt-3 font-sans text-[1.45rem] font-bold leading-none text-[#1B3A6B]">{item.value}</p>
                   <p className="mt-2 text-[12px] leading-snug text-[#6A7A8A]">{item.text}</p>
@@ -668,18 +659,9 @@ export default function OurImpact() {
 
       <section id="impact-action" className="scroll-mt-24 bg-[#F4F9FC]">
         <div className="mx-auto max-w-[1380px] px-6 py-12 sm:px-8 lg:px-12 xl:px-16 lg:py-14">
-          <div className="flex flex-wrap items-end justify-between gap-3">
-            <div>
-              <h2 className="font-sans text-[1.7rem] font-bold tracking-tight text-[#1B3A6B] sm:text-[1.85rem]">Impact in Action</h2>
-              <p className="mt-1 text-[14px] text-[#5C6B7C]">Moments from our programs, workshops and community initiatives.</p>
-            </div>
-            <ComingSoonButton
-              message="Our photo gallery is coming soon."
-              className="inline-flex shrink-0 items-center gap-1.5 text-[12.5px] font-semibold text-[#1E5AAF] transition-colors hover:text-[#163E70]"
-            >
-              <span>View More Photos</span>
-              <HiArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
-            </ComingSoonButton>
+          <div>
+            <h2 className="font-sans text-[1.7rem] font-bold tracking-tight text-[#1B3A6B] sm:text-[1.85rem]">Impact in Action</h2>
+            <p className="mt-1 text-[14px] text-[#5C6B7C]">Moments from our programs, workshops and community initiatives.</p>
           </div>
           <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {actionPhotos.map((photo) => (

@@ -15,7 +15,7 @@ import { pageContainer, heroGreenButton, heroOutlineButton, heroPrimaryButton } 
 
 export { pageContainer }
 
-export function ImagePlaceholder({ className = '', aspect = '', src, alt = '', fit = 'cover' }) {
+export function ImagePlaceholder({ className = '', aspect = '', src, alt = '', fit = 'cover', style }) {
   const objectClass = fit === 'contain' ? 'object-contain' : 'object-cover'
   if (src) {
     return (
@@ -23,6 +23,7 @@ export function ImagePlaceholder({ className = '', aspect = '', src, alt = '', f
         src={src}
         alt={alt}
         className={`${objectClass} ${aspect} ${className}`}
+        style={style}
       />
     )
   }
@@ -95,7 +96,7 @@ export function SectionIntro({ children, className = '' }) {
 
 export function ArrowLink({ to, children, onClick, className = '' }) {
   const baseClass =
-    'inline-flex items-center gap-1.5 text-sm font-semibold text-[#1E4E8C] transition-colors hover:text-[#163E70] whitespace-nowrap'
+    'inline-flex items-center gap-1.5 text-sm font-semibold text-[#1E4E8C] transition-colors hover:text-[#163E70]'
   if (onClick) {
     return (
       <button type="button" onClick={onClick} className={`${baseClass} ${className}`}>
@@ -134,11 +135,15 @@ function primaryCtaVariant(label) {
 export function CampaignCard({ campaign }) {
   return (
     <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-[#E6EEF4] bg-white shadow-[0_12px_30px_-24px_rgba(27,58,107,0.55)]">
-      <ImagePlaceholder
-        src={campaign.image}
-        alt={campaign.imageAlt || campaign.title}
-        className="!rounded-none aspect-[4/3] w-full"
-      />
+      <div className="relative aspect-square w-full shrink-0 overflow-hidden bg-[#F7FBFE]">
+        <ImagePlaceholder
+          src={campaign.image}
+          alt={campaign.imageAlt || campaign.title}
+          fit="cover"
+          className="!rounded-none absolute inset-0 h-full w-full"
+          style={{ objectPosition: campaign.imagePosition || 'center' }}
+        />
+      </div>
       <div className="flex flex-1 flex-col px-5 py-5 sm:px-6 sm:py-6">
         <h3 className="font-display text-[1.35rem] font-bold leading-tight text-[#1B3A6B]">{campaign.title}</h3>
         <p className="mt-2 flex-1 text-[14px] leading-relaxed text-[#5C6B7C]">{campaign.description}</p>
@@ -146,18 +151,18 @@ export function CampaignCard({ campaign }) {
           <CampaignMeta dates={campaign.dates} location={campaign.location} audience={campaign.audience} />
           <ProgressBar value={campaign.progress} label={campaign.progressLabel} />
         </div>
-        <div className="mt-5 grid grid-cols-2 gap-2.5">
+        <div className="mt-5 flex flex-col gap-2.5 min-[420px]:flex-row">
           <ActionButton
             to={campaign.primaryCta.href}
             variant={primaryCtaVariant(campaign.primaryCta.label)}
-            className="!justify-center !px-4 !py-2.5 !text-[13px]"
+            className="min-w-0 flex-1 !justify-center !px-3 !py-2.5 !text-[13px]"
           >
             {campaign.primaryCta.label}
           </ActionButton>
           <ActionButton
             to={campaign.secondaryCta.href}
             variant="outline"
-            className="!justify-center !px-4 !py-2.5 !text-[13px]"
+            className="min-w-0 flex-1 !justify-center !px-3 !py-2.5 !text-[13px]"
           >
             {campaign.secondaryCta.label}
           </ActionButton>
@@ -236,9 +241,9 @@ export function CampaignSectionSubintro({ children }) {
 export function CampaignSplitSectionHeader({ title, linkTo, linkLabel, intro }) {
   return (
     <div className="mb-5">
-      <div className="flex items-start justify-between gap-3">
-        <SectionHeading className="!text-[1.5rem] leading-tight sm:!text-[1.65rem]">{title}</SectionHeading>
-        <ArrowLink to={linkTo} className="mt-0.5 shrink-0 text-[13px] sm:text-sm">
+      <div className="flex flex-wrap items-start justify-between gap-x-3 gap-y-2">
+        <SectionHeading className="min-w-0 max-w-full !text-[1.45rem] leading-tight sm:!text-[1.65rem]">{title}</SectionHeading>
+        <ArrowLink to={linkTo} className="mt-0.5 text-[13px] sm:text-sm">
           {linkLabel}
         </ArrowLink>
       </div>
@@ -251,7 +256,7 @@ export function CampaignOutlineButton({ to, children, className = '' }) {
   return (
     <Link
       to={to}
-      className={`inline-flex items-center justify-center whitespace-nowrap rounded-full border border-[#1B3A6B] bg-white px-6 py-2.5 text-[13px] font-semibold text-[#1B3A6B] transition-colors hover:bg-[#F6F9FB] sm:px-7 sm:py-3 sm:text-[14px] ${className}`}
+      className={`inline-flex max-w-full items-center justify-center rounded-full border border-[#1B3A6B] bg-white px-6 py-2.5 text-center text-[13px] font-semibold text-[#1B3A6B] transition-colors hover:bg-[#F6F9FB] sm:px-7 sm:py-3 sm:text-[14px] ${className}`}
     >
       {children}
     </Link>
@@ -265,8 +270,8 @@ export function PastCampaignHighlightCard({ past }) {
         <ImagePlaceholder
           src={past.image}
           alt={past.imageAlt || past.title}
-          fit="cover"
-          className="!rounded-none absolute inset-0 h-full w-full"
+          fit="contain"
+          className="!rounded-none absolute inset-0 h-full w-full object-center"
         />
       </div>
       <div className="flex min-w-0 flex-1 flex-col px-4 py-4 sm:px-5 sm:py-5">
