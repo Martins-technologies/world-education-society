@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 import { HiArrowRight, HiUserGroup } from 'react-icons/hi2'
 
-import PageHero, { heroGreenButton, heroOutlineButton, heroPrimaryButton } from '../components/PageHero'
+import PageHero, { heroGreenButton, heroOutlineButton } from '../components/PageHero'
 import ComingSoonButton from '../components/ComingSoonButton'
 
 import {
@@ -106,10 +106,6 @@ export default function CampaignsPage() {
           </div>
         }
       >
-        <a href="#current-campaigns" className={heroPrimaryButton}>
-          Explore Current Campaigns
-          <HiArrowRight className="h-4 w-4" aria-hidden="true" />
-        </a>
         <Link to="/get-involved" className={heroOutlineButton}>
           Get Involved
         </Link>
