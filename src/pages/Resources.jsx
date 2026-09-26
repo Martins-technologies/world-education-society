@@ -4,7 +4,6 @@ import {
   HiArrowRight,
   HiChevronRight,
   HiOutlineAcademicCap,
-  HiOutlineArrowDownTray,
   HiOutlineBookOpen,
   HiOutlineBriefcase,
   HiOutlineBuildingLibrary,
@@ -78,7 +77,7 @@ const latest = [
     alt: 'A student writing notes on campus steps',
     position: 'center 36%',
     meta: [{ icon: 'date', label: 'Oct 8, 2025' }],
-    action: 'Read More',
+    action: 'Coming Soon',
   },
   {
     group: 'template',
@@ -132,7 +131,7 @@ const latest = [
     alt: 'A community learning group gathered around a table',
     position: 'center 30%',
     meta: [{ icon: 'date', label: 'Oct 1, 2025' }],
-    action: 'Read More',
+    action: 'Coming Soon',
   },
 ]
 
@@ -236,19 +235,9 @@ export default function Resources() {
 
       <section className="bg-white py-14 sm:py-16">
         <div className={pageContainer}>
-          <div className="flex flex-wrap items-end justify-between gap-3">
-            <h2 className="max-w-full font-display text-[1.55rem] font-bold tracking-tight text-[#1B3A6B] sm:text-[2.05rem]">
-              Browse Resources by Category
-            </h2>
-            <button
-              type="button"
-              onClick={() => showComingSoon(resourceSoonMessage)}
-              className="inline-flex items-center gap-1 text-[14px] font-semibold text-[#1E6FBF] transition-colors hover:text-[#163E70]"
-            >
-              View All Resources
-              <HiArrowRight className="h-4 w-4" aria-hidden="true" />
-            </button>
-          </div>
+          <h2 className="max-w-full font-display text-[1.55rem] font-bold tracking-tight text-[#1B3A6B] sm:text-[2.05rem]">
+            Browse Resources by Category
+          </h2>
 
           <div className="mt-8 grid grid-cols-2 gap-4 sm:gap-5 md:grid-cols-3 xl:grid-cols-6">
             {categories.map(({ title, Icon }) => (
@@ -277,15 +266,13 @@ export default function Resources() {
               <p className="mt-3 max-w-[520px] text-[15px] leading-relaxed text-[#4A6078]">
                 A comprehensive guide to help students explore their options, understand application processes, and prepare for a successful transition to college, university or skilled trades.
               </p>
-              <div className="mt-6 flex flex-wrap items-center gap-4">
-                <ComingSoonButton
-                  message="The Post-Secondary Planning Guide PDF is coming soon."
-                  className="inline-flex items-center gap-2 rounded-lg bg-[#1B3A6B] px-4 py-2.5 text-[14px] font-semibold text-white transition-colors hover:bg-[#152E56]"
+              <div className="mt-6">
+                <span
+                  className="inline-flex cursor-default items-center rounded-lg bg-[#1B3A6B] px-4 py-2.5 text-[14px] font-semibold text-white"
+                  aria-disabled="true"
                 >
-                  <HiOutlineArrowDownTray className="h-4 w-4" aria-hidden="true" />
-                  Download Guide (PDF)
-                </ComingSoonButton>
-                <span className="text-[13px] text-[#6B7C8D]">2.4 MB</span>
+                  Coming Soon
+                </span>
               </div>
             </div>
             <div className="overflow-hidden rounded-[20px]">
@@ -322,14 +309,6 @@ export default function Resources() {
                 </button>
               ))}
             </div>
-            <button
-              type="button"
-              onClick={() => showComingSoon(resourceSoonMessage)}
-              className="inline-flex items-center gap-1 text-[14px] font-semibold text-[#1E6FBF] transition-colors hover:text-[#163E70]"
-            >
-              View All Resources
-              <HiArrowRight className="h-4 w-4" aria-hidden="true" />
-            </button>
           </div>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
             {visibleLatest.map((item) => (
@@ -355,12 +334,21 @@ export default function Resources() {
                       </span>
                     ))}
                   </div>
-                  <ComingSoonButton
-                    message={resourceSoonMessage}
-                    className="mt-5 inline-flex w-fit items-center rounded-lg border border-[#D5DEE8] px-4 py-2 text-[13px] font-semibold text-[#1B3A6B] transition-colors hover:bg-[#F4F8FC]"
-                  >
-                    {item.action}
-                  </ComingSoonButton>
+                  {item.action === 'Coming Soon' ? (
+                    <span
+                      className="mt-5 inline-flex w-fit cursor-default items-center rounded-lg border border-[#D5DEE8] px-4 py-2 text-[13px] font-semibold text-[#1B3A6B]"
+                      aria-disabled="true"
+                    >
+                      {item.action}
+                    </span>
+                  ) : (
+                    <ComingSoonButton
+                      message={resourceSoonMessage}
+                      className="mt-5 inline-flex w-fit items-center rounded-lg border border-[#D5DEE8] px-4 py-2 text-[13px] font-semibold text-[#1B3A6B] transition-colors hover:bg-[#F4F8FC]"
+                    >
+                      {item.action}
+                    </ComingSoonButton>
+                  )}
                 </div>
               </article>
             ))}

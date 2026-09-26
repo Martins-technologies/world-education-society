@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 import { HiArrowRight } from 'react-icons/hi2'
 
-import PageHero, { heroGreenButton, heroOutlineButton } from '../components/PageHero'
+import PageHero, { heroGreenButton } from '../components/PageHero'
 import ComingSoonButton from '../components/ComingSoonButton'
 
 import {
@@ -59,8 +59,6 @@ import {
 
 
 
-const mainCampaigns = currentCampaigns.filter((c) => c.showOnMain)
-
 const mainPastCampaign = pastCampaigns.find((c) => c.showOnMain) ?? pastCampaigns[0]
 
 const mainEvent = communityEvents.find((e) => e.showOnMain) ?? communityEvents[0]
@@ -95,10 +93,6 @@ export default function CampaignsPage() {
         imageLayout="full"
         imagePosition="center"
       >
-        <Link to="/get-involved" className={heroOutlineButton}>
-          <span>Get Involved</span>
-          <HiArrowRight className="h-4 w-4" aria-hidden="true" />
-        </Link>
         <ComingSoonButton
           message="Online donations will be available soon. Thank you for your interest in supporting our work."
           className={heroGreenButton}
@@ -139,12 +133,6 @@ export default function CampaignsPage() {
                   <span>Donate Now</span>
                   <HiArrowRight className="h-4 w-4" aria-hidden="true" />
                 </ComingSoonButton>
-
-                <ActionButton to="/get-involved" variant="outline">
-
-                  Get Involved
-
-                </ActionButton>
 
               </div>
 
@@ -216,9 +204,7 @@ export default function CampaignsPage() {
 
         <div className={pageContainer}>
 
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-
-            <div>
+          <div>
 
               <SectionHeading>Current Campaigns</SectionHeading>
 
@@ -230,17 +216,9 @@ export default function CampaignsPage() {
 
             </div>
 
-            <ArrowLink to="/campaigns/all" className="sm:mb-1">
-
-              View All Campaigns
-
-            </ArrowLink>
-
-          </div>
-
           <div className="mt-8 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
 
-            {mainCampaigns.map((campaign) => (
+            {currentCampaigns.map((campaign) => (
 
               <CampaignCard key={campaign.slug} campaign={campaign} />
 

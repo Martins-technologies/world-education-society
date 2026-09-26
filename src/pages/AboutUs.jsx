@@ -365,9 +365,6 @@ export default function AboutUs() {
             <p className="mt-4 text-[14px] leading-relaxed text-[#5C6B7C]">
               We support international education and study abroad as one of our program areas, helping students explore learning opportunities in Canada and around the world. While these programs create valuable experiences, they are not the sole focus of our organization. Our broader mandate is to improve access to education for all, locally and globally.
             </p>
-            <div className="mt-6">
-              <FilledAction to="/programs">Learn About Our Programs</FilledAction>
-            </div>
           </div>
 
           <div className="rounded-[22px] bg-[#E7EEF2] max-lg:overflow-visible lg:relative lg:min-h-[260px] lg:overflow-hidden">
@@ -412,14 +409,11 @@ export default function AboutUs() {
 
       <section className="bg-white">
         <div className="mx-auto max-w-[1380px] px-6 pb-6 pt-12 sm:px-8 lg:px-12 xl:px-16 lg:pb-4 lg:pt-16">
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#7B8C9C]">Our Leadership</p>
-              <h2 className="mt-2 font-sans text-[1.85rem] font-bold tracking-tight text-[#1B3A6B] sm:text-[2.05rem]">
-                Guided by Experience. United by Purpose.
-              </h2>
-            </div>
-            <TextAction to="/our-impact">Our Impact</TextAction>
+          <div>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#7B8C9C]">Our Leadership</p>
+            <h2 className="mt-2 font-sans text-[1.85rem] font-bold tracking-tight text-[#1B3A6B] sm:text-[2.05rem]">
+              Guided by Experience. United by Purpose.
+            </h2>
           </div>
 
           <ul className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-5">

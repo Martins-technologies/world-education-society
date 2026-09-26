@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
@@ -14,7 +14,6 @@ import Resources from './pages/Resources'
 import TransportationAssistance from './pages/TransportationAssistance'
 import ComingSoon from './pages/ComingSoon'
 import CampaignsPage from './pages/CampaignsPage'
-import CampaignsAllPage from './pages/CampaignsAllPage'
 import CampaignDetailPage from './pages/CampaignDetailPage'
 import PastCampaignsArchivePage from './pages/PastCampaignsArchivePage'
 import CommunityEventsPage from './pages/CommunityEventsPage'
@@ -43,7 +42,7 @@ export default function App() {
           <Route path="/our-impact" element={<OurImpact />} />
           <Route path="/resources" element={<Resources />} />
           <Route path="/campaigns" element={<CampaignsPage />} />
-          <Route path="/campaigns/all" element={<CampaignsAllPage />} />
+          <Route path="/campaigns/all" element={<Navigate to="/campaigns#current-campaigns" replace />} />
           <Route path="/campaigns/past" element={<PastCampaignsArchivePage />} />
           <Route path="/campaigns/events" element={<CommunityEventsPage />} />
           <Route path="/campaigns/donate-supplies" element={<CampaignDonateSuppliesPage />} />

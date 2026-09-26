@@ -87,7 +87,7 @@ export const currentCampaigns = [
     progressLabel: '45% of goal',
     image: campaignImages.skillsForTomorrow,
     imageAlt: 'Red reading glasses on an open book representing skills and learning',
-    primaryCta: { label: 'Get Involved', href: '/get-involved' },
+    primaryCta: { label: 'Donate', href: '/contact' },
     secondaryCta: { label: 'Learn More', href: '/campaigns/skills-for-tomorrow' },
     showOnMain: true,
   },
@@ -117,7 +117,7 @@ export const currentCampaigns = [
     progressLabel: '40% of goal',
     image: campaignImages.youthInternship,
     imageAlt: 'Diverse group of young women taking a selfie together',
-    primaryCta: { label: 'Get Involved', href: '/get-involved' },
+    primaryCta: { label: 'Donate', href: '/contact' },
     secondaryCta: { label: 'Learn More', href: '/campaigns/youth-internship-initiative' },
     showOnMain: true,
   },
@@ -136,10 +136,7 @@ export const campaignDetails = {
     quote: featuredCampaign.quote,
     image: campaignImages.backToLearningDetail,
     imageAlt: 'Student reading a book with focus and concentration',
-    actions: [
-      { label: 'Donate', href: '/contact', variant: 'green' },
-      { label: 'Get Involved', href: '/get-involved', variant: 'outline' },
-    ],
+    actions: [{ label: 'Donate', href: '/contact', variant: 'green' }],
   },
   'skills-for-tomorrow': {
     title: 'Skills for Tomorrow',
@@ -151,7 +148,7 @@ export const campaignDetails = {
     progressLabel: '45% of goal',
     image: campaignImages.skillsForTomorrow,
     imageAlt: 'Red reading glasses on an open book representing skills and learning',
-    actions: [{ label: 'Get Involved', href: '/get-involved', variant: 'primary' }],
+    actions: [{ label: 'Donate', href: '/contact', variant: 'green' }],
   },
   'library-access-support': {
     title: 'Library Access Support',
@@ -175,10 +172,7 @@ export const campaignDetails = {
     progressLabel: '40% of goal',
     image: campaignImages.youthInternship,
     imageAlt: 'Diverse group of young women taking a selfie together',
-    actions: [
-      { label: 'Get Involved', href: '/get-involved', variant: 'primary' },
-      { label: 'Learn More', href: '/get-involved', variant: 'outline' },
-    ],
+    actions: [{ label: 'Donate', href: '/contact', variant: 'green' }],
   },
 }
 

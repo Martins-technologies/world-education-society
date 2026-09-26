@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
   HiOutlineAcademicCap,
@@ -40,69 +40,6 @@ const tints = {
   green: 'bg-[#E7F7EC] text-[#2E9A4A]',
   gold: 'bg-[#FBF4E4] text-[#D4A017]',
   purple: 'bg-[#F3EEF8] text-[#7A62C4]',
-}
-
-const PROGRAM_LEARN_MORE = {
-  'education-guidance': {
-    overview:
-      'Support for students and learners in understanding education options, choosing suitable pathways, and planning their next academic steps with confidence.',
-    learn: [
-      'Education pathway options',
-      'Academic goal setting',
-      'Study planning',
-      'Decision-making skills',
-      'Future education planning',
-    ],
-    whoCanJoin: 'Students and learners seeking guidance with education choices and academic planning.',
-  },
-  'community-education': {
-    overview:
-      'Accessible learning programs designed to build practical knowledge, strengthen personal skills, and encourage positive community participation.',
-    learn: [
-      'Everyday practical skills',
-      'Communication skills',
-      'Community awareness',
-      'Personal development',
-      'Continued learning skills',
-    ],
-    whoCanJoin: 'Youth, adults, families, and community members interested in practical learning and personal growth.',
-  },
-  'study-opportunities': {
-    overview:
-      'Guidance to help learners explore study options, understand available pathways, and make informed decisions about further education.',
-    learn: [
-      'Study pathway options',
-      'Program selection',
-      'Education planning',
-      'Comparing learning opportunities',
-      'Academic decision-making',
-    ],
-    whoCanJoin: 'Students, graduates, and adult learners exploring further education opportunities.',
-  },
-  'career-skills': {
-    overview:
-      'Practical support for individuals preparing for employment, career changes, or professional growth through focused career-readiness skills.',
-    learn: [
-      'Career planning',
-      'Resume fundamentals',
-      'Interview preparation',
-      'Professional communication',
-      'Workplace readiness',
-    ],
-    whoCanJoin: 'Students, graduates, job seekers, and individuals planning their next career step.',
-  },
-  'student-support': {
-    overview:
-      'Supportive learning opportunities that help youth and community members build confidence, communication skills, and positive life skills.',
-    learn: [
-      'Communication skills',
-      'Confidence building',
-      'Teamwork',
-      'Leadership basics',
-      'Goal setting',
-    ],
-    whoCanJoin: 'Youth, students, families, and community members interested in learning, participation, and personal development.',
-  },
 }
 
 const programs = [
@@ -157,8 +94,6 @@ const programs = [
     categories: ['funding'],
     tint: 'blue',
     Icon: HiOutlineAcademicCap,
-    action: 'Apply Now',
-    href: '/get-involved',
   },
   {
     id: 'career-skills',
@@ -207,7 +142,6 @@ const programs = [
     delivery: 'Support programs & partnerships',
     image: '/programsupdated/09_Transportation_Assistance.webp',
     alt: 'Students riding public transit together',
-    href: '/programs/transportation-assistance',
     audiences: ['students', 'communities'],
     categories: ['other'],
     tint: 'blue',
@@ -353,80 +287,6 @@ function LearnMore({ href, label = 'Learn More' }) {
   )
 }
 
-function LearnMoreTrigger({ onClick, label = 'Learn More' }) {
-  return (
-    <button type="button" onClick={onClick} className={learnMoreButtonClass}>
-      {label}
-      <HiArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
-    </button>
-  )
-}
-
-function ProgramLearnMoreModal({ program, detail, onClose }) {
-  useEffect(() => {
-    if (!program) return undefined
-    const onKey = (event) => {
-      if (event.key === 'Escape') onClose()
-    }
-    window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
-  }, [program, onClose])
-
-  if (!program || !detail) return null
-
-  return (
-    <div
-      className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="program-learn-more-title"
-    >
-      <button
-        type="button"
-        className="absolute inset-0 bg-[#1B3A6B]/40 backdrop-blur-[2px]"
-        aria-label="Close dialog"
-        onClick={onClose}
-      />
-      <div className="relative flex max-h-[min(90vh,640px)] w-full max-w-lg flex-col overflow-hidden rounded-2xl border border-[#E6EEF4] bg-white shadow-[0_24px_60px_-20px_rgba(27,58,107,0.45)]">
-        <div className="border-b border-[#E7EEF5] px-5 py-4 sm:px-6">
-          <h2 id="program-learn-more-title" className="font-sans text-lg font-bold leading-snug text-[#1B3A6B] sm:text-xl">
-            {program.title}
-          </h2>
-        </div>
-        <div className="overflow-y-auto px-5 py-4 sm:px-6 sm:py-5">
-          <div className="space-y-5 text-[13px] leading-relaxed text-[#5C6B7C]">
-            <div>
-              <h3 className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#8A97A6]">Course Overview</h3>
-              <p className="mt-2 text-[#5C6B7C]">{detail.overview}</p>
-            </div>
-            <div>
-              <h3 className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#8A97A6]">What You Will Learn</h3>
-              <ul className="mt-2 list-disc space-y-1 pl-5 text-[#5C6B7C]">
-                {detail.learn.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#8A97A6]">Who Can Join</h3>
-              <p className="mt-2 text-[#5C6B7C]">{detail.whoCanJoin}</p>
-            </div>
-          </div>
-        </div>
-        <div className="border-t border-[#E7EEF5] px-5 py-4 sm:px-6">
-          <button
-            type="button"
-            onClick={onClose}
-            className="inline-flex w-full items-center justify-center rounded-lg bg-[#2F6FE4] px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#2563C7] sm:w-auto"
-          >
-            Close
-          </button>
-        </div>
-      </div>
-    </div>
-  )
-}
-
 function SoftBlobs() {
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
@@ -441,9 +301,6 @@ export default function OurPrograms() {
   const [audience, setAudience] = useState('all')
   const [category, setCategory] = useState('all')
   const [query, setQuery] = useState('')
-  const [learnMoreProgram, setLearnMoreProgram] = useState(null)
-
-  const learnMoreDetail = learnMoreProgram ? PROGRAM_LEARN_MORE[learnMoreProgram.id] : null
 
   const visible = useMemo(() => {
     const needle = query.trim().toLowerCase()
@@ -462,11 +319,6 @@ export default function OurPrograms() {
 
   return (
     <div className="bg-[#F7FBFE] text-[#1B3A6B]">
-      <ProgramLearnMoreModal
-        program={learnMoreProgram}
-        detail={learnMoreDetail}
-        onClose={() => setLearnMoreProgram(null)}
-      />
       <PageHero
         title={
           <>
@@ -602,44 +454,11 @@ export default function OurPrograms() {
                       </li>
                     </ul>
                     <div className="mt-3.5">
-                      {PROGRAM_LEARN_MORE[program.id] ? (
-                        <LearnMoreTrigger onClick={() => setLearnMoreProgram(program)} />
-                      ) : program.href ? (
-                        <LearnMore href={program.href} label={program.action || 'Learn More'} />
-                      ) : (
-                        <LearnMore href="/contact" />
-                      )}
+                      <LearnMore href="/contact" />
                     </div>
                   </div>
                 </article>
               ))}
-              {audience === 'all' && category === 'all' && !query.trim() ? (
-                <article className="flex flex-col justify-between rounded-2xl border border-[#D5EDDC] bg-[#F3FBF4] p-6 shadow-[0_12px_32px_-22px_rgba(27,58,107,0.45)]">
-                  <div>
-                    <h3 className="font-display text-[1.65rem] font-bold italic leading-tight tracking-tight text-[#1B3A6B]">
-                      More Than Programs.
-                      <span className="mt-1 block text-[#1F8A4C] underline decoration-[#1F8A4C] decoration-2 underline-offset-4">
-                        Brighter Futures.
-                      </span>
-                    </h3>
-                    <div className="mt-5 flex items-start gap-3">
-                      <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#E7F3FB] text-[#2F6FE4]">
-                        <HiOutlineUserGroup className="h-5 w-5" aria-hidden="true" />
-                      </span>
-                      <p className="text-[13px] leading-relaxed text-[#5C6B7C]">
-                        Every program is part of our larger mission to make education accessible for all. Explore, get involved, or reach out to learn how we can support you.
-                      </p>
-                    </div>
-                  </div>
-                  <Link
-                    to="/get-involved"
-                    className="mt-6 inline-flex w-fit items-center gap-2 rounded-lg bg-[#2E9A4A] px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#267F3C]"
-                  >
-                    Get Support
-                    <HiArrowRight className="h-4 w-4" aria-hidden="true" />
-                  </Link>
-                </article>
-              ) : null}
             </div>
           )}
         </div>
