@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
 
-import { HiArrowRight } from 'react-icons/hi2'
+import { HiArrowRight, HiUserGroup } from 'react-icons/hi2'
 
-import PageHero, { heroGreenButton } from '../components/PageHero'
+import PageHero, { heroGreenButton, heroOutlineButton, heroPrimaryButton } from '../components/PageHero'
 import ComingSoonButton from '../components/ComingSoonButton'
 
 import {
@@ -12,6 +12,8 @@ import {
   ArrowLink,
 
   CampaignCard,
+
+  CampaignHeroStat,
 
   CampaignMeta,
 
@@ -41,6 +43,8 @@ import {
 
   campaignImages,
 
+  campaignHeroStats,
+
   campaignImpactStats,
 
   communityEvents,
@@ -64,8 +68,7 @@ const mainPastCampaign = pastCampaigns.find((c) => c.showOnMain) ?? pastCampaign
 const mainEvent = communityEvents.find((e) => e.showOnMain) ?? communityEvents[0]
 
 /** /campaigns only — highlight cards use dedicated images (not shared with archive/events). */
-const CAMPAIGNS_PAGE_PAST_CARD_IMAGE =
-  'https://cdn.pixabay.com/photo/2017/09/08/00/38/friend-2727307_1280.jpg'
+const CAMPAIGNS_PAGE_PAST_CARD_IMAGE = campaignImages.communityLearningOutreach
 const CAMPAIGNS_PAGE_UPCOMING_CARD_IMAGE =
   'https://cdn.pixabay.com/photo/2020/01/15/16/46/children-4768404_1280.jpg'
 
@@ -81,28 +84,48 @@ export default function CampaignsPage() {
         title={
           <>
             Campaigns
-            <span className="mt-2 block text-[1.05rem] font-semibold leading-snug text-[#1B3A6B] sm:text-[1.15rem] lg:text-[1.02rem] xl:text-[1.1rem] min-[1440px]:text-[1.2rem]">
-              Bringing Resources, <span className="text-[#2E9A4A]">Learning</span> and{' '}
-              <span className="text-[#2E9A4A]">Opportunity</span> Into Communities.
+            <span className="mt-2 block text-[1.05rem] leading-snug text-[#2E9A4A] sm:text-[1.15rem] lg:text-[1.02rem] xl:text-[1.1rem] min-[1440px]:text-[1.2rem]">
+              Bringing Resources, Learning and Opportunity Into Communities.
             </span>
           </>
         }
         description="World Education Society leads community-driven campaigns to remove barriers to education. Through resource distribution, donation drives and local partnerships, we bring learning opportunities directly to the youth who need them most."
         image={campaignImages.backToLearningHero}
-        imageAlt="Students with backpacks ready for the school year"
+        imageAlt="Students and volunteers at a community campaign bringing learning resources to youth"
         imageLayout="full"
-        imagePosition="center"
+        imagePosition="center top"
+        footnote={
+          <div className="flex max-w-[480px] items-start gap-3">
+            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#E7F1FB] text-[#1E4E8C]">
+              <HiUserGroup className="h-5 w-5" aria-hidden="true" />
+            </span>
+            <p className="text-[13px] leading-relaxed text-[#5C6B7C]">
+              Community campaigns connect donations, volunteers and local partners so students can access supplies,
+              skills programs and learning resources where they are needed most.
+            </p>
+          </div>
+        }
       >
-        <ComingSoonButton
-          message="Online donations will be available soon. Thank you for your interest in supporting our work."
-          className={heroGreenButton}
-        >
-          <span>Support Our Campaigns</span>
+        <a href="#current-campaigns" className={heroPrimaryButton}>
+          Explore Current Campaigns
           <HiArrowRight className="h-4 w-4" aria-hidden="true" />
-        </ComingSoonButton>
+        </a>
+        <Link to="/get-involved" className={heroOutlineButton}>
+          Get Involved
+        </Link>
       </PageHero>
 
-
+      <section className="bg-[#F7FBFE]">
+        <div className="relative mx-auto max-w-[1380px] px-6 pb-14 sm:px-8 lg:px-12 xl:px-16 lg:pb-16">
+          <div className="grid grid-cols-2 divide-[#E6EEF4] overflow-hidden rounded-2xl border border-[#E6EEF4] bg-white shadow-[0_10px_30px_-24px_rgba(27,58,107,0.5)] sm:grid-cols-3 xl:grid-cols-6 xl:divide-x">
+            {campaignHeroStats.map((item) => (
+              <div key={item.label} className="flex flex-col items-center px-3 py-5 text-center">
+                <CampaignHeroStat value={item.value} label={item.label} icon={item.icon} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Featured Campaign */}
 
@@ -327,7 +350,11 @@ export default function CampaignsPage() {
               />
               {mainPastCampaign ? (
                 <PastCampaignHighlightCard
-                  past={{ ...mainPastCampaign, image: CAMPAIGNS_PAGE_PAST_CARD_IMAGE }}
+                  past={{
+                    ...mainPastCampaign,
+                    image: CAMPAIGNS_PAGE_PAST_CARD_IMAGE,
+                    imageAlt: mainPastCampaign.imageAlt,
+                  }}
                 />
               ) : null}
             </div>

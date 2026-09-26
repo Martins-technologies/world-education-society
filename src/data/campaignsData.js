@@ -1,21 +1,22 @@
 export const campaignImages = {
   backToLearningFeatured: 'https://cdn.pixabay.com/photo/2014/03/12/18/45/boys-286245_1280.jpg',
-  backToLearningHero: 'https://cdn.pixabay.com/photo/2021/05/24/12/53/boys-6279149_1280.jpg',
-  backToLearningCard: 'https://cdn.pixabay.com/photo/2016/08/05/02/44/student-1571488_1280.jpg',
+  backToLearningHero: '/2.webp',
+  backToLearningCard: '/backtolearning.webp',
   backToLearningDetail: 'https://cdn.pixabay.com/photo/2015/07/11/19/23/book-841171_1280.jpg',
-  skillsForTomorrow: 'https://cdn.pixabay.com/photo/2019/12/18/13/56/glasses-4704055_1280.jpg',
+  skillsForTomorrow: '/skillsfortommorow.webp',
   libraryAccess: 'https://cdn.pixabay.com/photo/2015/07/31/11/45/library-869061_1280.jpg',
   resourceDistribution: 'https://cdn.pixabay.com/photo/2014/07/28/01/14/book-403383_1280.jpg',
-  youthInternship: 'https://cdn.pixabay.com/photo/2026/04/14/11/47/geralt-selfie-10226114_1280.jpg',
+  youthInternship: '/youth.webp',
   pastCampaigns: 'https://cdn.pixabay.com/photo/2024/09/30/13/40/child-9085875_1280.jpg',
   communityLearningOutreach:
-    'https://cdn.pixabay.com/photo/2026/04/13/15/13/15-13-36-443_1280.jpg',
+    'https://cdn.pixabay.com/photo/2018/07/31/14/09/young-people-3575167_1280.jpg',
   calgarySchoolSupplyDrive:
     'https://cdn.pixabay.com/photo/2016/11/14/02/58/student-1822451_1280.jpg',
   scholarshipAwarenessWeek:
-    'https://cdn.pixabay.com/photo/2026/03/10/04/31/geralt-education-10165350_1280.jpg',
+    'https://cdn.pixabay.com/photo/2015/07/17/22/43/student-849824_1280.jpg',
   torontoBookDonationDrive: 'https://cdn.pixabay.com/photo/2015/10/29/09/46/books-1012088_1280.jpg',
-  communityLearningFair: 'https://cdn.pixabay.com/photo/2022/01/22/03/59/family-6956174_1280.jpg',
+  communityLearningFair:
+    'https://cdn.pixabay.com/photo/2026/03/13/04/58/geralt-library-10171008_1280.jpg',
   upcomingDrives: 'https://cdn.pixabay.com/photo/2020/01/15/16/46/children-4768404_1280.jpg',
   donateSuppliesPage: 'https://cdn.pixabay.com/photo/2021/01/21/15/54/books-5937716_1280.jpg',
   organizeDrivePage: 'https://cdn.pixabay.com/photo/2014/07/06/09/37/lecture-385357_1280.jpg',
@@ -71,7 +72,7 @@ export const currentCampaigns = [
     progress: 70,
     progressLabel: '70% of goal',
     image: campaignImages.backToLearningCard,
-    imageAlt: 'Young student studying and writing at home',
+    imageAlt: 'Two smiling students with backpacks and a notebook outdoors',
     primaryCta: { label: 'Donate', href: '/contact' },
     secondaryCta: { label: 'Learn More', href: '/campaigns/back-to-learning-drive' },
     showOnMain: true,
@@ -186,7 +187,8 @@ export const pastCampaigns = [
     reach: '600 youth',
     status: 'Completed',
     image: campaignImages.communityLearningOutreach,
-    imageAlt: 'Students in school uniforms waving together on outdoor bleachers',
+    imageAlt:
+      'Young people standing together in a golden field with arms around one another, looking toward the horizon',
     showOnMain: true,
   },
   {

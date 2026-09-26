@@ -346,11 +346,11 @@ export default function Home() {
               <ArrowLink to="/campaigns">View All Campaigns</ArrowLink>
             </div>
             <article className="overflow-hidden rounded-2xl border border-[#E6EEF4] bg-white shadow-[0_12px_30px_-24px_rgba(27,58,107,0.55)]">
-              <div className="overflow-hidden bg-[#E7EEF2] lg:h-64">
+              <div className="flex min-h-[200px] items-center justify-center overflow-hidden bg-[#F7FBFE] lg:min-h-[16rem]">
                 <img
-                  src={photos.campaign}
+                  src="/backtolearning.webp"
                   alt="Students supported through the Back to Learning Drive"
-                  className="block h-auto w-full lg:h-full lg:object-cover lg:object-top"
+                  className="block h-auto max-h-[280px] w-full object-contain object-center lg:max-h-full lg:h-full"
                 />
               </div>
               <div className="px-5 py-5">

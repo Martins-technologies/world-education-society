@@ -2,7 +2,11 @@ import { Link } from 'react-router-dom'
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube } from 'react-icons/fa'
 import { HiEnvelope, HiMapPin, HiPhone } from 'react-icons/hi2'
 import logo from '../assets/logo.png'
+import { pageContainer } from './PageHero'
 import { footerLinks } from '../data/content'
+
+const contactLinkClass =
+  'min-w-0 flex-1 text-[13px] leading-snug text-[#5C6B7C] [overflow-wrap:anywhere] transition-colors hover:text-[#1E4E8C]'
 
 const socials = [
   { label: 'Facebook', Icon: FaFacebookF },
@@ -13,10 +17,10 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-[#E7E2D8] bg-[#FBF9F4] text-[#1B3A6B]">
-      <div className="mx-auto max-w-[1380px] px-6 pb-6 pt-12 sm:px-8 lg:px-12 xl:px-16 lg:pt-14">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 xl:gap-8">
-          <div className="min-w-0">
+    <footer className="min-w-0 overflow-x-clip border-t border-[#E7E2D8] bg-[#FBF9F4] text-[#1B3A6B]">
+      <div className={`${pageContainer} pb-6 pt-12 lg:pt-14`}>
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-12 lg:gap-x-8 lg:gap-y-10">
+          <div className="min-w-0 sm:col-span-2 lg:col-span-4 xl:col-span-3">
             <Link to="/" className="inline-block">
               <img src={logo} alt="World Education Society" className="h-14 w-auto object-contain" />
             </Link>
@@ -37,7 +41,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="min-w-0">
+          <div className="min-w-0 lg:col-span-4 xl:col-span-2">
             <h2 className="font-sans text-[13px] font-semibold text-[#1B3A6B]">Quick Links</h2>
             <div className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2.5">
               <ul className="space-y-2.5">
@@ -61,7 +65,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="min-w-0">
+          <div className="min-w-0 lg:col-span-4 xl:col-span-2">
             <h2 className="font-sans text-[13px] font-semibold text-[#1B3A6B]">Our Programs</h2>
             <ul className="mt-4 space-y-2.5">
               {footerLinks.programs.map((link) => (
@@ -74,7 +78,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="min-w-0">
+          <div className="min-w-0 sm:col-span-2 lg:col-span-6 xl:col-span-2">
             <h2 className="font-sans text-[13px] font-semibold text-[#1B3A6B]">Get Involved</h2>
             <ul className="mt-4 space-y-2.5">
               {footerLinks.involved.map((link) => (
@@ -87,24 +91,24 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="min-w-0 sm:col-span-2 lg:col-span-1 xl:col-span-1">
+          <div className="min-w-0 sm:col-span-2 lg:col-span-6 xl:col-span-3">
             <h2 className="font-sans text-[13px] font-semibold text-[#1B3A6B]">Contact Us</h2>
-            <ul className="mt-4 space-y-3 text-[13px] text-[#5C6B7C]">
-              <li className="flex items-start gap-2.5">
+            <ul className="mt-4 max-w-md space-y-3 lg:max-w-none">
+              <li className="flex min-w-0 items-start gap-2.5">
                 <HiEnvelope className="mt-0.5 h-4 w-4 shrink-0 text-[#1E4E8C]" aria-hidden="true" />
-                <a href={`mailto:${footerLinks.contactInfo.email}`} className="min-w-0 break-all transition-colors hover:text-[#1E4E8C]">
+                <a href={`mailto:${footerLinks.contactInfo.email}`} className={contactLinkClass}>
                   {footerLinks.contactInfo.email}
                 </a>
               </li>
-              <li className="flex items-start gap-2.5">
+              <li className="flex min-w-0 items-start gap-2.5">
                 <HiPhone className="mt-0.5 h-4 w-4 shrink-0 text-[#1E4E8C]" aria-hidden="true" />
-                <a href="tel:+15874384634" className="transition-colors hover:text-[#1E4E8C]">
+                <a href="tel:+15874384634" className={contactLinkClass}>
                   {footerLinks.contactInfo.phone}
                 </a>
               </li>
-              <li className="flex items-start gap-2.5">
+              <li className="flex min-w-0 items-start gap-2.5">
                 <HiMapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#1E4E8C]" aria-hidden="true" />
-                <address className="not-italic leading-relaxed">{footerLinks.contactInfo.address}</address>
+                <address className={`${contactLinkClass} not-italic`}>{footerLinks.contactInfo.address}</address>
               </li>
             </ul>
           </div>

@@ -15,7 +15,7 @@ import { pageContainer, heroGreenButton, heroOutlineButton, heroPrimaryButton } 
 
 export { pageContainer }
 
-export function ImagePlaceholder({ className = '', aspect = '', src, alt = '', fit = 'cover' }) {
+export function ImagePlaceholder({ className = '', aspect = '', src, alt = '', fit = 'cover', style }) {
   const objectClass = fit === 'contain' ? 'object-contain' : 'object-cover'
   if (src) {
     return (
@@ -23,6 +23,7 @@ export function ImagePlaceholder({ className = '', aspect = '', src, alt = '', f
         src={src}
         alt={alt}
         className={`${objectClass} ${aspect} ${className}`}
+        style={style}
       />
     )
   }
@@ -134,11 +135,15 @@ function primaryCtaVariant(label) {
 export function CampaignCard({ campaign }) {
   return (
     <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-[#E6EEF4] bg-white shadow-[0_12px_30px_-24px_rgba(27,58,107,0.55)]">
-      <ImagePlaceholder
-        src={campaign.image}
-        alt={campaign.imageAlt || campaign.title}
-        className="!rounded-none aspect-[4/3] w-full"
-      />
+      <div className="relative aspect-square w-full shrink-0 overflow-hidden bg-[#F7FBFE]">
+        <ImagePlaceholder
+          src={campaign.image}
+          alt={campaign.imageAlt || campaign.title}
+          fit="cover"
+          className="!rounded-none absolute inset-0 h-full w-full"
+          style={{ objectPosition: campaign.imagePosition || 'center' }}
+        />
+      </div>
       <div className="flex flex-1 flex-col px-5 py-5 sm:px-6 sm:py-6">
         <h3 className="font-display text-[1.35rem] font-bold leading-tight text-[#1B3A6B]">{campaign.title}</h3>
         <p className="mt-2 flex-1 text-[14px] leading-relaxed text-[#5C6B7C]">{campaign.description}</p>
@@ -265,8 +270,8 @@ export function PastCampaignHighlightCard({ past }) {
         <ImagePlaceholder
           src={past.image}
           alt={past.imageAlt || past.title}
-          fit="cover"
-          className="!rounded-none absolute inset-0 h-full w-full"
+          fit="contain"
+          className="!rounded-none absolute inset-0 h-full w-full object-center"
         />
       </div>
       <div className="flex min-w-0 flex-1 flex-col px-4 py-4 sm:px-5 sm:py-5">

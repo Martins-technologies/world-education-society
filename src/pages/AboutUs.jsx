@@ -57,7 +57,7 @@ const leaders = [
     name: 'Sarah Chen',
     role: 'Board Chair',
     bio: 'Community leader with 15+ years in education and non-profit leadership.',
-    image: '/aboutusupdated/wes_about_05_leadership_1.webp',
+    image: '/A.webp',
     alt: 'Portrait of Sarah Chen',
   },
   {
@@ -71,7 +71,7 @@ const leaders = [
     name: 'Aisha Mohammed',
     role: 'Programs Director',
     bio: 'Expert in student support and community program development.',
-    image: '/aboutusupdated/wes_about_07_leadership_3.webp',
+    image: '/B.webp',
     alt: 'Portrait of Aisha Mohammed',
   },
   {
