@@ -339,7 +339,7 @@ export default function Home() {
       </section>
 
       <section className="bg-[#FBF9F4]">
-        <div className="mx-auto grid max-w-[1380px] gap-6 px-6 py-12 sm:px-8 lg:grid-cols-12 lg:px-12 xl:px-16 lg:py-14">
+        <div className="mx-auto grid max-w-[1380px] gap-6 px-6 py-12 sm:px-8 lg:grid-cols-12 lg:items-start lg:px-12 xl:px-16 lg:py-14">
           <div className="lg:col-span-5">
             <div className="mb-3 flex items-center justify-between gap-3">
               <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#7B8C9C]">Current Campaign</p>
@@ -397,8 +397,8 @@ export default function Home() {
             </article>
           </div>
 
-          <div className="flex flex-col lg:col-span-3 lg:pt-8">
-            <div className="flex h-full flex-col justify-center divide-y divide-[#E6EEF4] rounded-2xl border border-[#E6EEF4] bg-white px-4 shadow-[0_12px_30px_-24px_rgba(27,58,107,0.45)]">
+          <div className="lg:col-span-3 lg:pt-[1.75rem]">
+            <div className="divide-y divide-[#E6EEF4] rounded-2xl border border-[#E6EEF4] bg-white px-4 shadow-[0_12px_30px_-24px_rgba(27,58,107,0.45)]">
               {involveRows.map((row) => (
                 <Link key={row.title} to="/get-involved" className="flex items-center gap-3 py-5">
                   <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#E7F1FB] text-[#1E4E8C]">
