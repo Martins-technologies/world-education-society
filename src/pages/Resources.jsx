@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
   HiArrowRight,
-  HiChevronRight,
   HiOutlineAcademicCap,
   HiOutlineBookOpen,
   HiOutlineBriefcase,
@@ -22,8 +21,6 @@ import {
   HiOutlineUsers,
 } from 'react-icons/hi2'
 import PageHero, { pageContainer } from '../components/PageHero'
-import ComingSoonButton from '../components/ComingSoonButton'
-import { useComingSoon } from '../components/ComingSoonProvider'
 
 const topics = [
   'Scholarships',
@@ -65,7 +62,6 @@ const latest = [
       { icon: 'pdf', label: 'PDF' },
       { label: '1.8 MB' },
     ],
-    action: 'Download',
   },
   {
     group: 'article',
@@ -77,7 +73,6 @@ const latest = [
     alt: 'A student writing notes on campus steps',
     position: 'center 36%',
     meta: [{ icon: 'date', label: 'Oct 8, 2025' }],
-    action: 'Coming Soon',
   },
   {
     group: 'template',
@@ -92,7 +87,6 @@ const latest = [
       { icon: 'pdf', label: 'DOCX' },
       { label: '320 KB' },
     ],
-    action: 'Download',
   },
   {
     group: 'video',
@@ -104,7 +98,6 @@ const latest = [
     alt: 'A student and mentor reviewing post-secondary options',
     position: 'center 28%',
     meta: [{ icon: 'time', label: '8 min' }],
-    action: 'Watch Now',
   },
   {
     group: 'guide',
@@ -119,7 +112,6 @@ const latest = [
       { icon: 'pdf', label: 'PDF' },
       { label: '1.1 MB' },
     ],
-    action: 'Download',
   },
   {
     group: 'article',
@@ -131,7 +123,6 @@ const latest = [
     alt: 'A community learning group gathered around a table',
     position: 'center 30%',
     meta: [{ icon: 'date', label: 'Oct 1, 2025' }],
-    action: 'Coming Soon',
   },
 ]
 
@@ -162,10 +153,8 @@ function MetaIcon({ type }) {
 }
 
 export default function Resources() {
-  const showComingSoon = useComingSoon()
   const [query, setQuery] = useState('')
   const [filter, setFilter] = useState('All Resources')
-  const resourceSoonMessage = 'This resource will be available soon. We are preparing downloads and articles for you.'
   const groupByFilter = {
     Guides: 'guide',
     Articles: 'article',
@@ -334,21 +323,12 @@ export default function Resources() {
                       </span>
                     ))}
                   </div>
-                  {item.action === 'Coming Soon' ? (
-                    <span
-                      className="mt-5 inline-flex w-fit cursor-default items-center rounded-lg border border-[#D5DEE8] px-4 py-2 text-[13px] font-semibold text-[#1B3A6B]"
-                      aria-disabled="true"
-                    >
-                      {item.action}
-                    </span>
-                  ) : (
-                    <ComingSoonButton
-                      message={resourceSoonMessage}
-                      className="mt-5 inline-flex w-fit items-center rounded-lg border border-[#D5DEE8] px-4 py-2 text-[13px] font-semibold text-[#1B3A6B] transition-colors hover:bg-[#F4F8FC]"
-                    >
-                      {item.action}
-                    </ComingSoonButton>
-                  )}
+                  <span
+                    className="mt-5 inline-flex w-fit cursor-default items-center rounded-lg border border-[#D5DEE8] px-4 py-2 text-[13px] font-semibold text-[#1B3A6B]"
+                    aria-disabled="true"
+                  >
+                    Coming Soon
+                  </span>
                 </div>
               </article>
             ))}
@@ -365,15 +345,11 @@ export default function Resources() {
             <ul className="mt-4">
               {popular.map(({ title, Icon }) => (
                 <li key={title}>
-                  <button
-                    type="button"
-                    onClick={() => showComingSoon(resourceSoonMessage)}
-                    className="flex w-full items-center gap-3 border-b border-[#E6EEF4] py-3.5 text-left transition-colors hover:bg-[#F7FBFE]"
-                  >
+                  <div className="flex w-full items-center gap-3 border-b border-[#E6EEF4] py-3.5">
                     <Icon className="h-5 w-5 shrink-0 text-[#1E6FBF]" aria-hidden="true" />
                     <span className="flex-1 text-[14px] font-medium text-[#1B3A6B]">{title}</span>
-                    <HiChevronRight className="h-4 w-4 shrink-0 text-[#8AA0B5]" aria-hidden="true" />
-                  </button>
+                    <span className="shrink-0 text-[12px] font-semibold text-[#7A8B9A]">Coming Soon</span>
+                  </div>
                 </li>
               ))}
             </ul>
@@ -393,13 +369,12 @@ export default function Resources() {
             <p className="mt-2 text-[14px] leading-relaxed text-[#5C6E80]">
               Resources for community organizations to support local learning initiatives and youth programs.
             </p>
-            <ComingSoonButton
-              message="The Community Education Toolkit download is coming soon."
-              className="mt-4 inline-flex items-center gap-1 text-[14px] font-semibold text-[#1E6FBF] transition-colors hover:text-[#163E70]"
+            <span
+              className="mt-4 inline-flex cursor-default items-center rounded-lg border border-[#D5DEE8] px-4 py-2 text-[13px] font-semibold text-[#1B3A6B]"
+              aria-disabled="true"
             >
-              Download Toolkit
-              <HiArrowRight className="h-4 w-4" aria-hidden="true" />
-            </ComingSoonButton>
+              Coming Soon
+            </span>
           </div>
 
           <div>
