@@ -14,7 +14,8 @@ export const campaignImages = {
     'https://cdn.pixabay.com/photo/2016/11/14/02/58/student-1822451_1280.jpg',
   scholarshipAwarenessWeek:
     'https://cdn.pixabay.com/photo/2015/07/17/22/43/student-849824_1280.jpg',
-  torontoBookDonationDrive: 'https://cdn.pixabay.com/photo/2015/10/29/09/46/books-1012088_1280.jpg',
+  torontoBookDonationDrive:
+    'https://cdn.pixabay.com/photo/2015/11/19/21/10/glasses-1052010_1280.jpg',
   communityLearningFair:
     'https://cdn.pixabay.com/photo/2026/03/13/04/58/geralt-library-10171008_1280.jpg',
   upcomingDrives: 'https://cdn.pixabay.com/photo/2020/01/15/16/46/children-4768404_1280.jpg',
@@ -221,7 +222,7 @@ export const communityEvents = [
     date: 'Nov 8, 2025',
     location: 'Toronto, ON',
     image: campaignImages.torontoBookDonationDrive,
-    imageAlt: 'Stack of books ready for donation',
+    imageAlt: 'Open book with glasses on a wooden table',
     showOnMain: false,
   },
   {
