@@ -350,9 +350,17 @@ export default function ContactUsPage() {
                   </a>
                 </ContactInfoRow>
                 <ContactInfoRow icon={HiOutlinePhone} title="Phone">
-                  <a href={`tel:${contactInfo.phone.replace(/\s/g, '')}`} className="transition-colors hover:text-[#1E4E8C]">
-                    {contactInfo.phone}
-                  </a>
+                  <div className="flex flex-col gap-1">
+                    {(contactInfo.phones || [contactInfo.phone]).map((phone) => (
+                      <a
+                        key={phone}
+                        href={`tel:${phone.replace(/\s/g, '')}`}
+                        className="transition-colors hover:text-[#1E4E8C]"
+                      >
+                        {phone}
+                      </a>
+                    ))}
+                  </div>
                 </ContactInfoRow>
                 <ContactInfoRow icon={HiOutlineMapPin} title="Address">
                   <address className="not-italic">{contactInfo.address}</address>

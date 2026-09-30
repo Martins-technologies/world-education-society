@@ -102,9 +102,17 @@ export default function Footer() {
               </li>
               <li className="flex min-w-0 items-start gap-2.5">
                 <HiPhone className="mt-0.5 h-4 w-4 shrink-0 text-[#1E4E8C]" aria-hidden="true" />
-                <a href="tel:+15874384634" className={contactLinkClass}>
-                  {footerLinks.contactInfo.phone}
-                </a>
+                <div className="flex flex-col gap-1">
+                  {(footerLinks.contactInfo.phones || [footerLinks.contactInfo.phone]).map((phone) => (
+                    <a
+                      key={phone}
+                      href={`tel:${phone.replace(/\s/g, '')}`}
+                      className={contactLinkClass}
+                    >
+                      {phone}
+                    </a>
+                  ))}
+                </div>
               </li>
               <li className="flex min-w-0 items-start gap-2.5">
                 <HiMapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#1E4E8C]" aria-hidden="true" />

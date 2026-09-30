@@ -123,6 +123,8 @@ export const footerLinks = {
   contactInfo: {
     email: 'info@worldeducationsociety.com',
     phone: '+1 587-438-4634',
+    secondaryPhone: '+1 587-443-1292',
+    phones: ['+1 587-438-4634', '+1 587-443-1292'],
     address: '345, 3016, 5th Ave NE, Calgary, AB T2A 5L7',
   },
 }
