@@ -526,9 +526,14 @@ export default function TransportationAssistance() {
                 </li>
                 <li className="flex items-start gap-2">
                   <HiOutlinePhone className="mt-0.5 h-4 w-4 shrink-0 text-[#1E4E8C]" aria-hidden="true" />
-                  <a href="tel:+15874384634" className="hover:text-[#1E4E8C]">
-                    +1 587-438-4634
-                  </a>
+                  <div className="flex flex-col gap-1">
+                    <a href="tel:+15874384634" className="hover:text-[#1E4E8C]">
+                      +1 587-438-4634
+                    </a>
+                    <a href="tel:+15874431292" className="hover:text-[#1E4E8C]">
+                      +1 587-443-1292
+                    </a>
+                  </div>
                 </li>
                 <li className="flex items-start gap-2">
                   <HiOutlineMapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#1E4E8C]" aria-hidden="true" />
