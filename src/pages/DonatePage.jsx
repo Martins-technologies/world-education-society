@@ -211,7 +211,7 @@ export default function DonatePage() {
                   <label htmlFor="custom-amount" className="sr-only">
                     Custom donation amount in dollars
                   </label>
-                  <div className="flex items-center rounded-lg border border-[#D7E0E8] bg-white px-3 focus-within:border-[#1E4E8C]">
+                  <div className="flex items-center rounded-lg border border-[#D7E0E8] bg-white px-3">
                     <span className="text-sm font-semibold text-[#1B3A6B]" aria-hidden="true">
                       $
                     </span>
@@ -231,7 +231,7 @@ export default function DonatePage() {
                       placeholder="Enter amount"
                       aria-invalid={customError ? 'true' : 'false'}
                       aria-describedby={customError ? 'custom-amount-error' : undefined}
-                      className="w-full bg-transparent px-2 py-3 text-sm text-[#1B3A6B] outline-none placeholder:text-[#8A97A6]"
+                      className="w-full bg-transparent px-2 py-3 text-sm text-[#1B3A6B] outline-none focus-visible:outline-none placeholder:text-[#8A97A6]"
                     />
                   </div>
                   {customError ? (
@@ -280,7 +280,7 @@ export default function DonatePage() {
           <img
             src="/students.webp"
             alt="Students studying together outdoors"
-            className="h-full w-full object-cover object-[42%_center]"
+            className="h-full w-full object-cover object-[42%_15%]"
           />
         </div>
         <div className="relative z-10 lg:ml-[60%]">
@@ -288,7 +288,7 @@ export default function DonatePage() {
             <img
               src="/students.webp"
               alt="Students studying together outdoors"
-              className="h-full w-full object-cover object-[42%_center]"
+              className="h-full w-full object-cover object-[42%_15%]"
             />
           </div>
           <div className="flex items-center px-6 py-12 sm:px-8 lg:min-h-[460px] lg:px-10 lg:py-16 xl:pr-[max(4rem,calc((100vw-1380px)/2+4rem))]">
