@@ -11,7 +11,6 @@ import {
   HiOutlineUsers,
 } from 'react-icons/hi2'
 import PageHero, { heroOutlineButton, pageContainer } from '../components/PageHero'
-import ComingSoonButton from '../components/ComingSoonButton'
 import {
   ActionButton,
   ArrowLink,
@@ -60,7 +59,7 @@ const pathwayCards = [
     description:
       'Your financial support helps us deliver educational resources, scholarships, workshops, and mentorship programs to youth in need.',
     cta: 'Make a Donation',
-    comingSoon: true,
+    href: '/donate',
     icon: HiOutlineHeart,
     image: getInvolvedPathwayImages.supportOurPrograms,
     imageAlt: 'Youth holding a sign about education changing lives',
@@ -257,19 +256,9 @@ export default function GetInvolvedPage() {
                   </div>
                   <p className="mt-3 flex-1 text-[14px] leading-relaxed text-[#5C6B7C]">{card.description}</p>
                   <div className="mt-5">
-                    {card.comingSoon ? (
-                      <ComingSoonButton
-                        message="Online donations will be available soon. Thank you for your interest in supporting our work."
-                        className={`${heroOutlineButton} !px-4 !py-2.5 !text-[13px]`}
-                      >
-                        <span>{card.cta}</span>
-                        <HiArrowRight className="h-4 w-4" aria-hidden="true" />
-                      </ComingSoonButton>
-                    ) : (
-                      <ActionButton to={card.href} variant="outline" className="!px-4 !py-2.5 !text-[13px]">
-                        {card.cta}
-                      </ActionButton>
-                    )}
+                    <ActionButton to={card.href} variant="outline" className="!px-4 !py-2.5 !text-[13px]">
+                      {card.cta}
+                    </ActionButton>
                   </div>
                 </div>
               </article>

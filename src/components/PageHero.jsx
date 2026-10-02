@@ -50,6 +50,7 @@ export default function PageHero({
   imageNotes,
   footnote,
   breadcrumb,
+  eyebrowClassName = '',
   children,
   clipHeroImage = true,
   imageIntrinsicWidth,
@@ -149,7 +150,7 @@ export default function PageHero({
         <div className={fullImage ? 'hero-copy relative z-20 min-w-0' : 'relative z-20 min-w-0 max-w-[540px]'}>
           {breadcrumb}
           {eyebrow ? (
-            <p className="text-[12px] font-bold uppercase tracking-[0.16em] text-[#1E4E8C] sm:text-[13px]">{eyebrow}</p>
+            <p className={`text-[12px] font-bold uppercase tracking-[0.16em] text-[#1E4E8C] sm:text-[13px] ${eyebrowClassName}`}>{eyebrow}</p>
           ) : null}
           <h1
             className={

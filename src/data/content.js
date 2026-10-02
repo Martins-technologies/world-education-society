@@ -83,7 +83,7 @@ export const footerLinks = {
   involved: [
     { label: 'Volunteer With Us', href: '/get-involved/volunteer-with-us' },
     { label: 'Partner With Us', href: '/get-involved' },
-    { label: 'Donate', href: '/get-involved' },
+    { label: 'Donate', href: '/donate' },
     { label: 'Current Campaigns', href: '/campaigns' },
     { label: 'Host a Workshop', href: '/get-involved' },
   ],

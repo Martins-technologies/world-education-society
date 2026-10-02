@@ -361,13 +361,13 @@ export default function Home() {
                   Help us provide school supplies, learning resources and support for students in need.
                 </p>
                 <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
-                  <ComingSoonButton
-                    message="Online donations will be available soon. Thank you for your interest in supporting our work."
+                  <Link
+                    to="/donate"
                     className="inline-flex items-center gap-2 rounded-full bg-[#2E9A4A] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#267F3C]"
                   >
                     Donate Now
                     <HiArrowRight className="h-4 w-4" aria-hidden="true" />
-                  </ComingSoonButton>
+                  </Link>
                   <p className="text-sm font-semibold text-[#2E9A4A]">70% of goal</p>
                 </div>
                 <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-[#E5F2E8]" aria-hidden="true">

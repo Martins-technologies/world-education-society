@@ -4,7 +4,6 @@ import { Link, useLocation } from 'react-router-dom'
 import { HiChevronDown, HiOutlineMagnifyingGlass } from 'react-icons/hi2'
 import { nav, navMenus } from '../data/content'
 import { pageContainer } from './PageHero'
-import ComingSoonButton from './ComingSoonButton'
 import logo from '../assets/logo.png'
 
 function isActivePath(href, pathname) {
@@ -77,12 +76,12 @@ export default function Navbar() {
           >
             <HiOutlineMagnifyingGlass className="h-[18px] w-[18px]" />
           </span>
-          <ComingSoonButton
-            message="Online donations will be available soon. Thank you for your interest in supporting our work."
+          <Link
+            to="/donate"
             className="inline-flex items-center justify-center rounded-full bg-[#E2A52E] px-3 py-2 text-[13px] font-semibold text-white shadow-sm transition-colors hover:bg-[#d1961f] sm:px-5"
           >
             Donate
-          </ComingSoonButton>
+          </Link>
           <button
             onClick={() => setOpen((v) => !v)}
             aria-label={open ? 'Close menu' : 'Open menu'}

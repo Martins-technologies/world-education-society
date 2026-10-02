@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom'
 import { HiArrowRight, HiUserGroup } from 'react-icons/hi2'
 
 import PageHero, { heroGreenButton, heroOutlineButton } from '../components/PageHero'
-import ComingSoonButton from '../components/ComingSoonButton'
-
 import {
 
   ActionButton,
@@ -147,13 +145,10 @@ export default function CampaignsPage() {
 
               <div className="mt-8 flex flex-wrap gap-3">
 
-                <ComingSoonButton
-                  message="Online donations will be available soon. Thank you for your interest in supporting our work."
-                  className={`${heroGreenButton} !justify-center`}
-                >
+                <Link to="/donate" className={`${heroGreenButton} !justify-center`}>
                   <span>Donate Now</span>
                   <HiArrowRight className="h-4 w-4" aria-hidden="true" />
-                </ComingSoonButton>
+                </Link>
 
               </div>
 
