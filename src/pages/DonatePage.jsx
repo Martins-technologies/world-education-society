@@ -121,12 +121,7 @@ export default function DonatePage() {
         imageFit="cover"
         imagePosition="center"
         imageFetchPriority="high"
-      >
-        <button type="submit" form="donation-form" className={donateButtonClass}>
-          Donate Now
-          <HiArrowRight className="h-4 w-4" aria-hidden="true" />
-        </button>
-      </PageHero>
+      />
 
       <section className="bg-[#F7FBFE]">
         <div className={`${pageContainer} py-12 lg:py-16`}>
@@ -276,7 +271,7 @@ export default function DonatePage() {
       </section>
 
       <section className="relative overflow-hidden bg-[#F4F9FC]">
-        <div className="absolute inset-y-0 left-0 z-0 hidden w-[60%] overflow-hidden rounded-r-full lg:block">
+        <div className="absolute inset-y-0 z-0 hidden overflow-hidden rounded-r-full left-6 w-[calc(60%-1.5rem)] sm:left-8 sm:w-[calc(60%-2rem)] lg:left-12 lg:block lg:w-[calc(60%-3rem)] xl:left-[max(4rem,calc((100%-1380px)/2+4rem))] xl:w-[calc(60%-max(4rem,calc((100%-1380px)/2+4rem)))]">
           <img
             src="/students.webp"
             alt="Students studying together outdoors"
@@ -284,7 +279,7 @@ export default function DonatePage() {
           />
         </div>
         <div className="relative z-10 lg:ml-[60%]">
-          <div className="h-[280px] w-full overflow-hidden rounded-r-full sm:h-[340px] lg:hidden">
+          <div className="ml-6 h-[280px] w-[calc(100%-1.5rem)] overflow-hidden rounded-r-full sm:ml-8 sm:h-[340px] sm:w-[calc(100%-2rem)] lg:hidden">
             <img
               src="/students.webp"
               alt="Students studying together outdoors"
@@ -293,20 +288,16 @@ export default function DonatePage() {
           </div>
           <div className="flex items-center px-6 py-12 sm:px-8 lg:min-h-[460px] lg:px-10 lg:py-16 xl:pr-[max(4rem,calc((100vw-1380px)/2+4rem))]">
             <div className="max-w-[440px]">
-            <p className="text-[12px] font-bold uppercase tracking-[0.16em] text-[#2E9A4A] sm:text-[13px]">
-              Invest in People
-            </p>
-            <h2 className="mt-4 font-display text-[1.85rem] font-bold leading-[1.12] tracking-tight text-[#1B3A6B] sm:text-[2.15rem]">
-              Together We Can Do More
-            </h2>
-            <p className="mt-4 text-[15px] leading-relaxed text-[#3E5670]">
-              Your support helps us reach more students, create stronger communities and build a more equitable and
-              sustainable future.
-            </p>
-            <button type="submit" form="donation-form" className={`${donateButtonClass} mt-8`}>
-              Donate Now
-              <HiArrowRight className="h-4 w-4" aria-hidden="true" />
-            </button>
+              <p className="text-[12px] font-bold uppercase tracking-[0.16em] text-[#2E9A4A] sm:text-[13px]">
+                Invest in People
+              </p>
+              <h2 className="mt-4 font-display text-[1.85rem] font-bold leading-[1.12] tracking-tight text-[#1B3A6B] sm:text-[2.15rem]">
+                Together We Can Do More
+              </h2>
+              <p className="mt-4 text-[15px] leading-relaxed text-[#3E5670]">
+                Your support helps us reach more students, create stronger communities and build a more equitable and
+                sustainable future.
+              </p>
             </div>
           </div>
         </div>

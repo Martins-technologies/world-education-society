@@ -19,8 +19,8 @@ export default function Footer() {
   return (
     <footer className="min-w-0 overflow-x-clip border-t border-[#E7E2D8] bg-[#FBF9F4] text-[#1B3A6B]">
       <div className={`${pageContainer} pb-6 pt-12 lg:pt-14`}>
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-12 lg:gap-x-8 lg:gap-y-10">
-          <div className="min-w-0 sm:col-span-2 lg:col-span-4 xl:col-span-3">
+        <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-12 lg:gap-x-8 lg:gap-y-10">
+          <div className="col-span-2 min-w-0 lg:col-span-4 xl:col-span-3">
             <Link to="/" className="inline-block">
               <img src={logo} alt="World Education Society" className="h-14 w-auto object-contain" />
             </Link>
@@ -43,7 +43,7 @@ export default function Footer() {
 
           <div className="min-w-0 lg:col-span-4 xl:col-span-2">
             <h2 className="font-sans text-[13px] font-semibold text-[#1B3A6B]">Quick Links</h2>
-            <div className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2.5">
+            <div className="mt-4 grid grid-cols-1 gap-y-2.5 lg:grid-cols-2 lg:gap-x-4">
               <ul className="space-y-2.5">
                 {footerLinks.quick.map((link) => (
                   <li key={link.label}>
@@ -78,7 +78,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="min-w-0 sm:col-span-2 lg:col-span-6 xl:col-span-2">
+          <div className="min-w-0 lg:col-span-6 xl:col-span-2">
             <h2 className="font-sans text-[13px] font-semibold text-[#1B3A6B]">Get Involved</h2>
             <ul className="mt-4 space-y-2.5">
               {footerLinks.involved.map((link) => (
@@ -91,7 +91,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="min-w-0 sm:col-span-2 lg:col-span-6 xl:col-span-3">
+          <div className="min-w-0 lg:col-span-6 xl:col-span-3">
             <h2 className="font-sans text-[13px] font-semibold text-[#1B3A6B]">Contact Us</h2>
             <ul className="mt-4 max-w-md space-y-3 lg:max-w-none">
               <li className="flex min-w-0 items-start gap-2.5">
