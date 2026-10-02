@@ -146,6 +146,7 @@ const programs = [
     categories: ['other'],
     tint: 'blue',
     Icon: BusIcon,
+    href: '/programs/transportation-assistance',
   },
   {
     id: 'youth-internship',
@@ -455,7 +456,7 @@ export default function OurPrograms() {
                       </li>
                     </ul>
                     <div className="mt-3.5">
-                      <LearnMore href="/contact" />
+                      <LearnMore href={program.href || '/contact'} />
                     </div>
                   </div>
                 </article>
