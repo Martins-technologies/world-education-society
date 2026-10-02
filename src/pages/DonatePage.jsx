@@ -1,18 +1,16 @@
-import { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FaHandshake } from 'react-icons/fa'
 import {
   HiArrowRight,
   HiOutlineAcademicCap,
+  HiOutlineBookOpen,
   HiOutlineGift,
   HiOutlineHeart,
-  HiOutlineLockClosed,
+  HiOutlineShieldCheck,
+  HiOutlineSparkles,
   HiOutlineUserGroup,
 } from 'react-icons/hi2'
 import PageHero, { pageContainer } from '../components/PageHero'
-import { footerLinks } from '../data/content'
-
-const PRESETS = ['25', '50', '100', '250']
 
 const donateButtonClass =
   'inline-flex items-center justify-center gap-2 rounded-lg bg-[#E2A52E] px-5 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#d1961f] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E2A52E]'
@@ -58,56 +56,7 @@ function LeafIcon({ className }) {
   )
 }
 
-function giftSummary(frequency, amount, customAmount) {
-  const cadence = frequency === 'monthly' ? 'monthly' : 'one-time'
-  const value = amount === 'custom' ? String(customAmount).trim() : amount
-  return { cadence, value, label: `$${value} ${cadence}` }
-}
-
 export default function DonatePage() {
-  const [frequency, setFrequency] = useState('one-time')
-  const [amount, setAmount] = useState('50')
-  const [customAmount, setCustomAmount] = useState('')
-  const [customError, setCustomError] = useState('')
-  const customInputRef = useRef(null)
-  const donationPanelRef = useRef(null)
-
-  function revealDonationPanel() {
-    donationPanelRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
-  }
-
-  function selectMonthly() {
-    setFrequency('monthly')
-    revealDonationPanel()
-  }
-
-  function selectCustom() {
-    setAmount('custom')
-    setCustomError('')
-    revealDonationPanel()
-    window.setTimeout(() => customInputRef.current?.focus(), 250)
-  }
-
-  function handleSubmit(event) {
-    event.preventDefault()
-    if (amount === 'custom') {
-      const value = Number(customAmount)
-      if (!customAmount.trim() || Number.isNaN(value) || value <= 0) {
-        setCustomError('Enter an amount greater than 0.')
-        revealDonationPanel()
-        customInputRef.current?.focus()
-        return
-      }
-    }
-    setCustomError('')
-    const gift = giftSummary(frequency, amount, customAmount)
-    const subject = encodeURIComponent('Donation to World Education Society')
-    const body = encodeURIComponent(
-      `I would like to make a ${gift.cadence} donation of $${gift.value} to World Education Society.`,
-    )
-    window.location.href = `mailto:${footerLinks.contactInfo.email}?subject=${subject}&body=${body}`
-  }
-
   return (
     <div className="min-w-0 overflow-x-clip bg-[#F7FBFE] text-[#1B3A6B]">
       <PageHero
@@ -126,130 +75,102 @@ export default function DonatePage() {
       <section className="bg-[#F7FBFE]">
         <div className={`${pageContainer} py-12 lg:py-16`}>
           <div className="grid items-stretch gap-6 lg:grid-cols-2 lg:gap-8">
-            <form
-              id="donation-form"
-              ref={donationPanelRef}
-              onSubmit={handleSubmit}
-              className="rounded-2xl border border-[#E6EEF4] bg-white px-5 py-6 shadow-[0_12px_30px_-24px_rgba(27,58,107,0.45)] sm:px-7 sm:py-8"
-            >
-              <h2 className="font-display text-[1.7rem] font-bold leading-tight tracking-tight text-[#1B3A6B] sm:text-[2rem]">
-                Choose Your Donation
-              </h2>
-              <p className="mt-2 text-[15px] leading-relaxed text-[#5C6B7C]">
-                Every contribution, big or small, makes a meaningful difference.
-              </p>
+            <div className="relative flex flex-col justify-between overflow-hidden rounded-2xl bg-gradient-to-br from-[#122B52] via-[#1B3A6B] to-[#0E2342] p-6 text-white shadow-[0_20px_45px_-15px_rgba(27,58,107,0.45)] sm:p-8">
+              {/* Subtle background ambient glows */}
+              <div
+                className="pointer-events-none absolute -right-12 -top-12 h-44 w-44 rounded-full bg-[#E2A52E]/15 blur-3xl"
+                aria-hidden="true"
+              />
+              <div
+                className="pointer-events-none absolute -bottom-12 -left-12 h-44 w-44 rounded-full bg-[#2E9A4A]/20 blur-3xl"
+                aria-hidden="true"
+              />
 
-              <div className="mt-6 grid grid-cols-2 rounded-xl border border-[#E4EAF1] bg-[#F7FBFE] p-1" role="group" aria-label="Donation frequency">
-                {[
-                  { id: 'one-time', label: 'One-time' },
-                  { id: 'monthly', label: 'Monthly' },
-                ].map((option) => {
-                  const selected = frequency === option.id
-                  return (
-                    <button
-                      key={option.id}
-                      type="button"
-                      aria-pressed={selected}
-                      onClick={() => setFrequency(option.id)}
-                      className={`rounded-lg px-3 py-2.5 text-sm font-semibold transition-colors ${
-                        selected ? 'bg-[#1B3A6B] text-white shadow-sm' : 'text-[#1B3A6B] hover:bg-white'
-                      }`}
-                    >
-                      {option.label}
-                    </button>
-                  )
-                })}
-              </div>
-
-              <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-5" role="group" aria-label="Donation amount">
-                {PRESETS.map((value) => {
-                  const selected = amount === value
-                  return (
-                    <button
-                      key={value}
-                      type="button"
-                      aria-pressed={selected}
-                      onClick={() => {
-                        setAmount(value)
-                        setCustomError('')
-                      }}
-                      className={`rounded-lg border px-2 py-3 text-sm font-semibold transition-colors ${
-                        selected
-                          ? 'border-[#1B3A6B] bg-[#1B3A6B] text-white'
-                          : 'border-[#D7E0E8] bg-white text-[#1B3A6B] hover:border-[#1B3A6B]/40'
-                      }`}
-                    >
-                      ${value}
-                    </button>
-                  )
-                })}
-                <button
-                  type="button"
-                  aria-pressed={amount === 'custom'}
-                  onClick={() => {
-                    setAmount('custom')
-                    setCustomError('')
-                    window.setTimeout(() => customInputRef.current?.focus(), 0)
-                  }}
-                  className={`rounded-lg border px-2 py-3 text-sm font-semibold transition-colors ${
-                    amount === 'custom'
-                      ? 'border-[#1B3A6B] bg-[#1B3A6B] text-white'
-                      : 'border-[#D7E0E8] bg-white text-[#1B3A6B] hover:border-[#1B3A6B]/40'
-                  }`}
-                >
-                  Custom
-                </button>
-              </div>
-
-              {amount === 'custom' ? (
-                <div className="mt-3">
-                  <label htmlFor="custom-amount" className="sr-only">
-                    Custom donation amount in dollars
-                  </label>
-                  <div className="flex items-center rounded-lg border border-[#D7E0E8] bg-white px-3">
-                    <span className="text-sm font-semibold text-[#1B3A6B]" aria-hidden="true">
-                      $
-                    </span>
-                    <input
-                      ref={customInputRef}
-                      id="custom-amount"
-                      name="custom-amount"
-                      type="number"
-                      inputMode="decimal"
-                      min="1"
-                      step="1"
-                      value={customAmount}
-                      onChange={(event) => {
-                        setCustomAmount(event.target.value)
-                        setCustomError('')
-                      }}
-                      placeholder="Enter amount"
-                      aria-invalid={customError ? 'true' : 'false'}
-                      aria-describedby={customError ? 'custom-amount-error' : undefined}
-                      className="w-full bg-transparent px-2 py-3 text-sm text-[#1B3A6B] outline-none focus-visible:outline-none placeholder:text-[#8A97A6]"
-                    />
-                  </div>
-                  {customError ? (
-                    <p id="custom-amount-error" className="mt-2 text-[13px] text-[#C44D4D]">
-                      {customError}
-                    </p>
-                  ) : null}
+              <div className="relative z-10">
+                <div className="flex items-center gap-2">
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-[#2E9A4A]/50 bg-[#2E9A4A]/20 px-3 py-1 text-xs font-semibold text-[#5BE37C]">
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#5BE37C]" />
+                    Direct Impact
+                  </span>
+                  <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] font-medium text-white/70">
+                    Community First
+                  </span>
                 </div>
-              ) : null}
 
-              <button type="submit" className={`${donateButtonClass} mt-4 w-full`}>
-                Donate Now
-                <HiArrowRight className="h-4 w-4" aria-hidden="true" />
-              </button>
+                <h2 className="mt-4 font-display text-[1.8rem] font-bold leading-tight tracking-tight text-white sm:text-[2.1rem]">
+                  Every Contribution <br className="hidden sm:inline" />
+                  <span className="text-[#F6C65C]">Creates Real Change</span>
+                </h2>
 
-              <p className="mt-4 flex items-center gap-2 text-[13px] text-[#6A7A8A]">
-                <HiOutlineLockClosed className="h-4 w-4 shrink-0" aria-hidden="true" />
-                Secure and safe donation process.
-              </p>
-            </form>
+                <p className="mt-3 text-[14.5px] leading-relaxed text-white/80">
+                  Your support directly equips students with essential learning supplies, academic mentorship, and scholarship grants to unlock their full potential.
+                </p>
+
+                {/* 2x2 Aesthetic Feature Grid */}
+                <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                  <div className="rounded-xl border border-white/10 bg-white/[0.06] p-3.5 backdrop-blur-sm transition-colors hover:bg-white/[0.1]">
+                    <div className="flex items-center gap-2.5 text-[#F6C65C]">
+                      <HiOutlineAcademicCap className="h-5 w-5 shrink-0" aria-hidden="true" />
+                      <span className="text-xs font-bold uppercase tracking-wider text-white">Student Grants</span>
+                    </div>
+                    <p className="mt-1 text-xs leading-relaxed text-white/70">
+                      Direct tuition assistance & study supplies.
+                    </p>
+                  </div>
+
+                  <div className="rounded-xl border border-white/10 bg-white/[0.06] p-3.5 backdrop-blur-sm transition-colors hover:bg-white/[0.1]">
+                    <div className="flex items-center gap-2.5 text-[#5BE37C]">
+                      <HiOutlineBookOpen className="h-5 w-5 shrink-0" aria-hidden="true" />
+                      <span className="text-xs font-bold uppercase tracking-wider text-white">Learning Kits</span>
+                    </div>
+                    <p className="mt-1 text-xs leading-relaxed text-white/70">
+                      Textbooks, digital tools & stationery.
+                    </p>
+                  </div>
+
+                  <div className="rounded-xl border border-white/10 bg-white/[0.06] p-3.5 backdrop-blur-sm transition-colors hover:bg-white/[0.1]">
+                    <div className="flex items-center gap-2.5 text-[#5BE37C]">
+                      <HiOutlineSparkles className="h-5 w-5 shrink-0" aria-hidden="true" />
+                      <span className="text-xs font-bold uppercase tracking-wider text-white">Mentorship</span>
+                    </div>
+                    <p className="mt-1 text-xs leading-relaxed text-white/70">
+                      Guidance workshops & career pathway support.
+                    </p>
+                  </div>
+
+                  <div className="rounded-xl border border-white/10 bg-white/[0.06] p-3.5 backdrop-blur-sm transition-colors hover:bg-white/[0.1]">
+                    <div className="flex items-center gap-2.5 text-[#F6C65C]">
+                      <HiOutlineShieldCheck className="h-5 w-5 shrink-0" aria-hidden="true" />
+                      <span className="text-xs font-bold uppercase tracking-wider text-white">Transparency</span>
+                    </div>
+                    <p className="mt-1 text-xs leading-relaxed text-white/70">
+                      100% accountable, community-rooted allocation.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="relative z-10 mt-7 border-t border-white/10 pt-5">
+                <Link
+                  to="/contact"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#E2A52E] px-5 py-3.5 text-sm font-bold text-[#102544] shadow-md transition-all hover:bg-[#F3B740] hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E2A52E]"
+                >
+                  <span>Connect With Our Team to Contribute</span>
+                  <HiArrowRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
+
+                <p className="mt-3 flex items-center justify-center gap-2 text-center text-xs text-white/60">
+                  <HiOutlineHeart className="h-4 w-4 shrink-0 text-[#5BE37C]" aria-hidden="true" />
+                  Together building equitable, community-powered education.
+                </p>
+              </div>
+            </div>
 
             <aside className="rounded-2xl border border-[#E6EEF4] bg-white px-5 py-6 shadow-[0_12px_30px_-24px_rgba(27,58,107,0.45)] sm:px-7 sm:py-8">
-              <h2 className="font-display text-[1.7rem] font-bold leading-tight tracking-tight text-[#1B3A6B] sm:text-[2rem]">
+              <span className="inline-block rounded-full bg-[#E7F3FB] px-3 py-1 text-xs font-semibold text-[#1E4E8C]">
+                Our Focus
+              </span>
+              <h2 className="mt-3 font-display text-[1.7rem] font-bold leading-tight tracking-tight text-[#1B3A6B] sm:text-[2rem]">
                 Your Support Helps
               </h2>
               <ul className="mt-6 space-y-6">
@@ -313,21 +234,20 @@ export default function DonatePage() {
               There are many meaningful ways to contribute to our work.
             </p>
             <div className="mt-6 grid gap-4 md:grid-cols-3">
-              <button
-                type="button"
-                onClick={selectMonthly}
+              <Link
+                to="/contact"
                 className="flex h-full items-start gap-4 rounded-2xl bg-white px-5 py-5 text-left shadow-[0_12px_30px_-24px_rgba(27,58,107,0.4)] transition-colors hover:bg-[#F7FBFE]"
               >
                 <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#E7F3FB] text-[#1E4E8C]">
                   <HiOutlineUserGroup className="h-6 w-6" aria-hidden="true" />
                 </span>
                 <span>
-                  <span className="block font-sans text-[15px] font-semibold text-[#1B3A6B]">Monthly Giving</span>
+                  <span className="block font-sans text-[15px] font-semibold text-[#1B3A6B]">Monthly Giving & Sponsorship</span>
                   <span className="mt-1 block text-sm leading-relaxed text-[#5C6B7C]">
-                    Provide ongoing support to help us plan for long-term impact.
+                    Provide ongoing support to help us plan sustainable, long-term educational initiatives.
                   </span>
                 </span>
-              </button>
+              </Link>
               <Link
                 to="/campaigns"
                 className="flex h-full items-start gap-4 rounded-2xl bg-white px-5 py-5 text-left shadow-[0_12px_30px_-24px_rgba(27,58,107,0.4)] transition-colors hover:bg-[#F7FBFE]"
@@ -338,25 +258,24 @@ export default function DonatePage() {
                 <span>
                   <span className="block font-sans text-[15px] font-semibold text-[#1B3A6B]">Support a Campaign</span>
                   <span className="mt-1 block text-sm leading-relaxed text-[#5C6B7C]">
-                    Contribute to current initiatives that make a difference.
+                    Contribute directly to targeted community programs and student drives.
                   </span>
                 </span>
               </Link>
-              <button
-                type="button"
-                onClick={selectCustom}
+              <Link
+                to="/get-involved"
                 className="flex h-full items-start gap-4 rounded-2xl bg-white px-5 py-5 text-left shadow-[0_12px_30px_-24px_rgba(27,58,107,0.4)] transition-colors hover:bg-[#F7FBFE]"
               >
                 <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#E7F3FB] text-[#1E4E8C]">
                   <HiOutlineGift className="h-6 w-6" aria-hidden="true" />
                 </span>
                 <span>
-                  <span className="block font-sans text-[15px] font-semibold text-[#1B3A6B]">Custom Contribution</span>
+                  <span className="block font-sans text-[15px] font-semibold text-[#1B3A6B]">In-Kind & Resource Donation</span>
                   <span className="mt-1 block text-sm leading-relaxed text-[#5C6B7C]">
-                    Choose an amount that works for you.
+                    Donate books, learning devices, and classroom materials for schools and youth.
                   </span>
                 </span>
-              </button>
+              </Link>
             </div>
           </div>
         </div>
