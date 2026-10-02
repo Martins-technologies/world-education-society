@@ -314,9 +314,6 @@ export default function AboutUs() {
             <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-[#5C6B7C]">
               We believe education is a fundamental right and a powerful tool for individual and community change. Many people face barriers such as financial hardship, lack of information, language challenges and limited access to resources. We exist to remove those barriers and create practical, supportive pathways to opportunity.
             </p>
-            <div className="mt-6">
-              <FilledAction to="/our-impact">Our Impact</FilledAction>
-            </div>
           </div>
 
           <div className="rounded-[22px] bg-[#E7EEF2] max-lg:overflow-visible lg:relative lg:min-h-[280px] lg:overflow-hidden">

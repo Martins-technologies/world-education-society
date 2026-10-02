@@ -16,13 +16,13 @@ import PageHero, { heroOutlineButton, heroPrimaryButton } from '../components/Pa
 import ComingSoonButton from '../components/ComingSoonButton'
 
 const photos = {
-  hero: '/homeupdated/01_Hero_Students.webp',
+  hero: '/team.jpeg',
   purpose: '/homeupdated/02_Our_Purpose_Student.webp',
   language: '/homeupdated/03_Language_Communication.webp',
   digital: '/homeupdated/04_Digital_Skills.webp',
   academic: '/homeupdated/05_Academic_Support.webp',
   campaign: '/homeupdated/06_Current_Campaign_Back_to_Learning_Drive.webp',
-  involved: '/homeupdated/07_Get_Involved_Volunteering.webp',
+  involved: '/old.jpeg',
   story: '/homeupdated/08_Success_Story.webp',
 }
 
@@ -193,6 +193,8 @@ export default function Home() {
         image={photos.hero}
         imageAlt="Students smiling together outdoors, representing stronger students and stronger communities"
         imageLayout="full"
+        imageFit="contain"
+        imagePosition="center"
         footnote={
           <div className="flex max-w-[480px] items-start gap-3">
             <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#E7F1FB] text-[#1E4E8C]">
@@ -359,13 +361,13 @@ export default function Home() {
                   Help us provide school supplies, learning resources and support for students in need.
                 </p>
                 <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
-                  <ComingSoonButton
-                    message="Online donations will be available soon. Thank you for your interest in supporting our work."
+                  <Link
+                    to="/donate"
                     className="inline-flex items-center gap-2 rounded-full bg-[#2E9A4A] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#267F3C]"
                   >
                     Donate Now
                     <HiArrowRight className="h-4 w-4" aria-hidden="true" />
-                  </ComingSoonButton>
+                  </Link>
                   <p className="text-sm font-semibold text-[#2E9A4A]">70% of goal</p>
                 </div>
                 <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-[#E5F2E8]" aria-hidden="true">
@@ -378,11 +380,11 @@ export default function Home() {
           <div className="lg:col-span-4">
             <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#7B8C9C]">Get Involved</p>
             <article className="overflow-hidden rounded-2xl border border-[#E6EEF4] bg-white shadow-[0_12px_30px_-24px_rgba(27,58,107,0.55)]">
-              <div className="h-64 overflow-hidden bg-[#E7EEF2]">
+              <div className="flex min-h-[200px] items-center justify-center overflow-hidden bg-[#F7FBFE] lg:min-h-[16rem]">
                 <img
                   src={photos.involved}
-                  alt="Volunteers and students walking together outdoors"
-                  className="h-full w-full object-cover object-top"
+                  alt="Volunteers organizing and packing supply donations into boxes"
+                  className="block h-auto max-h-[280px] w-full object-contain object-center lg:max-h-full lg:h-full"
                 />
               </div>
               <div className="px-5 py-5">
@@ -466,13 +468,13 @@ export default function Home() {
               We’re here to help. Tell us what you’re trying to achieve and how we can support you.
             </p>
             <div className="mt-5">
-              <ComingSoonButton
-                message="Our support request portal is coming soon. Please contact us in the meantime."
+              <Link
+                to="/contact"
                 className="inline-flex items-center gap-2 rounded-full bg-[#1E4E8C] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#183E72]"
               >
-                Request Support
+                <span>Request Support</span>
                 <HiArrowRight className="h-4 w-4" aria-hidden="true" />
-              </ComingSoonButton>
+              </Link>
             </div>
           </article>
         </div>
