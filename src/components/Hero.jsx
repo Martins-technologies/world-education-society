@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 
 const heroSlides = [
   {
-    image: '/Home/hero.jpg',
-    alt: 'Group of students smiling together with a laptop outdoors',
+    image: '/team.jpeg',
+    alt: 'Group of students smiling together outdoors on campus',
     color: '#0D90C4',
   },
   {

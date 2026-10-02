@@ -19,6 +19,7 @@ import PastCampaignsArchivePage from './pages/PastCampaignsArchivePage'
 import CommunityEventsPage from './pages/CommunityEventsPage'
 import CampaignDonateSuppliesPage from './pages/CampaignDonateSuppliesPage'
 import CampaignOrganizeDrivePage from './pages/CampaignOrganizeDrivePage'
+import DonatePage from './pages/DonatePage'
 
 export default function App() {
   return (
@@ -41,10 +42,13 @@ export default function App() {
           <Route path="/contact-us" element={<ContactUsPage />} />
           <Route path="/our-impact" element={<OurImpact />} />
           <Route path="/resources" element={<Resources />} />
+          <Route path="/donate" element={<DonatePage />} />
+          <Route path="/donation" element={<DonatePage />} />
           <Route path="/campaigns" element={<CampaignsPage />} />
           <Route path="/campaigns/all" element={<Navigate to="/campaigns#current-campaigns" replace />} />
           <Route path="/campaigns/past" element={<PastCampaignsArchivePage />} />
           <Route path="/campaigns/events" element={<CommunityEventsPage />} />
+          <Route path="/campaigns/donate" element={<DonatePage />} />
           <Route path="/campaigns/donate-supplies" element={<CampaignDonateSuppliesPage />} />
           <Route path="/campaigns/organize-a-drive" element={<CampaignOrganizeDrivePage />} />
           <Route path="/campaigns/:slug" element={<CampaignDetailPage />} />

@@ -40,7 +40,7 @@ const pathwayCards = [
     description:
       'Guide and inspire youth through one-on-one or group mentoring. Help students build confidence, explore opportunities, and achieve their goals.',
     cta: 'Learn About Mentoring',
-    href: '/programs#career-skills',
+    href: '/contact',
     icon: HiOutlineUsers,
     image: getInvolvedPathwayImages.becomeAMentor,
     imageAlt: 'Mentor supporting students in a classroom',
@@ -70,7 +70,7 @@ const pathwayCards = [
     description:
       'Help us by donating books, technology, school supplies, or other educational materials. Your in-kind donations directly support students and schools in our communities.',
     cta: 'View Donation Needs',
-    href: '/campaigns/donate-supplies',
+    href: '/donate',
     icon: HiOutlineAcademicCap,
     image: getInvolvedPathwayImages.donateResources,
     imageAlt: 'Stack of books for educational donation drives',
@@ -90,7 +90,7 @@ const pathwayCards = [
     description:
       'Provide internships, job shadowing, or career opportunities for youth. Help bridge the gap between education and employment.',
     cta: 'Explore Opportunities',
-    href: '/programs#youth-internship',
+    href: '/contact',
     icon: HiOutlineBriefcase,
     image: getInvolvedPathwayImages.employerPartnerships,
     imageAlt: 'Professional working at a computer in an office',

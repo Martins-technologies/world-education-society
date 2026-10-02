@@ -34,7 +34,7 @@ export default function Navbar() {
         </Link>
 
         <nav className="ml-3 hidden min-w-0 flex-1 items-center justify-start gap-1 xl:flex min-[1440px]:ml-5 min-[1440px]:gap-2 2xl:ml-8 2xl:gap-3">
-          {nav.filter((item) => item.label !== 'Get Support').map((item) => {
+          {nav.map((item) => {
             const active = isActivePath(item.href, location.pathname)
             const menu = navMenus[item.label]
             return (
@@ -77,12 +77,6 @@ export default function Navbar() {
           >
             <HiOutlineMagnifyingGlass className="h-[18px] w-[18px]" />
           </span>
-          <Link
-            to="/get-support"
-            className="hidden items-center justify-center rounded-full border border-[#D5DEE8] bg-white px-4 py-2 text-[13px] font-semibold text-[#1B3A6B] transition-colors hover:bg-[#F3F8FC] xl:inline-flex"
-          >
-            Get Support
-          </Link>
           <ComingSoonButton
             message="Online donations will be available soon. Thank you for your interest in supporting our work."
             className="inline-flex items-center justify-center rounded-full bg-[#E2A52E] px-3 py-2 text-[13px] font-semibold text-white shadow-sm transition-colors hover:bg-[#d1961f] sm:px-5"

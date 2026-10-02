@@ -91,9 +91,11 @@ export default function CampaignsPage() {
         }
         description="World Education Society leads community-driven campaigns to remove barriers to education. Through resource distribution, donation drives and local partnerships, we bring learning opportunities directly to the youth who need them most."
         image={campaignImages.backToLearningHero}
-        imageAlt="Students and volunteers at a community campaign bringing learning resources to youth"
+        imageAlt="Student carrying notebooks on campus, representing educational access and opportunity"
         imageLayout="full"
-        imagePosition="center top"
+        imageFit="contain"
+        imagePosition="60% center"
+        heroImageFrameClassName="lg:translate-x-[10%]"
         footnote={
           <div className="flex max-w-[480px] items-start gap-3">
             <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#E7F1FB] text-[#1E4E8C]">
@@ -299,7 +301,7 @@ export default function CampaignsPage() {
 
                 <div className="flex shrink-0 flex-col gap-3 sm:min-w-[200px]">
 
-                  <ActionButton to="/campaigns/donate-supplies" variant="green" className="!justify-center">
+                  <ActionButton to="/donate" variant="green" className="!justify-center">
 
                     Donate Supplies
 
@@ -307,7 +309,7 @@ export default function CampaignsPage() {
 
                   <Link
 
-                    to="/campaigns/organize-a-drive"
+                    to="/donate"
 
                     className="inline-flex items-center justify-center gap-2 rounded-full border border-white bg-transparent px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/15 sm:text-[15px]"
 

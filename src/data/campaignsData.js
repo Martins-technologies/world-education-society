@@ -1,6 +1,6 @@
 export const campaignImages = {
   backToLearningFeatured: 'https://cdn.pixabay.com/photo/2014/03/12/18/45/boys-286245_1280.jpg',
-  backToLearningHero: '/2.webp',
+  backToLearningHero: '/moderngirl.jpeg',
   backToLearningCard: '/backtolearning.webp',
   backToLearningDetail: 'https://cdn.pixabay.com/photo/2015/07/11/19/23/book-841171_1280.jpg',
   skillsForTomorrow: '/skillsfortommorow.webp',

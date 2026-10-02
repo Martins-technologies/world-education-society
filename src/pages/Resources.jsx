@@ -178,11 +178,11 @@ export default function Resources() {
           </>
         }
         description="Find practical guidance, information and tools for students, youth, families and communities. Our resources are designed to help you navigate education pathways, access opportunities and overcome barriers."
-        image="/resourcesupdated/01_resources_hero.webp"
-        imageAlt="Students gathered around a laptop on a campus patio"
+        image="/resourcehero.webp"
+        imageAlt="Educational resources and students learning together"
         imageLayout="full"
         imageFit="contain"
-        imagePosition="center center"
+        imagePosition="center"
       >
         <div className="relative z-20 w-full lg:w-[min(920px,68vw)] lg:translate-x-[20%] lg:translate-y-[10vh]">
           <form

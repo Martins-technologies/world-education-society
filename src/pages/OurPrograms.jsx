@@ -330,10 +330,11 @@ export default function OurPrograms() {
           </>
         }
         description="Our programs are built around educational access, youth support, practical skills, and opportunity. We work with individuals, families and communities to remove barriers and create pathways to a brighter, more equitable future."
-        image="/programsupdated/01_Hero_Our_Programs.webp"
-        imageAlt="Students smiling together on a campus"
+        image="/group.jpeg"
+        imageAlt="World Education Society student group"
         imageLayout="full"
-        imagePosition="40% center"
+        imageFit="contain"
+        imagePosition="center"
         breadcrumb={
           <nav aria-label="Breadcrumb" className="mb-4 text-[13px] text-[#8A97A6]">
             <Link to="/" className="transition-colors hover:text-[#1E4E8C]">
