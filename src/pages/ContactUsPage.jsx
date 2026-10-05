@@ -14,7 +14,7 @@ import { footerLinks } from '../data/content'
 import { CONTACT_FORM_RECIPIENT_EMAIL } from '../config/email.js'
 import { submitFormEmail } from '../utils/submitFormEmail.js'
 
-const CONTACT_HERO_IMAGE = '/contact.webp'
+const CONTACT_HERO_IMAGE = '/contactupdated.webp'
 const { contactInfo } = footerLinks
 
 const contactingAsOptions = [
@@ -182,7 +182,8 @@ export default function ContactUsPage() {
         image={CONTACT_HERO_IMAGE}
         imageAlt="Students smiling together on campus"
         imageLayout="full"
-        imagePosition="42% center"
+        imageFit="contain"
+        imagePosition="center"
         imageFetchPriority="high"
         breadcrumb={
           <nav aria-label="Breadcrumb" className="mb-4 max-w-full text-[13px] leading-relaxed text-[#8A97A6]">
