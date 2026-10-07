@@ -57,7 +57,6 @@ const latest = [
     description: 'Step-by-step guidance on finding and applying for scholarships.',
     image: '/resourcesupdated/03_how_to_apply_for_scholarships.webp',
     alt: 'Students reviewing scholarship papers beside a laptop',
-    position: 'center 38%',
     meta: [
       { icon: 'pdf', label: 'PDF' },
       { label: '1.8 MB' },
@@ -69,9 +68,8 @@ const latest = [
     kindClass: 'text-[#1E4E8C]',
     title: '10 Study Tips for Academic Success',
     description: 'Practical strategies to help you stay focused and succeed in school.',
-    image: '/resourcesupdated/04_10_study_tips_academic_success.webp',
+    image: '/resources2/img2.jpeg',
     alt: 'A student writing notes on campus steps',
-    position: 'center 36%',
     meta: [{ icon: 'date', label: 'Oct 8, 2025' }],
   },
   {
@@ -82,7 +80,6 @@ const latest = [
     description: 'Customizable resume template designed for youth and entry-level roles.',
     image: '/programsupdated/07_Career_and_Skills_Development.webp',
     alt: 'Students working together at a workshop table',
-    position: 'center 30%',
     meta: [
       { icon: 'pdf', label: 'DOCX' },
       { label: '320 KB' },
@@ -94,9 +91,8 @@ const latest = [
     kindClass: 'text-[#6B4C9A]',
     title: 'Exploring Post-Secondary Pathways',
     description: 'Learn about college, university and skilled trades options in Canada.',
-    image: '/programsupdated/04_Study_Opportunities.webp',
+    image: '/resources2/img3.jpeg',
     alt: 'A student and mentor reviewing post-secondary options',
-    position: 'center 28%',
     meta: [{ icon: 'time', label: '8 min' }],
   },
   {
@@ -107,7 +103,6 @@ const latest = [
     description: 'Information on transit assistance programs and eligibility.',
     image: '/resourcesupdated/05_transportation_support_guide.webp',
     alt: 'A student walking beside a city bus',
-    position: '40% 18%',
     meta: [
       { icon: 'pdf', label: 'PDF' },
       { label: '1.1 MB' },
@@ -121,7 +116,6 @@ const latest = [
     description: 'How community support creates more opportunities for youth.',
     image: '/programsupdated/06_Community_Education.webp',
     alt: 'A community learning group gathered around a table',
-    position: 'center 30%',
     meta: [{ icon: 'date', label: 'Oct 1, 2025' }],
   },
 ]
@@ -266,10 +260,9 @@ export default function Resources() {
             </div>
             <div className="overflow-hidden rounded-[20px]">
               <img
-                src="/resourcesupdated/02_post_secondary_planning_guide.webp"
+                src="/resources2/img1.jpeg"
                 alt="A student writing notes beside a laptop in a library"
-                className="h-[240px] w-full object-cover sm:h-[280px] lg:h-[300px]"
-                style={{ objectPosition: '62% 40%' }}
+                className="block w-full h-auto"
               />
             </div>
           </div>
@@ -303,14 +296,15 @@ export default function Resources() {
             {visibleLatest.map((item) => (
               <article
                 key={item.title}
-                className="flex flex-col overflow-hidden rounded-2xl border border-[#E4EDF5] bg-white shadow-[0_14px_34px_-26px_rgba(27,58,107,0.6)]"
+                className="flex h-full flex-col overflow-hidden rounded-2xl border border-[#E4EDF5] bg-white shadow-[0_14px_34px_-26px_rgba(27,58,107,0.6)]"
               >
-                <img
-                  src={item.image}
-                  alt={item.alt}
-                  className="h-[190px] w-full object-cover sm:h-[210px]"
-                  style={{ objectPosition: item.position }}
-                />
+                <div className="flex aspect-[4/3] w-full items-center justify-center bg-[#F7FBFE]">
+                  <img
+                    src={item.image}
+                    alt={item.alt}
+                    className="h-full w-full object-contain object-center"
+                  />
+                </div>
                 <div className="flex flex-1 flex-col px-5 pb-5 pt-4">
                   <p className={`text-[11px] font-bold uppercase tracking-[0.12em] ${item.kindClass}`}>{item.kind}</p>
                   <h3 className="mt-2 text-[17px] font-semibold leading-snug text-[#1B3A6B]">{item.title}</h3>
@@ -362,8 +356,7 @@ export default function Resources() {
             <img
               src="/resourcesupdated/06_community_education_toolkit.webp"
               alt="A mentor helping two students around a laptop in a library"
-              className="mt-4 h-[210px] w-full rounded-2xl object-cover"
-              style={{ objectPosition: 'center 34%' }}
+              className="mt-4 block w-full h-auto rounded-2xl"
             />
             <h3 className="mt-4 text-[18px] font-semibold text-[#1B3A6B]">Community Education Toolkit</h3>
             <p className="mt-2 text-[14px] leading-relaxed text-[#5C6E80]">
