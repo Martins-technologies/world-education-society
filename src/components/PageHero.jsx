@@ -86,9 +86,7 @@ export default function PageHero({
 
   const desktopHeroImageClass =
     imageFit === 'contain'
-      ? containSharp
-        ? 'max-h-full max-w-full object-contain'
-        : 'h-full w-full object-contain'
+      ? 'h-auto w-auto max-h-full max-w-full min-h-0 min-w-0 object-contain'
       : 'h-full w-full object-cover'
 
   return (
@@ -99,7 +97,7 @@ export default function PageHero({
           style={clipHeroImage ? { clipPath: 'url(#heroCurveClip)' } : undefined}
         >
           <div
-            className={`flex h-full w-full items-center ${
+            className={`flex h-full w-full min-h-0 min-w-0 items-center ${
               clipHeroImage || imageFit === 'contain' ? 'justify-center' : 'justify-end pr-0'
             }`}
           >

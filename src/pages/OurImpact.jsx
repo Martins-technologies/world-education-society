@@ -4,7 +4,7 @@ import PageHero from '../components/PageHero'
 import { useComingSoon } from '../components/ComingSoonProvider'
 
 const photos = {
-  hero: '/our-impact/impact-hero.png',
+  hero: '/wes12/08_Our_Impact_Hero.webp',
   girl: '/our-impact/impact-outcome-girl.png',
   laptop: '/our-impact/impact-outcome-laptop.png',
   group: '/our-impact/impact-outcome-group.png',
@@ -466,7 +466,7 @@ export default function OurImpact() {
         image={photos.hero}
         imageAlt="Students smiling together outdoors"
         imageLayout="full"
-        imagePosition="68% 42%"
+        imagePosition="center"
       />
 
       <section className="bg-white">

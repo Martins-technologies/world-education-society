@@ -57,7 +57,6 @@ const latest = [
     description: 'Step-by-step guidance on finding and applying for scholarships.',
     image: '/resources2/img1.jpeg',
     alt: 'A student reviewing scholarship papers at a desk with a laptop',
-    fit: 'contain',
     meta: [
       { icon: 'pdf', label: 'PDF' },
       { label: '1.8 MB' },
@@ -69,9 +68,8 @@ const latest = [
     kindClass: 'text-[#1E4E8C]',
     title: '10 Study Tips for Academic Success',
     description: 'Practical strategies to help you stay focused and succeed in school.',
-    image: '/resources2/img2.jpeg',
-    alt: 'A student walking on campus with a notebook',
-    fit: 'contain',
+    image: '/wes12/11_Resources_Study_Tips_Graduation.webp?v=2',
+    alt: 'A graduate in a cap and gown holding a diploma',
     meta: [{ icon: 'date', label: 'Oct 8, 2025' }],
   },
   {
@@ -82,7 +80,6 @@ const latest = [
     description: 'Customizable resume template designed for youth and entry-level roles.',
     image: '/resources2/img3.jpeg',
     alt: 'A student and mentor reviewing documents together',
-    fit: 'contain',
     meta: [
       { icon: 'pdf', label: 'DOCX' },
       { label: '320 KB' },
@@ -96,7 +93,6 @@ const latest = [
     description: 'Learn about college, university and skilled trades options in Canada.',
     image: '/programsupdated/04_Study_Opportunities.webp',
     alt: 'A student and mentor reviewing post-secondary options',
-    position: 'center 28%',
     meta: [{ icon: 'time', label: '8 min' }],
   },
   {
@@ -105,9 +101,8 @@ const latest = [
     kindClass: 'text-[#2E9A4A]',
     title: 'Transportation Support Guide',
     description: 'Information on transit assistance programs and eligibility.',
-    image: '/resourcesupdated/05_transportation_support_guide.webp',
-    alt: 'A student walking beside a city bus',
-    position: '40% 18%',
+    image: '/wes12/12_Resources_Transportation_Support.webp',
+    alt: 'Students using public transit',
     meta: [
       { icon: 'pdf', label: 'PDF' },
       { label: '1.1 MB' },
@@ -121,7 +116,6 @@ const latest = [
     description: 'How community support creates more opportunities for youth.',
     image: '/programsupdated/06_Community_Education.webp',
     alt: 'A community learning group gathered around a table',
-    position: 'center 30%',
     meta: [{ icon: 'date', label: 'Oct 1, 2025' }],
   },
 ]
@@ -178,7 +172,7 @@ export default function Resources() {
           </>
         }
         description="Find practical guidance, information and tools for students, youth, families and communities. Our resources are designed to help you navigate education pathways, access opportunities and overcome barriers."
-        image="/resourcehero.webp"
+        image="/wes12/10_Resources_Hero_Library.webp"
         imageAlt="Educational resources and students learning together"
         imageLayout="full"
         imageFit="contain"
@@ -308,12 +302,7 @@ export default function Resources() {
                 <img
                   src={item.image}
                   alt={item.alt}
-                  className={
-                    item.fit === 'contain'
-                      ? 'aspect-[4/3] w-full bg-[#F7FBFE] object-contain object-center'
-                      : 'h-[190px] w-full object-cover sm:h-[210px]'
-                  }
-                  style={item.fit === 'contain' ? undefined : { objectPosition: item.position }}
+                  className="aspect-[4/3] w-full bg-[#F7FBFE] object-cover object-center"
                 />
                 <div className="flex flex-1 flex-col px-5 pb-5 pt-4">
                   <p className={`text-[11px] font-bold uppercase tracking-[0.12em] ${item.kindClass}`}>{item.kind}</p>

@@ -18,7 +18,7 @@ import ComingSoonButton from '../components/ComingSoonButton'
 const photos = {
   hero: '/team.jpeg',
   purpose: '/homeupdated/02_Our_Purpose_Student.webp',
-  language: '/homeupdated/03_Language_Communication.webp',
+  language: '/wes12/02_Programs_Language_Communication.webp',
   digital: '/homeupdated/04_Digital_Skills.webp',
   academic: '/homeupdated/05_Academic_Support.webp',
   campaign: '/homeupdated/06_Current_Campaign_Back_to_Learning_Drive.webp',

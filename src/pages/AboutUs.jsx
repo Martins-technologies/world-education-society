@@ -12,10 +12,10 @@ import {
   HiUserGroup,
   HiUsers,
 } from 'react-icons/hi2'
-import PageHero, { heroOutlineButton } from '../components/PageHero'
+import PageHero, { heroOutlineButton, heroPrimaryButton } from '../components/PageHero'
 
 const photos = {
-  hero: '/aboutusupdated/wes_about_01_hero.webp',
+  hero: '/wes12/01_About_Us_Hero.webp',
   story: '/aboutusupdated/wes_about_02_our_story.webp',
   purpose: '/aboutusupdated/wes_about_03_why_we_exist.webp',
   quote: '/aboutusupdated/wes_about_04_graduation_quote.webp',
@@ -255,11 +255,25 @@ export default function AboutUs() {
         image={photos.hero}
         imageAlt="Students smiling together outdoors"
         imageLayout="full"
-        imageFit="contain"
-        imagePosition="center"
+        imageFit="cover"
+        imagePosition="right center"
+        footnote={
+          <div className="flex max-w-[480px] items-start gap-3">
+            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#E7F1FB] text-[#1E4E8C]">
+              <HiUserGroup className="h-5 w-5" aria-hidden="true" />
+            </span>
+            <p className="text-[13px] leading-relaxed text-[#5C6B7C]">
+              We advance education and empower youth by removing barriers and creating opportunities.
+            </p>
+          </div>
+        }
       >
-        <Link to="/our-impact" className={heroOutlineButton}>
+        <Link to="/our-impact" className={heroPrimaryButton}>
           Our Impact
+          <HiArrowRight className="h-4 w-4" aria-hidden="true" />
+        </Link>
+        <Link to="/get-involved" className={heroOutlineButton}>
+          Get Involved
         </Link>
       </PageHero>
 

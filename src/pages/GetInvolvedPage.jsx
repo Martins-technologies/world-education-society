@@ -21,7 +21,7 @@ import {
 } from '../components/campaigns/CampaignUi'
 import { getInvolvedPathwayImages } from '../data/campaignsData'
 
-const GET_INVOLVED_HERO_IMAGE = '/gwtinvolvedhero.webp'
+const GET_INVOLVED_HERO_IMAGE = '/wes12/09_Get_Involved_Hero.webp'
 
 const pathwayCards = [
   {
