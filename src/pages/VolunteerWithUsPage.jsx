@@ -19,7 +19,7 @@ import PageHero, { heroGreenButton, heroOutlineButton, pageContainer } from '../
 import { SectionEyebrow } from '../components/campaigns/CampaignUi'
 import { submitFormFromElement } from '../utils/submitFormEmail.js'
 
-const VOLUNTEER_HERO_IMAGE = '/vounterrwithushero.webp'
+const VOLUNTEER_HERO_IMAGE = '/wes12/07_Volunteer_With_Us_Hero.webp'
 const MAX_RESUME_BYTES = 5 * 1024 * 1024
 const RESUME_ACCEPT = '.pdf,.doc,.docx'
 
@@ -397,8 +397,10 @@ export default function VolunteerWithUsPage() {
         }
         description="Volunteers help youth through mentorship, workshops, educational support, community campaigns, events, and resource distribution. Together, we create more opportunities for every young person to learn, belong and thrive."
         image={VOLUNTEER_HERO_IMAGE}
-        imageAlt="Diverse young adults smiling with books and backpacks"
+        imageAlt="Volunteers in World Education Society vests planting trees outdoors"
         imageLayout="full"
+        imageFit="cover"
+        imagePosition="center"
         breadcrumb={
           <nav aria-label="Breadcrumb" className="mb-4 max-w-full text-[13px] leading-relaxed text-[#8A97A6]">
             <Link to="/" className="transition-colors hover:text-[#1E4E8C]">Home</Link>
