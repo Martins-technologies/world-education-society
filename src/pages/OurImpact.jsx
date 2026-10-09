@@ -4,7 +4,7 @@ import PageHero from '../components/PageHero'
 import { useComingSoon } from '../components/ComingSoonProvider'
 
 const photos = {
-  hero: '/wes12/08_Our_Impact_Hero.webp',
+  hero: '/wes12/08_Our_Impact_Hero.jpeg',
   girl: '/our-impact/impact-outcome-girl.png',
   laptop: '/our-impact/impact-outcome-laptop.png',
   group: '/our-impact/impact-outcome-group.png',

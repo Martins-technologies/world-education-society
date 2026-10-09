@@ -91,7 +91,6 @@ function buildVolunteerEmailPayload(form, { interests, volunteerFormat, resumeFi
     replyTo: formText(data, 'emailAddress'),
   }
 }
-
 function validateResumeFile(file) {
   if (!file) return { ok: true }
   const name = file.name.toLowerCase()
