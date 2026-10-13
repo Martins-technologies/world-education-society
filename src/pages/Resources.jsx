@@ -69,7 +69,7 @@ const latest = [
     title: '10 Study Tips for Academic Success',
     description: 'Practical strategies to help you stay focused and succeed in school.',
     image: '/girl.jpeg',
-    imageFit: 'contain',
+    imageObjectPosition: 'center top',
     alt: 'A graduate in a cap and gown holding a diploma',
     meta: [{ icon: 'date', label: 'Oct 8, 2025' }],
   },
@@ -300,13 +300,12 @@ export default function Resources() {
                 key={item.title}
                 className="flex flex-col overflow-hidden rounded-2xl border border-[#E4EDF5] bg-white shadow-[0_14px_34px_-26px_rgba(27,58,107,0.6)]"
               >
-                <div className="aspect-[4/3] w-full bg-[#F7FBFE]">
+                <div className="aspect-[4/3] w-full shrink-0 overflow-hidden bg-[#F7FBFE]">
                   <img
                     src={item.image}
                     alt={item.alt}
-                    className={`h-full w-full object-center ${
-                      item.imageFit === 'contain' ? 'object-contain' : 'object-cover'
-                    }`}
+                    className={`block h-full w-full object-cover ${item.imageObjectPosition ? '' : 'object-center'}`}
+                    style={item.imageObjectPosition ? { objectPosition: item.imageObjectPosition } : undefined}
                   />
                 </div>
                 <div className="flex flex-1 flex-col px-5 pb-5 pt-4">
