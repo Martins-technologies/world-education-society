@@ -68,7 +68,8 @@ const latest = [
     kindClass: 'text-[#1E4E8C]',
     title: '10 Study Tips for Academic Success',
     description: 'Practical strategies to help you stay focused and succeed in school.',
-    image: '/wes12/11_Resources_Study_Tips_Graduation.webp?v=2',
+    image: '/girl.jpeg',
+    imageObjectPosition: 'center top',
     alt: 'A graduate in a cap and gown holding a diploma',
     meta: [{ icon: 'date', label: 'Oct 8, 2025' }],
   },
@@ -299,11 +300,14 @@ export default function Resources() {
                 key={item.title}
                 className="flex flex-col overflow-hidden rounded-2xl border border-[#E4EDF5] bg-white shadow-[0_14px_34px_-26px_rgba(27,58,107,0.6)]"
               >
-                <img
-                  src={item.image}
-                  alt={item.alt}
-                  className="aspect-[4/3] w-full bg-[#F7FBFE] object-cover object-center"
-                />
+                <div className="aspect-[4/3] w-full shrink-0 overflow-hidden bg-[#F7FBFE]">
+                  <img
+                    src={item.image}
+                    alt={item.alt}
+                    className={`block h-full w-full object-cover ${item.imageObjectPosition ? '' : 'object-center'}`}
+                    style={item.imageObjectPosition ? { objectPosition: item.imageObjectPosition } : undefined}
+                  />
+                </div>
                 <div className="flex flex-1 flex-col px-5 pb-5 pt-4">
                   <p className={`text-[11px] font-bold uppercase tracking-[0.12em] ${item.kindClass}`}>{item.kind}</p>
                   <h3 className="mt-2 text-[17px] font-semibold leading-snug text-[#1B3A6B]">{item.title}</h3>

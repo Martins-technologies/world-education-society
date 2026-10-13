@@ -110,7 +110,6 @@ const volunteerHighlightStats = [
   { Icon: HiOutlineUserGroup, value: '25,000+', label: 'Volunteer Hours' },
   { Icon: HiOutlineMegaphone, value: '110+', label: 'Community Campaigns' },
 ]
-
 const provinces = [
   'Alberta',
   'British Columbia',
