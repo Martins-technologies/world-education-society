@@ -18,7 +18,7 @@ import ComingSoonButton from '../components/ComingSoonButton'
 const photos = {
   hero: '/team.jpeg',
   purpose: '/homeupdated/02_Our_Purpose_Student.webp',
-  language: '/wes12/02_Programs_Language_Communication.webp',
+  language: '/women.jpeg',
   digital: '/homeupdated/04_Digital_Skills.webp',
   academic: '/homeupdated/05_Academic_Support.webp',
   campaign: '/homeupdated/06_Current_Campaign_Back_to_Learning_Drive.webp',
@@ -193,8 +193,8 @@ export default function Home() {
         image={photos.hero}
         imageAlt="Students smiling together outdoors, representing stronger students and stronger communities"
         imageLayout="full"
-        imageFit="contain"
-        imagePosition="center"
+        imageFit="cover"
+        imagePosition="right center"
         footnote={
           <div className="flex max-w-[480px] items-start gap-3">
             <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#E7F1FB] text-[#1E4E8C]">
