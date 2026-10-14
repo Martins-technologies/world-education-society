@@ -334,8 +334,8 @@ export default function OurPrograms() {
         image="/group.jpeg"
         imageAlt="World Education Society student group"
         imageLayout="full"
-        imageFit="contain"
-        imagePosition="center"
+        imageFit="cover"
+        imagePosition="right center"
         breadcrumb={
           <nav aria-label="Breadcrumb" className="mb-4 text-[13px] text-[#8A97A6]">
             <Link to="/" className="transition-colors hover:text-[#1E4E8C]">
